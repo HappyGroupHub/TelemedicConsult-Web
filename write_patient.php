@@ -52,12 +52,12 @@
             </section><br>
             <section class="first">
                 <label for="sex">生理性別:</label>
-                <label><input name="sex" type="radio" ></label>男
-                <label><input name="sex" type="radio" ></label>女
+                <label><input name="sex" type="radio" value="男">男</label>
+                <label><input name="sex" type="radio" value="女">女</label>
             </section><br>
             <section class="first">
                 <label for="birthday">生日:</label>
-                <label><input name="birthday" type="text" required></label>
+                <label><input name="birthday" type="date" required></label>
             </section><br>
             <section class="first">
                 <label for="blood_type">血型:</label>
@@ -95,10 +95,7 @@
                 <label for="ice_phone">緊急聯絡人電話:</label>
                 <label><input name="ice_phone" type="text" ></label>
             </section><br>
-            <section class="first">
-                <label for="line_id">LINE ID:</label>
-                <label><input name="line_id" type="text" ></label>
-            </section><br>
+
 
             <input name="submit" type="submit" value="繳交">
         </form>
@@ -117,22 +114,24 @@ $link = mysqli_connect($hostname, $username, $password, $database);
 
 if ($link) {
     mysqli_query($link, 'SET NAMES uff8');
+
     echo "正確連接資料庫";
+
 } else {
     echo "不正確連接資料庫" . mysqli_connect_error();
 }
 
 if(isset($_POST['submit'])) {
-    if($_POST["sex"] != "男") {
-        $_POST['sex'] = "女";
+    /*if($_POST["sex"] != "m") {
+        $_POST['sex'] = "f";
     } else {
-        $_POST['sex'] = "男";
-    }
-    mysqli_query($link, "INSERT INTO `paitent_base` (`name`, `id`, `sex`,`birthday`, `blood_type`,
-                            `ic_card_number`, `phone_number`, `address`, `height`, `weight`, `ice_contact`, `ice_relation`, `ice_phone`, `line_id`) 
-VALUES ('".$_POST['name']."','".$_POST['id']."','".$_POST['sex']."','".$_POST['birthday']."','".$_POST['blood_type']."',
+        $_POST['sex'] = "m";
+    }*/
+    mysqli_query($link, "INSERT INTO `patient_base` (`name`, `id`, `sex`,`birthday`, `blood_type`,
+                            `ic_card_number`, `phone_number`, `address`, `height`, `weight`, `ice_contact`, `ice_relation`, `ice_phone`)
+values('".$_POST['name']."','".$_POST['id']."','".$_POST['sex']."','".$_POST['birthday']."','".$_POST['blood_type']."',
 '".$_POST['ic_card_number']."','".$_POST['phone_number']."','".$_POST['address']."','".$_POST['height']."','".$_POST['weight']."'
-,'".$_POST['ice_contact']."','".$_POST['ice_relation']."','".$_POST['ice_phone']."','".$_POST['line_id']."')");
+,'".$_POST['ice_contact']."','".$_POST['ice_relation']."','".$_POST['ice_phone']."')");
 }
 
 ?>

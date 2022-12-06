@@ -20,23 +20,20 @@
 </nav>
 <main>
     <div class="login">
-        <form id="log1" method="post" style="border: solid #efefef 3px;">
+        <form id="log1" method="post" style="border: solid #efefef 3px;" action="doc_login.php">
             <section class="enter">
-                <label for="identify">身分證字號:</label>
-                <label><input name="id" type="text" size="25" required></label>
+                <label for="doc_id">醫師代碼:</label>
+                <label><input name="doc_id" type="text" size="25" required></label>
             </section><br>
             <section class="enter">
-                <label for="ic_card_number">健保卡卡號:</label>
-                <label><input name="ic_card_number" type="text" size="25" required></label>
+                <label for="password">密碼:</label>
+                <label><input name="password" type="password" size="25" required></label>
             </section><br>
             <section class="button" >
                 <label for="submit"></label>
                 <input name="submit" type="submit" value="登入" size="25">
             </section>
-            <section class="button" style="float: right;">
-                <label for="first"></label>
-                <a href="write_patient.php"><input id="first" type="button" value="初次使用" style="width: 80px; height: 80px;"></a>
-            </section>
+
         </form>
     </div>
 
@@ -59,21 +56,29 @@ if ($link) {
     echo "不正確連接資料庫" . mysqli_connect_error();
 }
 if(isset($_POST['submit'])) {
-    $sql = "SELECT * FROM `patient_base`";
+
+    $sql = "SELECT * FROM `doctor_base`";
     $result = mysqli_query($link, $sql);
+
+
     if ($result > 0) {
         while($row = $result->fetch_assoc()) {
-            if($row["id"]==$_POST['id'] && $row["ic_card_number"]==$_POST['ic_card_number']){
+
+            if($row["doc_id"]==$_POST['doc_id'] && $row["password"]==$_POST['password']){
                 echo "成功登入". "<br>";
                 echo "id: " . $row["id"] . "<br>";
-                echo "ic_card_number:" . $row["ic_card_number"];
-                header('location: write_patient.php');
+                echo "password:" . $row["password"];
+                header('location: update_schedule.php');
                 break;
-            }
+            }echo "錯了啦";
+
         }
+
     } else {
         echo "0 results";
     }
+
+
 }
 
 
