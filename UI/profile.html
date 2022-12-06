@@ -65,7 +65,7 @@
                      <div class="row column_title">
                         <div class="col-md-12">
                            <div class="page_title">
-                              <h2>Profile</h2>
+                              <h2>確認您的資料</h2>
                            </div>
                         </div>
                      </div>
@@ -76,7 +76,7 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>User profile</h2>
+                                    <h2>確認資料</h2>
                                  </div>
                               </div>
                               <div class="full price_table padding_infor_info">
@@ -85,93 +85,67 @@
                                     <!-- profile image -->
                                     <div class="col-lg-12">
                                        <div class="full dis_flex center_text">
-                                          <div class="profile_img"><img width="180" class="rounded-circle" src="images/layout_img/user_img.jpg" alt="#" /></div>
-                                          <div class="profile_contant">
-                                             <div class="contact_inner">
-                                                <h3>John Smith</h3>
-                                                <p><strong>About: </strong>Frontend Developer</p>
-                                                <ul class="list-unstyled">
-                                                   <li><i class="fa fa-envelope-o"></i> : test@gmail.com</li>
-                                                   <li><i class="fa fa-phone"></i> : 987 654 3210</li>
-                                                </ul>
-                                             </div>
-                                             <div class="user_progress_bar">
-                                                <div class="progress_bar">
-                                                   <!-- Skill Bars -->
-                                                   <span class="skill" style="width:85%;">Web Applications <span class="info_valume">85%</span></span>                   
-                                                   <div class="progress skill-bar ">
-                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
-                                                      </div>
-                                                   </div>
-                                                   <span class="skill" style="width:78%;">Website Design <span class="info_valume">78%</span></span>   
-                                                   <div class="progress skill-bar">
-                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
-                                                      </div>
-                                                   </div>
-                                                   <span class="skill" style="width:47%;">Automation & Testing <span class="info_valume">47%</span></span>
-                                                   <div class="progress skill-bar">
-                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;">
-                                                      </div>
-                                                   </div>
-                                                   <span class="skill" style="width:65%;">UI / UX <span class="info_valume">65%</span></span>
-                                                   <div class="progress skill-bar">
-                                                      <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%;">
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
+                                          <form id="basic" method="post" action="write_patient.php" >
+                                             <section class="first">
+                                                <label for="identity">身分證字號:</label>
+                                                <input id="identity" name="id" type="text" size="25" required>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="name">姓名:</label>
+                                                <label><input id="name" name="name" type="text" size="25" required></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="sex">生理性別:</label>
+                                                <label><input name="sex" type="radio" value="男">男</label>
+                                                <label><input name="sex" type="radio" value="女">女</label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="birthday">生日:</label>
+                                                <label><input name="birthday" type="date" required></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="blood_type">血型:</label>
+                                                <label><input name="blood_type" type="text"></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="id_card_number">健保卡卡號:</label>
+                                                <label><input name="ic_card_number" type="text" required></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="phone_number">手機號碼:</label>
+                                                <label><input name="phone_number" type="text" ></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="address">地址:</label>
+                                                <label><input name="address" type="text" ></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="height">身高:</label>
+                                                <label><input name="height" type="text" ></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="weight">體重:</label>
+                                                <label><input name="weight" type="text" ></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="ice_contact">緊急聯絡人:</label>
+                                                <label><input name="ice_contact" type="text" ></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="ice_relation">緊急聯絡人關係:</label>
+                                                <label><input name="ice_relation" type="text" ></label>
+                                             </section><br>
+                                             <section class="first">
+                                                <label for="ice_phone">緊急聯絡人電話:</label>
+                                                <label><input name="ice_phone" type="text" ></label>
+                                             </section><br>
+
+
+                                             <input name="submit" type="submit" value="繳交">
+                                          </form>
                                        </div>
                                        <!-- profile contant section -->
-                                       <div class="full inner_elements margin_top_30">
-                                          <div class="tab_style2">
-                                             <div class="tabbar">
-                                                <nav>
-                                                   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#recent_activity" role="tab" aria-selected="true">Recent Activity</a>
-                                                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#project_worked" role="tab" aria-selected="false">Projects Worked on</a>
-                                                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#profile_section" role="tab" aria-selected="false">Profile</a>
-                                                   </div>
-                                                </nav>
-                                                <div class="tab-content" id="nav-tabContent">
-                                                   <div class="tab-pane fade show active" id="recent_activity" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                      <div class="msg_list_main">
-                                                         <ul class="msg_list">
-                                                            <li>
-                                                               <span><img src="images/layout_img/msg2.png" class="img-responsive" alt="#"></span>
-                                                               <span>
-                                                               <span class="name_user">Taison Jack</span>
-                                                               <span class="msg_user">Sed ut perspiciatis unde omnis.</span>
-                                                               <span class="time_ago">12 min ago</span>
-                                                               </span>
-                                                            </li>
-                                                            <li>
-                                                               <span><img src="images/layout_img/msg3.png" class="img-responsive" alt="#"></span>
-                                                               <span>
-                                                               <span class="name_user">Mike John</span>
-                                                               <span class="msg_user">On the other hand, we denounce.</span>
-                                                               <span class="time_ago">12 min ago</span>
-                                                               </span>
-                                                            </li>
-                                                         </ul>
-                                                      </div>
-                                                   </div>
-                                                   <div class="tab-pane fade" id="project_worked" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
-                                                         quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                                                         qui ratione voluptatem sequi nesciunt.
-                                                      </p>
-                                                   </div>
-                                                   <div class="tab-pane fade" id="profile_section" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
-                                                         quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
-                                                         qui ratione voluptatem sequi nesciunt.
-                                                      </p>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
+
                                        <!-- end user profile section -->
                                     </div>
                                  </div>
