@@ -37,6 +37,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
    </head>
+
    <body class="inner_page tables_page">
       <div class="full_container">
          <div class="inner_container">
@@ -60,9 +61,9 @@
                      </div>
                   </nav>
                </div>
-               <!-- end topbar -->
+               <!-- end top_bar -->
                <!-- dashboard inner -->
-               <div class="midde_cont">
+               <div class="middle_cont">
                   <div class="container-fluid">
                      <div class="row column_title">
                         <div class="col-md-12">
@@ -84,7 +85,7 @@
                               <div class="table_section padding_infor_info">
                                  <div class="table-responsive-sm">
                                     <table class="table">
-                                       <form id="basic" method="post" action="write_patient.php" >
+                                       <form id="basic" method="post" action="write_patient(1).php" >
                                           <section class="first">
                                               <label for="identity">身分證字號:</label>
                                               <input id="identity" name="id" type="text" size="25" required>
@@ -138,8 +139,8 @@
                                               <label for="ice_phone">緊急聯絡人電話:</label>
                                               <label><input name="ice_phone" type="text" ></label>
                                           </section><br>
-                              
-                              
+
+
                                           <input name="submit" type="submit" value="繳交">
                                       </form>
                                     </table>
@@ -192,7 +193,7 @@
       <!-- select country -->
       <script src="js/bootstrap-select.js"></script>
       <!-- owl carousel -->
-      <script src="js/owl.carousel.js"></script> 
+      <script src="js/owl.carousel.js"></script>
       <!-- chart js -->
       <script src="js/Chart.min.js"></script>
       <script src="js/Chart.bundle.min.js"></script>
@@ -208,7 +209,33 @@
       <script src="js/jquery.fancybox.min.js"></script>
       <!-- custom js -->
       <script src="js/custom.js"></script>
-      <!-- calendar file css -->    
+      <!-- calendar file css -->
       <script src="js/semantic.min.js"></script>
+      <?php
+      $config_json = file_get_contents('config.json');
+      $decoded_json = json_decode($config_json,false);
+      $hostname=$decoded_json->Database->ip_address;
+      $database=$decoded_json->Database->db_name;
+      $username=$decoded_json->Database->username;
+      $password=$decoded_json->Database->password;
+
+      $link = mysqli_connect($hostname, $username, $password, $database);
+
+      if ($link) {
+          mysqli_query($link, 'SET NAMES uff8');
+
+      } else {
+          echo "不正確連接資料庫" . mysqli_connect_error();
+      }
+
+      if(isset($_POST['submit'])) {
+          mysqli_query($link, "INSERT INTO `patient_base` (`name`, `id`, `sex`,`birthday`, `blood_type`,
+                            `ic_card_number`, `phone_number`, `address`, `height`, `weight`, `ice_contact`, `ice_relation`, `ice_phone`)
+values('".$_POST['name']."','".$_POST['id']."','".$_POST['sex']."','".$_POST['birthday']."','".$_POST['blood_type']."',
+'".$_POST['ic_card_number']."','".$_POST['phone_number']."','".$_POST['address']."','".$_POST['height']."','".$_POST['weight']."'
+,'".$_POST['ice_contact']."','".$_POST['ice_relation']."','".$_POST['ice_phone']."')");
+      }
+
+      ?>
    </body>
 </html>
