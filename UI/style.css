@@ -111,7 +111,7 @@ body.demos .service-widget {
 }
 
 body.demos .container-fluid {
-    max-width: 1080px
+    max-width: 100%
 }
 
 a {
@@ -624,7 +624,7 @@ a:focus {
 .topbar {
     position: fixed;
     width: 100%;
-    padding-left: 280px;
+
     z-index: 2;
     background: #15283c;
     top: 0;
@@ -632,16 +632,13 @@ a:focus {
     left: 0;
 }
 
-#sidebar.active+#content .topbar {
-    padding-left: 90px;
-}
 
 .topbar .navbar {
     margin: 0;
 }
 
 .right_topbar {
-
+    float: right;
     padding: 0;
 }
 
@@ -909,15 +906,6 @@ a[data-toggle="collapse"] {
     height: 60px;
 }
 
-#sidebar h4 {
-    background: #15283c;
-    margin: 0;
-    padding: 21px 25px 19px;
-    font-weight: 500;
-    font-size: 18px;
-    color: #fff;
-    border-bottom: solid #ff5722 1px;
-}
 
 
 /*------------------------------------------------------------------
@@ -928,6 +916,7 @@ a[data-toggle="collapse"] {
     background: #fff;
     box-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.4);
     padding: 25px 30px;
+
 }
 
 .content_inner_section .top_page_header {
@@ -935,7 +924,7 @@ a[data-toggle="collapse"] {
 }
 
 .content_inner_section .top_page_header .page_title {
-    float: left;
+    float: right;
 }
 
 .content_inner_section .top_page_header .page_title h3 {
@@ -1373,39 +1362,6 @@ a[data-toggle="collapse"] {
     font-size: 18px;
 }
 
-
-/*------------------------------------------------------------------
-    9. Pie charts
--------------------------------------------------------------------*/
-
-
-/**  **/
-
-#canvas-holder {
-    width: 100%;
-    margin-top: 50px;
-    text-align: center;
-}
-
-#chartjs-tooltip {
-    opacity: 1;
-    position: absolute;
-    background: rgba(0, 0, 0, .7);
-    color: white;
-    border-radius: 3px;
-    -webkit-transition: all .1s ease;
-    transition: all .1s ease;
-    pointer-events: none;
-    -webkit-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
-}
-
-.chartjs-tooltip-key {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 10px;
-}
 
 
 /*------------------------------------------------------------------
@@ -2320,541 +2276,7 @@ p.note_cont {
 }
 
 
-/*------------------------------------------------------------------
-    21. Mail
--------------------------------------------------------------------*/
-
-.mail-box {
-    border-collapse: collapse;
-    border-spacing: 0;
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-}
-
-.mail-box aside {
-    display: table-cell;
-    float: none;
-    height: 100%;
-    padding: 0;
-    vertical-align: top;
-}
-
-.mail-box .sm-side {
-    background: #fff;
-    border-radius: 0;
-    width: 20%;
-}
-
-.mail-box .lg-side {
-    background: none repeat scroll 0 0 #fff;
-    border-radius: 0 4px 4px 0;
-    width: 80%;
-}
-
-.mail-box .sm-side .user-head {
-    background: #214162;
-    border-radius: 0;
-    color: #fff;
-    min-height: 80px;
-    padding: 11px 25px;
-    float: left;
-    width: 100%;
-}
-
-.user-head .inbox-avatar {
-    float: left;
-    width: 65px;
-    margin-right: 5px;
-}
-
-.user-head .inbox-avatar img {
-    border-radius: 100%;
-}
-
-.user-head .user-name {
-    display: inline-block;
-    margin: 0 0 0 10px;
-}
-
-.user-head .user-name h5 {
-    font-size: 16px;
-    font-weight: 400;
-    margin-bottom: -5px;
-    margin-top: 10px;
-    text-transform: none;
-}
-
-.user-head .user-name h5 a {
-    color: #fff;
-}
-
-.user-head .user-name span a {
-    color: #1ed085;
-    font-size: 13px;
-}
-
-a.mail-dropdown {
-    background: none repeat scroll 0 0 #80d3d9;
-    border-radius: 2px;
-    color: #01a7b3;
-    font-size: 10px;
-    margin-top: 20px;
-    padding: 3px 5px;
-}
-
-.inbox-body {
-    padding: 20px;
-    float: left;
-    width: 100%;
-}
-
-.labels-category {
-    float: left;
-    width: 100%;
-    padding: 20px 0 20px 0;
-}
-
-.btn-compose {
-    background: #1ed085;
-    color: #fff;
-    padding: 12px 0;
-    text-align: center;
-    width: 100%;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.btn-compose:hover {
-    background: #ff5722;
-    color: #fff;
-}
-
-ul.inbox-nav {
-    display: inline-block;
-    margin: 0;
-    padding: 0 0 20px 0;
-    width: 100%;
-}
-
-.labels-info {
-    float: left;
-    width: 100%;
-    padding: 20px;
-}
-
-ul.labels-category li {
-    float: left;
-    width: 100%;
-    margin: 5px 0;
-    padding: 0 20px;
-}
-
-ul.labels-category li a:hover {
-    color: #1ed085;
-}
-
-.inbox-divider {
-    border-bottom: 1px solid #ddd;
-}
-
-ul.inbox-nav li {
-    display: inline-block;
-    line-height: 45px;
-    width: 100%;
-}
-
-ul.inbox-nav li a {
-    display: inline-block;
-    line-height: 48px;
-    padding: 0 20px;
-    width: 100%;
-    font-size: 15px;
-}
-
-ul.inbox-nav li a:hover,
-ul.inbox-nav li.active a,
-ul.inbox-nav li a:focus {
-    background: #214162;
-    color: #fff;
-}
-
-ul.inbox-nav li a:hover i,
-ul.inbox-nav li.active a i,
-ul.inbox-nav li a:focus i {
-    color: #fff;
-}
-
-ul.inbox-nav li a i {
-    color: #6a6a6a;
-    font-size: 18px;
-    padding-right: 10px;
-    position: relative;
-    top: 1px;
-}
-
-ul.inbox-nav li a span.label {}
-
-ul.labels-info li h4 {
-    color: #5c5c5e;
-    font-size: 13px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    text-transform: uppercase;
-}
-
-ul.labels-category li h4 {
-    margin: 0 0 10px 0;
-    font-size: 21px;
-    font-weight: 400;
-    line-height: normal;
-}
-
-ul.labels-info li {
-    margin: 0;
-}
-
-ul.labels-category li i {
-    font-size: 12px;
-    position: relative;
-    top: -2px;
-    margin-right: 5px;
-}
-
-ul.labels-info li a {
-    border-radius: 0;
-    color: #6a6a6a;
-}
-
-ul.labels-info li a:hover,
-ul.labels-info li a:focus {
-    background: none repeat scroll 0 0 #d5d7de;
-    color: #6a6a6a;
-}
-
-ul.labels-info li a i {
-    padding-right: 10px;
-}
-
-.nav.nav-pills.nav-stacked.labels-info p {
-    color: #9d9f9e;
-    font-size: 11px;
-    margin-bottom: 0;
-    padding: 0 22px;
-}
-
-.inbox-head {
-    background: #f6f6f6;
-    border-radius: 0;
-    color: #fff;
-    min-height: 80px;
-    padding: 24px 30px 24px;
-    background-size: cover;
-    background-position: center center;
-}
-
-.inbox-head h3 {
-    display: inline-block;
-    font-weight: 500;
-    margin: 0;
-    padding-top: 3px;
-    text-transform: none;
-    letter-spacing: 0;
-    color: #15283c;
-    font-size: 21px;
-}
-
-.inbox-head .sr-input {
-    border: medium none;
-    border-radius: 0;
-    box-shadow: none;
-    color: #222;
-    float: left;
-    height: 40px;
-    padding: 0 20px;
-    font-size: 14px;
-    font-weight: 500;
-    width: 210px;
-}
-
-.inbox-head .sr-btn {
-    background: #ff5722;
-    border: medium none;
-    border-radius: 0;
-    color: #fff;
-    height: 40px;
-    padding: 0;
-    width: 40px;
-}
-
-.table-inbox {
-    border: 1px solid #d3d3d3;
-    margin-bottom: 0;
-}
-
-.table-inbox tr td {
-    padding: 12px !important;
-}
-
-.table-inbox tr td:hover {
-    cursor: pointer;
-}
-
-.table-inbox tr td .fa-star.inbox-started,
-.table-inbox tr td .fa-star:hover {
-    color: #f78a09;
-}
-
-.table-inbox tr td .fa-star {
-    color: #d5d5d5;
-}
-
-.table-inbox tr.unread td {
-    background: none repeat scroll 0 0 #f7f7f7;
-    font-weight: 400;
-    font-size: 13px;
-}
-
-ul.inbox-pagination {
-    float: right;
-}
-
-ul.inbox-pagination li {
-    float: left;
-}
-
-.mail-option {
-    display: inline-block;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.mail-option .chk-all,
-.mail-option .btn-group {
-    margin-right: 5px;
-}
-
-.mail-option .chk-all,
-.mail-option .btn-group a.btn {
-    background: none repeat scroll 0 0 #fcfcfc;
-    border: 1px solid #e7e7e7;
-    border-radius: 3px !important;
-    color: #afafaf;
-    display: inline-block;
-    padding: 5px 10px;
-}
-
-.inbox-pagination a.np-btn {
-    background: #1ed085;
-    border: 1px solid #1ed085;
-    border-radius: 0;
-    color: #fff;
-    display: inline-block;
-    padding: 0 15px;
-    font-size: 20px;
-}
-
-.mail-option .chk-all input[type="checkbox"] {
-    margin-top: 0;
-}
-
-.mail-option .btn-group a.all {
-    border: medium none;
-    padding: 0;
-}
-
-.inbox-pagination a.np-btn {
-    margin-left: 5px;
-}
-
-.inbox-pagination li span {
-    display: inline-block;
-    margin-right: 10px;
-    margin-top: 7px;
-    font-size: 14px;
-}
-
-.fileinput-button {
-    background: none repeat scroll 0 0 #eeeeee;
-    border: 1px solid #e6e6e6;
-}
-
-.inbox-body .modal .modal-body input,
-.inbox-body .modal .modal-body textarea {
-    border: 1px solid #e6e6e6;
-    box-shadow: none;
-}
-
-.btn-send,
-.btn-send:hover {
-    background: none repeat scroll 0 0 #00a8b3;
-    color: #fff;
-}
-
-.btn-send:hover {
-    background: none repeat scroll 0 0 #009da7;
-}
-
-.modal-header h4.modal-title {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 300;
-}
-
-.modal-body label {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400;
-}
-
-.heading-inbox h4 {
-    border-bottom: 1px solid #ddd;
-    color: #444;
-    font-size: 18px;
-    margin-top: 20px;
-    padding-bottom: 10px;
-}
-
-.sender-info {
-    margin-bottom: 20px;
-}
-
-.sender-info img {
-    height: 30px;
-    width: 30px;
-}
-
-.sender-dropdown {
-    background: none repeat scroll 0 0 #eaeaea;
-    color: #777;
-    font-size: 10px;
-    padding: 0 3px;
-}
-
-.view-mail a {
-    color: #ff6c60;
-}
-
-.attachment-mail {
-    margin-top: 30px;
-}
-
-.attachment-mail ul {
-    display: inline-block;
-    margin-bottom: 30px;
-    width: 100%;
-}
-
-.attachment-mail ul li {
-    float: left;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    width: 150px;
-}
-
-.attachment-mail ul li img {
-    width: 100%;
-}
-
-.attachment-mail ul li span {
-    float: right;
-}
-
-.attachment-mail .file-name {
-    float: left;
-}
-
-.attachment-mail .links {
-    display: inline-block;
-    width: 100%;
-}
-
-.fileinput-button {
-    float: left;
-    margin-right: 4px;
-    overflow: hidden;
-    position: relative;
-}
-
-.fileinput-button input {
-    cursor: pointer;
-    direction: ltr;
-    font-size: 23px;
-    margin: 0;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(-300px, 0px) scale(4);
-}
-
-.fileupload-buttonbar .btn,
-.fileupload-buttonbar .toggle {
-    margin-bottom: 5px;
-}
-
-.files .progress {
-    width: 200px;
-}
-
-.table thead th {
-    font-weight: 400;
-}
-
-.table-hover tbody tr.unread:hover,
-.table-hover tbody tr.unread:focus {
-    color: #333;
-}
-
-.table-hover tbody tr:hover,
-.table-hover tbody tr:focus {
-    background-color: #1ed085 !important;
-    color: #fff;
-}
-
-.view-message.inbox-small-cells i {
-    font-size: 17px;
-}
-
-ul.labels-category li p {
-    margin: 0 0 5px 0;
-    padding: 0 0 0 18px;
-}
-
-.fileupload-processing .fileupload-loading {
-    display: block;
-}
-
-* html .fileinput-button {
-    line-height: 24px;
-    margin: 1px -3px 0 0;
-}
-
-*+html .fileinput-button {
-    margin: 1px 0 0;
-    padding: 2px 15px;
-}
-
-@media (max-width: 767px) {
-    .files .btn span {
-        display: none;
-    }
-    .files .preview * {
-        width: 40px;
-    }
-    .files .name * {
-        display: inline-block;
-        width: 80px;
-        word-wrap: break-word;
-    }
-    .files .progress {
-        width: 20px;
-    }
-    .files .delete {
-        width: 60px;
-    }
-}
-
-
+/
 /*------------------------------------------------------------------
     22. Price table page
 -------------------------------------------------------------------*/
