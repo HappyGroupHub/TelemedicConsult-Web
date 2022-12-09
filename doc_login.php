@@ -70,7 +70,7 @@ if(isset($_POST['submit'])) {
                 echo "password:" . $row["password"];
                 header('location: update_schedule.php');
                 break;
-            }echo "錯了啦";
+            }
 
         }
 
@@ -82,37 +82,7 @@ if(isset($_POST['submit'])) {
 }
 
 
-/*if(isset($_POST['submit'])){
-    $sql="select * from `paitent_base` where id=$_POST[id]";
-    $result=mysqli_query($link,$sql);
-    echo $result;
-    if(empty($sql)){
-        echo '請重新輸入身份證字號';
-    }else{
-        $sql2="select ic_card_number from `paitent_base` where id=$_POST[id]";
 
-    }
-}*/
-
-/*if(isset($_POST['submit'])){
-    $sql="select * from `paitent_base` where id=$_POST[id] and id=$_POST[ic_card_number]";
-    $result = mysqli_query($link,"select * from `paitent_base` where id=$_POST[id] and id=$_POST[ic_card_number]");
-    if($result){
-        $num = mysqli_num_rows($result);
-        echo $num;
-        if($num){
-            $_session['is_login'] = true;
-            echo $_session['is_login'];
-            header("Location: write_patient.php");
-        }else {
-
-            $_session['id_login'] = false;
-            $_session['msg'] = '登入失敗請確認帳號密碼';
-            echo $_session['msg'];
-            header('location: login.php');
-        }
-    }
-}*/
 
 
 

@@ -46,24 +46,24 @@
                      </div>
                   </div>
                   <div class="login_form">
-                     <form>
+                     <form method="post" action="patient_login.php">
                         <fieldset>
                            <div class="field">
                               <label class="label_field">身分證字號</label>
-                              <input type="email" name="email" placeholder="A123456789" />
+                              <input type="text" name="id" placeholder="A123456789">
                            </div>
                            <div class="field">
                               <label class="label_field">健保卡卡號</label>
-                              <input type="password" name="password" placeholder="0000 0000 0000" />
+                              <input type="text" name="ic_card_number" placeholder="000000000000" />
                            </div>
 
                            <div class="field margin_0">
                               <label class="label_field hidden">hidden label</label>
-                              <button class="main_bt">登入</button>
+                              <input class="main_bt" type="submit" name="submit" value="登入">
                            </div>
                            <div class="field first">
                               <label class="label_field hidden">hidden label</label>
-                              <button class="first_bt" style="float: right;width: 80px;height: 80px; background-color: white;">初次使用</button>
+                               <a href="write_patient(1).php"><input type="button" value="初次使用" class="first_bt" style="float: right;width: 80px;height: 80px; background-color: white;"></a>
                            </div>>
                         </fieldset>
                      </form>
@@ -76,16 +76,54 @@
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
-      <!-- wow animation -->
+
       <script src="js/animate.js"></script>
       <!-- select country -->
       <script src="js/bootstrap-select.js"></script>
       <!-- nice scrollbar -->
       <script src="js/perfect-scrollbar.min.js"></script>
       <script>
-         var ps = new PerfectScrollbar('#sidebar');
+          const ps = new PerfectScrollbar('#sidebar');
       </script>
       <!-- custom js -->
       <script src="js/custom.js"></script>
+      <?php
+
+      $config_json = file_get_contents('config.json');
+      $decoded_json = json_decode($config_json,false);
+      $hostname=$decoded_json->Database->ip_address;
+      $database=$decoded_json->Database->db_name;
+      $username=$decoded_json->Database->username;
+      $password=$decoded_json->Database->password;
+
+      $link = mysqli_connect($hostname, $username, $password, $database);
+      session_start();
+      if ($link) {
+          mysqli_query($link, 'SET NAMES uff8');
+
+      } else {
+          echo "不正確連接資料庫" . mysqli_connect_error();
+      }
+      if(isset($_POST['submit'])) {
+          $sql = "SELECT * FROM `patient_base`";
+          $result = mysqli_query($link, $sql);
+          if ($result > 0) {
+              while($row = $result->fetch_assoc()) {
+                  if($row["id"]==$_POST['id'] && $row["ic_card_number"]==$_POST['ic_card_number']){
+                      echo "成功登入". "<br>";
+                      echo "id: " . $row["id"] . "<br>";
+                      echo "ic_card_number:" . $row["ic_card_number"];
+                      header('location: write_patient.php(1)');
+                      break;
+                  }
+              }
+          } else {
+              echo "0 results";
+          }
+      }
+
+
+
+      ?>
    </body>
 </html>

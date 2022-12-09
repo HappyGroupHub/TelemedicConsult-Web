@@ -34,7 +34,7 @@
                 <input name="submit" type="submit" value="登入" size="25">
             </section>
             <section class="button" style="float: right;">
-                <label for="first"></label>
+                <label class="label_field hidden"></label>
                 <a href="write_patient.php"><input id="first" type="button" value="初次使用" style="width: 80px; height: 80px;"></a>
             </section>
         </form>
@@ -75,39 +75,6 @@ if(isset($_POST['submit'])) {
         echo "0 results";
     }
 }
-
-
-/*if(isset($_POST['submit'])){
-    $sql="select * from `paitent_base` where id=$_POST[id]";
-    $result=mysqli_query($link,$sql);
-    echo $result;
-    if(empty($sql)){
-        echo '請重新輸入身份證字號';
-    }else{
-        $sql2="select ic_card_number from `paitent_base` where id=$_POST[id]";
-
-    }
-}*/
-
-/*if(isset($_POST['submit'])){
-    $sql="select * from `paitent_base` where id=$_POST[id] and id=$_POST[ic_card_number]";
-    $result = mysqli_query($link,"select * from `paitent_base` where id=$_POST[id] and id=$_POST[ic_card_number]");
-    if($result){
-        $num = mysqli_num_rows($result);
-        echo $num;
-        if($num){
-            $_session['is_login'] = true;
-            echo $_session['is_login'];
-            header("Location: write_patient.php");
-        }else {
-
-            $_session['id_login'] = false;
-            $_session['msg'] = '登入失敗請確認帳號密碼';
-            echo $_session['msg'];
-            header('location: login.php');
-        }
-    }
-}*/
 
 
 
