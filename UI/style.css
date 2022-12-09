@@ -808,7 +808,7 @@ a[data-toggle="collapse"] {
     min-height: 100vh;
     transition: ease all 0.3s;
     position: relative;
-    padding: 60px 25px 25px 305px;
+    padding: 60px 25px 25px 60px;
     background: #f8f8f8;
 }
 
@@ -2224,7 +2224,7 @@ h2.invoice_head small {
 .table_row tbody tr td {
     font-size: 14px;
     font-weight: 400;
-    padding: 12px 25px 12px;
+    padding: 12px 12px;
     border: none;
     color: #58718a;
 }
@@ -2274,6 +2274,7 @@ p.note_cont {
     background: rgba(30, 208, 133, 0.05);
     margin-top: 15px;
 }
+
 
 
 /
