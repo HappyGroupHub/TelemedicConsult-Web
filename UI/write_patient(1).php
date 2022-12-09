@@ -88,56 +88,56 @@
                                        <form id="basic" method="post" action="write_patient(1).php" >
                                           <section class="first">
                                               <label for="identity">身分證字號:</label>
-                                              <input id="identity" name="id" type="text" size="25" required>
+                                              <input id="identity" name="id" required="required">
                                           </section><br>
                                           <section class="first">
                                               <label for="name">姓名:</label>
-                                              <label><input id="name" name="name" type="text" size="25" required></label>
+                                              <label><input id="name" name="name"  required="required"></label>
                                           </section><br>
                                           <section class="first">
                                               <label for="sex">生理性別:</label>
-                                              <label><input name="sex" type="radio" value="男">男</label>
-                                              <label><input name="sex" type="radio" value="女">女</label>
+                                              <label><input name="sex" type="radio" value="男" required="required">男</label>
+                                              <label><input name="sex" type="radio" value="女" required="required">女</label>
                                           </section><br>
                                           <section class="first">
                                               <label for="birthday">生日:</label>
-                                              <label><input name="birthday" type="date" required></label>
+                                              <label><input name="birthday" type="date" required="required"></label>
                                           </section><br>
                                           <section class="first">
                                               <label for="blood_type">血型:</label>
-                                              <label><input name="blood_type" type="text"></label>
+                                              <label><input name="blood_type">型</label>
                                           </section><br>
                                           <section class="first">
                                               <label for="id_card_number">健保卡卡號:</label>
-                                              <label><input name="ic_card_number" type="text" required></label>
+                                              <label><input name="ic_card_number" required="required"></label>
                                           </section><br>
                                           <section class="first">
                                               <label for="phone_number">手機號碼:</label>
-                                              <label><input name="phone_number" type="text" ></label>
+                                              <label><input name="phone_number" required="required" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
                                           </section><br>
                                           <section class="first">
                                               <label for="address">地址:</label>
-                                              <label><input name="address" type="text" ></label>
+                                              <label><input name="address" required="required"></label>
                                           </section><br>
                                           <section class="first">
                                               <label for="height">身高:</label>
-                                              <label><input name="height" type="text" ></label>
+                                              <label><input name="height" type="number" >公分</label>
                                           </section><br>
                                           <section class="first">
                                               <label for="weight">體重:</label>
-                                              <label><input name="weight" type="text" ></label>
+                                              <label><input name="weight" type="number">公斤</label>
                                           </section><br>
                                           <section class="first">
                                               <label for="ice_contact">緊急聯絡人:</label>
-                                              <label><input name="ice_contact" type="text" ></label>
+                                              <label><input name="ice_contact" required="required"></label>
                                           </section><br>
                                           <section class="first">
                                               <label for="ice_relation">緊急聯絡人關係:</label>
-                                              <label><input name="ice_relation" type="text" ></label>
+                                              <label><input name="ice_relation" required="required"></label>
                                           </section><br>
                                           <section class="first">
                                               <label for="ice_phone">緊急聯絡人電話:</label>
-                                              <label><input name="ice_phone" type="text" ></label>
+                                              <label><input name="ice_phone" type="text" required="required" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
                                           </section><br>
 
 
@@ -202,7 +202,7 @@
       <!-- nice scrollbar -->
       <script src="js/perfect-scrollbar.min.js"></script>
       <script>
-         var ps = new PerfectScrollbar('#sidebar');
+          const ps = new PerfectScrollbar('#sidebar');
       </script>
       <!-- fancy box js -->
       <script src="js/jquery-3.3.1.min.js"></script>
