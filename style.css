@@ -818,8 +818,6 @@ a[data-toggle="collapse"] {
     margin-bottom: 30px;
     padding: 25px 35px 22px 38px;
     box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
-    margin-left: -40px;
-    margin-right: -40px;
     position: relative;
 }
 

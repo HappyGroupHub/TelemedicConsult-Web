@@ -42,7 +42,7 @@
                <div class="login_section">
                   <div class="logo_login">
                      <div class="center">
-                        <h1 style="color: white;top: 15px;"><b>   線上掛號系統</b></h1>
+                        <h1 style="color: white;top: 15px;left: 15px;"><b>   線上掛號系統</b></h1>
                      </div>
                   </div>
                   <div class="login_form">
@@ -63,8 +63,8 @@
                            </div>
                            <div class="field first">
                               <label class="label_field hidden">hidden label</label>
-                               <a href="write_patient(1).php"><input type="button" value="初次使用" class="first_bt" style="float: right;width: 80px;height: 80px; background-color: white;"></a>
-                           </div>>
+                               <a href="write_patient(1).php"><input type="button" value="初次使用" class="first_bt" style="float: right;width: 80px;height: 80px; background-color: darkgrey;"></a>
+                           </div>
                         </fieldset>
                      </form>
                   </div>

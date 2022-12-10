@@ -46,19 +46,21 @@
                 <!-- topbar -->
                 <div class="topbar">
                   <nav class="navbar navbar-expand-lg navbar-light">
-                     <div class="full">
-                        <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
-                        <div class="logo_section">
-                           <h1 style="color: white;top: 15px;"><b>   線上掛號系統</b></h1>
-                        </div>
-                        <div class="right_topbar">
-                           <div class="icon_info">
-                              <ul>
-                                 <li><a href="#"><i class="fa fa-question-circle"></i></a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
+                      <div class="full">
+                          <a href="index.html">
+                              <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
+                          </a>
+                          <div class="logo_section">
+                              <h1 style="color: white;top: 15px;left: 15px;"><b>   線上掛號系統</b></h1>
+                          </div>
+                          <div class="right_topbar">
+                              <div class="icon_info">
+                                  <ul>
+                                      <li><a href="general_elements.html"><i class="fa fa-question-circle"></i></a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
                   </nav>
                </div>
                <!-- end top_bar -->
