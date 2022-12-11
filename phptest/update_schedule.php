@@ -28,7 +28,7 @@
             p.innerHTML++;
         }
         function numPlus1() {
-            const p = document.getElementById('num')
+            const p = document.getElementById('num');
             p.innerHTML--;
         }
     </script>

@@ -88,6 +88,7 @@
       <!-- custom js -->
       <script src="js/custom.js"></script>
       <?php
+      ob_start();
 
       $config_json = file_get_contents('config.json');
       $decoded_json = json_decode($config_json,false);
@@ -97,7 +98,9 @@
       $password=$decoded_json->Database->password;
 
       $link = mysqli_connect($hostname, $username, $password, $database);
+
       session_start();
+
       if ($link) {
           mysqli_query($link, 'SET NAMES uff8');
 
@@ -107,22 +110,21 @@
       if(isset($_POST['submit'])) {
           $sql = "SELECT * FROM `patient_base`";
           $result = mysqli_query($link, $sql);
-          if ($result > 0) {
+          if (true) {
               while($row = $result->fetch_assoc()) {
                   if($row["id"]==$_POST['id'] && $row["ic_card_number"]==$_POST['ic_card_number']){
                       echo "成功登入". "<br>";
                       echo "id: " . $row["id"] . "<br>";
                       echo "ic_card_number:" . $row["ic_card_number"];
-                      header('location: write_patient.php(1)');
+                      header('location: write_patient(1).php');
                       break;
                   }
-              }
-          } else {
-              echo "0 results";
-          }
+                  }
+              }echo "ERROR";
+
       }
 
-
+      ob_end_flush();
 
       ?>
    </body>

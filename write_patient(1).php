@@ -137,13 +137,13 @@
                                               <label for="ice_relation">緊急聯絡人關係:</label>
                                               <label><input name="ice_relation" required="required"></label>
                                           </section><br>
-                                          <section class="first">
-                                              <label for="ice_phone">緊急聯絡人電話:</label>
+                                           <section>
+                                               <label for="ice_phone">緊急聯絡人電話:</label>
                                               <label><input name="ice_phone" type="text" required="required" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
                                           </section><br>
 
 
-                                          <input name="submit" type="submit" value="繳交">
+                                           <input name="submit" type="submit" value="繳交">
                                       </form>
                                     </table>
                                  </div>
@@ -214,6 +214,7 @@
       <!-- calendar file css -->
       <script src="js/semantic.min.js"></script>
       <?php
+      ob_start();
       $config_json = file_get_contents('config.json');
       $decoded_json = json_decode($config_json,false);
       $hostname=$decoded_json->Database->ip_address;
@@ -232,12 +233,16 @@
 
       if(isset($_POST['submit'])) {
           mysqli_query($link, "INSERT INTO `patient_base` (`name`, `id`, `sex`,`birthday`, `blood_type`,
-                            `ic_card_number`, `phone_number`, `address`, `height`, `weight`, `ice_contact`, `ice_relation`, `ice_phone`)
+                        `ic_card_number`, `phone_number`, `address`, `height`, `weight`, `ice_contact`, `ice_relation`, `ice_phone`)
 values('".$_POST['name']."','".$_POST['id']."','".$_POST['sex']."','".$_POST['birthday']."','".$_POST['blood_type']."',
 '".$_POST['ic_card_number']."','".$_POST['phone_number']."','".$_POST['address']."','".$_POST['height']."','".$_POST['weight']."'
 ,'".$_POST['ice_contact']."','".$_POST['ice_relation']."','".$_POST['ice_phone']."')");
+
+          echo "<script>window.location.href='add_line.php';</script>";
       }
 
+
+      ob_end_flush();
       ?>
    </body>
 </html>
