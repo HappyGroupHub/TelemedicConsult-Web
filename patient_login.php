@@ -63,7 +63,7 @@
                            </div>
                            <div class="field first">
                               <label class="label_field hidden">hidden label</label>
-                               <a href="write_patient(1).php"><input type="button" value="初次使用" class="first_bt" style="float: right;width: 80px;height: 80px; background-color: darkgrey;"></a>
+                               <a href="settings.html"><input type="button" value="初次使用" class="first_bt" style="float: right;width: 80px;height: 80px; background-color: darkgrey;"></a>
                            </div>
                         </fieldset>
                      </form>
@@ -116,11 +116,11 @@
                       echo "成功登入". "<br>";
                       echo "id: " . $row["id"] . "<br>";
                       echo "ic_card_number:" . $row["ic_card_number"];
-                      header('location: write_patient(1).php');
+                      header('location: settings.html');
                       break;
                   }
                   }
-              }echo "ERROR";
+              }echo "<script> alert('你打錯或是你沒有初診過喔');</script>";
 
       }
 
