@@ -63,7 +63,7 @@
                            </div>
                            <div class="field first">
                               <label class="label_field hidden">hidden label</label>
-                               <a href="settings.html"><input type="button" value="初次使用" class="first_bt" style="float: right;width: 80px;height: 80px; background-color: darkgrey;"></a>
+                               <a href="write_patient(1).php"><input type="button" value="初次使用" class="first_bt" style="float: right;width: 80px;height: 80px; background-color: darkgrey;"></a>
                            </div>
                         </fieldset>
                      </form>
