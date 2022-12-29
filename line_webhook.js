@@ -1,9 +1,11 @@
-function sendWebhook() {
-    const url = 'http://127.0.0.1:5000/internal-webhook-for-telemedic-consult-web-and-linebot';
+function sendWebhook(type, patient_id) {
+    const config = require('./config.json');
+    const url = config.Webhook_line.url + config.Webhook_line.base_extension;
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const messagePayload = JSON.stringify({
-        "message": "Hello World"
+        "type": type,
+        "patient_id": patient_id
     });
     const requestOptions = {
         method: 'POST',
@@ -18,4 +20,4 @@ function sendWebhook() {
         .catch(error => console.log('error', error));
 }
 
-sendWebhook();
+sendWebhook("reservation", "A123456789");
