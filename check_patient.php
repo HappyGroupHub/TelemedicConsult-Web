@@ -187,5 +187,26 @@
       <script src="js/custom.js"></script>
       <!-- calendar file css -->    
       <script src="js/semantic.min.js"></script>
+      <?php
+      ob_start();
+      $config_json = file_get_contents('config.json');
+      $decoded_json = json_decode($config_json,false);
+      $hostname=$decoded_json->Database->ip_address;
+      $database=$decoded_json->Database->db_name;
+      $username=$decoded_json->Database->username;
+      $password=$decoded_json->Database->password;
+
+      $link = mysqli_connect($hostname, $username, $password, $database);
+
+      if ($link) {
+      mysqli_query($link, 'SET NAMES uff8');
+
+      } else {
+      echo "不正確連接資料庫" . mysqli_connect_error();
+      }
+
+
+      ob_end_flush();
+      ?>
    </body>
 </html>

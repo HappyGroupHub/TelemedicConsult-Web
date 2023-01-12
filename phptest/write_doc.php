@@ -52,7 +52,7 @@
             </section><br>
             <section class="first">
                 <label for="doc_phone_number">醫師手機號碼:</label>
-                <label><input name="doc_phone_number" type="text" ></label>
+                <label><input name="doc_phone_number" type="text" required="required" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
             </section><br>
             <section class="first">
                 <label for="email">email:</label>
