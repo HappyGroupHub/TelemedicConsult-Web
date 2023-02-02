@@ -17,7 +17,7 @@
     <!-- bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- site css -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <!-- responsive css -->
     <link rel="stylesheet" href="css/responsive.css" />
     <!-- color css -->
@@ -47,7 +47,7 @@
             <div class="topbar">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="full">
-                        <a href="index.html">
+                        <a href="../index.html">
                             <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                         </a>
                         <div class="logo_section">

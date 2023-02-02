@@ -34,3 +34,5 @@ function sendReservationWebhook(lineID, patientName, appointmentID, doctorName, 
     }
     sendWebhook("reservation", lineID, data);
 }
+
+sendReservationWebhook("Ua936e9e2b17ec6fc7ff5d85f56c9c63b", "LD", 1, "Dr. 696", "2021-01-01", "早上");
