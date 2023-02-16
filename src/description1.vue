@@ -1,8 +1,12 @@
 <script setup>
-  import description from './components/description.vue';
+import bar from './components/bar.vue'
+import banner from './components/banner_description.vue'
+import description from './components/description.vue';
 </script>
 
 <template>
+  <bar />
+  <banner />
   <description />
 </template>
 

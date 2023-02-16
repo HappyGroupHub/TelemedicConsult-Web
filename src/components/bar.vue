@@ -28,9 +28,7 @@
     width:100%;
     margin-top: 0 ;
   }
-  #nav{
-    color:black;
-  }
+
   #nav ul{
     display: flex;
     justify-content: left;
