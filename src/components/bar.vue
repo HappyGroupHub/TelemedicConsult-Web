@@ -10,16 +10,7 @@
           <!--<li><img src=""> </li>-->
         </ul>
       </div>
-      <div id="nav">
-        <ul>
-          <!--<li>首頁符號</li>-->
-          <li>首頁&nbsp&nbsp&nbsp</li>
-          >&nbsp&nbsp&nbsp
-          <li> 線上掛號登入</li>
 
-        </ul>
-        <hr>
-      </div>
     </div>
 
 
