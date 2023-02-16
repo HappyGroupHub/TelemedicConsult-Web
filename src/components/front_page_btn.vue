@@ -1,0 +1,50 @@
+<template>
+  <header>
+    <div class="header">
+      <h1>臺北市立聯合醫院</h1>
+      <ul class="menu">
+        <li>真的假的</li>
+        <li>關你屁事</li>
+        <li>關於我們</li>
+      </ul>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">首頁&nbsp&nbsp&nbsp</a>
+    <hr><br>
+  </nav>
+  <main>
+    <section class="pic">
+      <img src="image/我們的LINE.jpg" width="100%" height="550" >
+    </section>
+    <section>
+      <div class="btn">
+        <a href="">門診時間</a>
+      </div>
+      <div class="btn">
+        <a href="patient_login.html">線上掛號</a>
+      </div>
+      <div class="btn">
+        <a href="description.html">使用說明</a>
+      </div>
+    </section>
+  </main>
+</template>
+
+<script setup>
+
+</script>
+
+<style scoped>
+
+.header{display: flex;justify-content: space-around;}
+.header h1{font-size: 40px;font-family:"微軟正黑體";color: #29528F;line-height: 100px;}
+.menu{display: flex;align-items: center;list-style: none;}
+.menu li{margin-right: 50px;}
+a:link, a:visited,  a:hover, a:active{color: #000000; text-decoration: none;}
+section{display: flex;justify-content: space-around;}
+.btn{text-align: center; width: 100%;height: 250px; border-style: none solid;border-color: white;background: rgba(155, 174, 245, 0.58);}
+
+
+</style>
