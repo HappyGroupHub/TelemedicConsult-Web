@@ -19,16 +19,16 @@
   <main>
     <h3>線上掛號使用說明</h3>
     <div id="directions">
-      <section class="directions" style="height: 280px;box-shadow: inset 9px 16px 72px rgba(0, 0, 0, 0.25);background-color: #00317B; color: white">
+      <section class="directions" style="background-color: #00317B;">
         網站說明
       </section>
-      <section class="directions" style="height: 280px;box-shadow: inset 9px 16px 72px rgba(0, 0, 0, 0.25);background-color: #134BA0; color: white">
+      <section class="directions" style="background-color: #134BA0;">
         網站說明
       </section>
-      <section class="directions" style="height: 280px;box-shadow: inset 9px 16px 72px rgba(0, 0, 0, 0.25);background-color: #4886CB; color: white">
+      <section class="directions" style="background-color: #4886CB;">
         LINE說明
       </section>
-      <section  class="directions" style="height: 280px;box-shadow: inset 9px 16px 72px rgba(0, 0, 0, 0.25);background-color: #63C7FF; color: white">
+      <section  class="directions" style="background-color: #63C7FF;">
         LINE說明
       </section>
     </div>
@@ -47,7 +47,7 @@
 .menu li{margin-right: 50px;}
 a:link, a:visited,  a:hover, a:active{color: #000000; text-decoration: none;}
 section{width: 100%;}
-
+.directions{height: 280px;box-shadow: inset 9px 16px 72px rgba(0, 0, 0, 0.25); color: white}
 
 
 </style>
