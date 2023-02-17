@@ -10,7 +10,7 @@
       <input id="submit" type="submit" value="登入" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >
     </div>
     <div id="first_use">
-      <h2>第一次使用嗎</h2>
+      <h2 id="title">第一次使用嗎</h2>
       <input id="submit2" type="submit" value="初診登入" style="width:150px;height:80px;background-color: white;color:#00317B;text-align: center;border:0" >
     </div>
   </div>
@@ -66,5 +66,7 @@
     box-shadow: gray 1px 2px;
 
   }
-
+  #title{
+    font-size: 25px;
+  }
 </style>
