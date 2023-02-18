@@ -16,7 +16,7 @@
   </nav>
   <main>
     <section class="pic">
-      <img src="image/front_page.png" id="image">
+      <img src="image/front_image.png" id="image">
     </section>
     <section>
       <div id="btn">
