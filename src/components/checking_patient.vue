@@ -7,61 +7,61 @@
         <div id="left">
           <section class="first">
             <label for="name">姓名</label><br>
-            <label><input id="name" name="name" v-model="name"  required="required"></label>
+            <label><input id="name" name="name"  required="required"></label>
           </section><br>
           <section class="first">
             <label for="identity">身分證字號</label><br>
-            <input id="identity" name="id" v-model="id" required="required">
+            <input id="identity" name="id" required="required">
           </section><br>
           <section class="first">
             <label for="birthday">生日</label><br>
-            <label><input name="birthday" type="date" v-model="date" required="required"></label>
+            <label><input name="birthday" type="date" required="required"></label>
           </section><br>
           <section class="first">
             <label for="sex">生理性別</label><br>
-            <label><input name="sex" type="radio" value="男" v-model="male" required="required">男</label>
-            <label><input name="sex" type="radio" value="女" v-model="female" required="required">女</label>
+            <label><input name="sex" type="radio" value="男" required="required">男</label>
+            <label><input name="sex" type="radio" value="女" required="required">女</label>
           </section><br>
           <section class="first">
             <label for="ice_contact">緊急聯絡人姓名</label><br>
-            <input id="ice_contact" name="ice_contact" v-model="ice_contact" required="required">
+            <input id="ice_contact" name="ice_contact" required="required">
           </section><br>
           <section class="first">
             <label for="ice_phone">緊急聯絡人電話</label><br>
-            <label><input name="ice_phone" required="required" v-model="ice_phone" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
+            <label><input name="ice_phone" required="required" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
           </section><br>
           <section class="first">
             <label for="ice_relation">緊急聯絡人關係</label><br>
-            <input id="ice_relation" name="ice_relation" v-model="ice_relation" required="required">
+            <input id="ice_relation" name="ice_relation" required="required">
           </section><br>
 
-          <button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button>
+          <button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回去更改</button>
           <br>
         </div>
         <div id="right">
           <section class="first">
             <label for="id_card_number">健保卡卡號</label><br>
-            <label><input name="ic_card_number" v-model="ic_card_number" required="required"></label>
+            <label><input name="ic_card_number" required="required"></label>
           </section><br>
           <section class="first">
             <label for="phone_number">手機號碼</label><br>
-            <label><input name="phone_number" v-model="phone_number" required="required" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
+            <label><input name="phone_number" required="required" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
           </section><br>
           <section class="first">
             <label for="blood_type">血型</label><br>
-            <label><input name="blood_type" v-model="blood_type">型</label>
+            <label><input name="blood_type">型</label>
           </section><br>
           <section class="first">
             <label for="address">地址</label><br>
-            <label><input name="address" required="required" v-model="address"></label>
+            <label><input name="address" required="required"></label>
           </section><br>
           <section class="first">
             <label for="height">身高</label><br>
-            <label><input name="height" v-model="height">公分</label>
+            <label><input name="height">公分</label>
           </section><br>
           <section class="first">
             <label for="weight">體重</label><br>
-            <label><input name="weight" v-model="weight">公斤</label>
+            <label><input name="weight">公斤</label>
           </section><br>
           <button id="next" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
           <br>
@@ -75,33 +75,6 @@
 </template>
 
 <script setup>
-
-const container1 = new Vue({
-  el: '#patient_base',
-  data: {
-    id: '',
-    name: '',
-
-
-  },
-  methods: {
-    submitForm: function () {
-      if(this.name != '' &&){
-        axios.post('insert.php',{
-          request: 2,
-          name: this.name,
-        })
-            .then(function (response) {
-              console.log(response);
-              if(response.data == 0.status==1){
-                alert("新增成功");
-
-            })
-      }
-    }
-  }
-  
-})
 
 </script>
 
