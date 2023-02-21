@@ -76,32 +76,6 @@
 
 <script setup>
 
-const container1 = new Vue({
-  el: '#patient_base',
-  data: {
-    id: '',
-    name: '',
-
-
-  },
-  methods: {
-    submitForm: function () {
-      if(this.name != '' &&){
-        axios.post('insert.php',{
-          request: 2,
-          name: this.name,
-        })
-            .then(function (response) {
-              console.log(response);
-              if(response.data == 0.status==1){
-                alert("新增成功");
-
-            })
-      }
-    }
-  }
-  
-})
 
 </script>
 
