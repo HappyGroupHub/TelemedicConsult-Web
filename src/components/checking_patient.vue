@@ -63,7 +63,7 @@
             <label for="weight">體重</label><br>
             <label><input name="weight">公斤</label>
           </section><br>
-          <button id="next" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
+          <button id="next" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >送出資料</button>
           <br>
         </div>
       </form>

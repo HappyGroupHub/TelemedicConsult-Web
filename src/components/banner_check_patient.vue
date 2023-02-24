@@ -5,13 +5,13 @@
       <div id="nav">
         <ul>
           <!--<li>首頁符號</li>-->
-          <li>首頁&nbsp&nbsp&nbsp</li>
+          <a href="index.html"><li>首頁&nbsp&nbsp&nbsp</li></a>
           >&nbsp&nbsp&nbsp
-          <li> 線上掛號登入&nbsp&nbsp&nbsp</li>
+          <a href="patient_login.html"><li> 線上掛號登入&nbsp&nbsp&nbsp</li></a>
           >&nbsp&nbsp&nbsp
-          <li> 填寫初診基本資料&nbsp&nbsp&nbsp</li>
+          <a href="write_patient_base.html"><li> 填寫初診基本資料&nbsp&nbsp&nbsp</li></a>
           >&nbsp&nbsp&nbsp
-          <li> 確認基本資料&nbsp&nbsp&nbsp</li>
+          <a href="check_patient_base.html"><li> 確認資料&nbsp&nbsp&nbsp</li></a>
 
         </ul>
         <hr>

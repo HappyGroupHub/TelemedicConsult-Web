@@ -1,5 +1,5 @@
 <template>
-
+  <header>
     <div id="wrapper">
       <div class="header wrap">
         <h1> 線上掛號系統</h1>
@@ -12,10 +12,7 @@
       </div>
 
     </div>
-
-
-
-
+  </header>
 
 </template>
 
@@ -24,10 +21,15 @@
 </script>
 
 <style scoped>
-  #wrapper {
-    width:100%;
-    margin-top: 0 ;
-  }
+
+
+  .header h1{
+    font-size: 40px;
+    font-family:"微軟正黑體";
+    color: #29528F;
+    line-height: 100px;}
+
+
 
   #nav ul{
     display: flex;
@@ -37,7 +39,8 @@
   .header{
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+
     align-items: center;
 
   }

@@ -35,7 +35,7 @@
             <input id="ice_relation" name="ice_relation" v-model="ice_relation" required="required">
           </section><br>
 
-          <button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button>
+          <a href="index.html"><button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button></a>
           <br>
         </div>
         <div id="right">
@@ -64,6 +64,7 @@
             <label><input name="weight" v-model="weight">公斤</label>
           </section><br>
           <button id="next" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
+
           <br>
         </div>
       </form>
@@ -75,13 +76,61 @@
 </template>
 
 <script setup>
+import axios from "axios";
 
+class Vue {
+  constructor(param) {
+
+  }
+
+}
+
+const container1 = new Vue({
+  el: '#patient_base',
+  data: {
+    id: '',
+    name: '',
+    ic_card_number: '',
+    phone: '',
+    blood_type: '',
+    address: '',
+    height: '',
+    weight: '',
+    sex: '',
+    birthday: '',
+    ice_contact: '',
+    ice_phone: '',
+    ice_relation: '',
+  },
+  methods: {
+    submitForm: function () {
+      if(this.name != '' && this.id != '' && this.ic_card_number != '' && this.phone != '' && this.blood_type != '' && this.address != '' && this.height != '' && this.weight != ''){
+        axios.post('insert.php',{
+          request: 2,
+          name: this.name,
+        })
+            .then(function (response) {
+              console.log(response);
+              if(response.data[0] == 'success'){
+                alert("新增成功");
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+      }else{
+        alert("請輸入完整資料");
+      }
+    }
+  }
+
+})
 
 </script>
 
 <style >
 #container1{
-
+  margin: auto;
   justify-content: center;
   align-items: center;
   background-color: #E1E1E1;

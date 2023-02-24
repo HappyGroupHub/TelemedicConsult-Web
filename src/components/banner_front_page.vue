@@ -5,7 +5,7 @@
       <div id="nav">
         <ul>
           <!--<li>首頁符號</li>-->
-          <li>首頁&nbsp&nbsp&nbsp</li>
+          <a href="index.html"><li>首頁&nbsp&nbsp&nbsp</li></a>
 
 
         </ul>

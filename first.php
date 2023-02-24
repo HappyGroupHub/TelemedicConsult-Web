@@ -7,4 +7,14 @@ $username=$decoded_json->Database->username;
 $password=$decoded_json->Database->password;
 
 $link = mysqli_connect($hostname, $username, $password, $database);
+
+}
+
+
+
+
+
+
 ?>
+
+
