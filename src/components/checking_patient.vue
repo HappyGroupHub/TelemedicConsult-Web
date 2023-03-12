@@ -7,7 +7,7 @@
         <div id="left">
           <section class="first">
             <label for="name">姓名</label><br>
-            <label><input id="name" name="name"  required="required"></label>
+            <label><input v-model="name" id="name" name="name"  required="required"></label>
           </section><br>
           <section class="first">
             <label for="identity">身分證字號</label><br>
@@ -75,6 +75,7 @@
 </template>
 
 <script setup>
+
 
 </script>
 

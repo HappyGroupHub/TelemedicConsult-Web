@@ -4,8 +4,8 @@
       <div class="header wrap">
         <h1> 線上掛號系統</h1>
         <ul class="menu">
-          <li>真的假的</li>
-          <li>關你屁事</li>
+          <li>線上掛號</li>
+          <li>門診時間</li>
           <li>關於我們</li>
           <!--<li><img src=""> </li>-->
         </ul>
@@ -27,10 +27,8 @@
     font-size: 40px;
     font-family:"微軟正黑體";
     color: #29528F;
-    line-height: 100px;}
-
-
-
+    line-height: 100px;
+  }
   #nav ul{
     display: flex;
     justify-content: left;

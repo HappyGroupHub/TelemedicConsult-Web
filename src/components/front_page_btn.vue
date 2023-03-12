@@ -41,7 +41,9 @@
 
 <style scoped>
 
-.header{display: flex;justify-content: space-around;}
+.header{
+  display: flex;justify-content: space-around;
+}
 .header h1{font-size: 40px;font-family:"微軟正黑體";color: #29528F;line-height: 100px;}
 .menu{display: flex;align-items: center;list-style: none;}
 .menu li{margin-right: 50px;}
