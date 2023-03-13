@@ -76,55 +76,6 @@
 </template>
 
 <script setup>
-import axios from "axios";
-
-class Vue {
-  constructor(param) {
-
-  }
-
-}
-
-const container1 = new Vue({
-  el: '#patient_base',
-  data: {
-    id: '',
-    name: '',
-    ic_card_number: '',
-    phone: '',
-    blood_type: '',
-    address: '',
-    height: '',
-    weight: '',
-    sex: '',
-    birthday: '',
-    ice_contact: '',
-    ice_phone: '',
-    ice_relation: '',
-  },
-  methods: {
-    submitForm: function () {
-      if(this.name != '' && this.id != '' && this.ic_card_number != '' && this.phone != '' && this.blood_type != '' && this.address != '' && this.height != '' && this.weight != ''){
-        axios.post('insert.php',{
-          request: 2,
-          name: this.name,
-        })
-            .then(function (response) {
-              console.log(response);
-              if(response.data[0] == 'success'){
-                alert("新增成功");
-              }
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-      }else{
-        alert("請輸入完整資料");
-      }
-    }
-  }
-
-})
 
 </script>
 

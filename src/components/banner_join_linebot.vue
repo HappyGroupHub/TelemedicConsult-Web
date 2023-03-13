@@ -16,10 +16,6 @@
       </div>
     </div>
 
-
-
-
-
 </template>
 
 <script setup>
@@ -40,6 +36,6 @@
     list-style: none;
   }
 
-
+  a:link, a:visited,  a:hover, a:active{color: #000000; text-decoration: none;}
 
 </style>

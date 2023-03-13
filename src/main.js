@@ -7,6 +7,7 @@ import reservation from './reservation.vue'
 import description from './description1.vue'
 import front_page from './front_page.vue'
 import check from './check_patient_base.vue'
+import time from './time1.vue'
 
 
 
@@ -17,3 +18,4 @@ createApp(join_linebot).mount('#join_linebot')
 createApp(reservation).mount('#reservation')
 createApp(description).mount('#description')
 createApp(front_page).mount('#front_page')
+createApp(time).mount('#time')

@@ -1,6 +1,6 @@
 <template>
-  <bar></bar>
-  <banner></banner>
+  <bar/>
+  <banner/>
   <front_page_btn />
 </template>
 
