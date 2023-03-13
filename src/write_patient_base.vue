@@ -1,12 +1,14 @@
 <script setup>
-
+import bar from './components/bar.vue'
+import banner from './components/banner_write_patient.vue'
+import write_patient_base from './components/writing_patient.vue'
 </script>
 
 <template>
   <bar />
   <banner />
-  <writing_patient2>
-  </writing_patient2>
+  <write_patient_base />
+
 
 
 </template>
