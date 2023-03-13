@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <div class="flex_container">
     <div id="gray_background">
@@ -57,6 +54,10 @@
     </div>
   </div>
 </template>
+
+<script setup>
+
+</script>
 
 <style scoped>
 .container{
