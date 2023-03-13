@@ -81,9 +81,10 @@
 
 <style >
 #container1{
-
+  margin: auto;
   justify-content: center;
   align-items: center;
+  width: 990px;
   background-color: #E1E1E1;
   border-radius: 30px;
   box-shadow: gray 2px 2px;

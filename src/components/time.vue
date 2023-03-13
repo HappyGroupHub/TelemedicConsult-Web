@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <div class="flex_container">
     <div id="gray_background">
@@ -58,11 +55,19 @@
   </div>
 </template>
 
+<script setup>
+
+</script>
+
 <style scoped>
 .container{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.flex_container {
+  display: flex;
+  justify-content: space-around;
 }
 table{
   width: 900px;

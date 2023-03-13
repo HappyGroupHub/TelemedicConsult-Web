@@ -17,17 +17,13 @@
       </section>
     </div>
   </main>
-
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style scoped>
-
 a:link, a:visited,  a:hover, a:active{color: #000000; text-decoration: none;}
 section{width: 100%;}
-.directions{position: center; height: 280px;box-shadow: inset 9px 16px 72px rgba(0, 0, 0, 0.25); color: white}
+.directions{position: center; height: 513px;box-shadow: inset 9px 16px 55px rgba(0, 0, 0, 0.25); color: white}
 
 </style>

@@ -1,19 +1,4 @@
 <template>
-  <header>
-    <div class="header">
-      <h1>臺北市立聯合醫院</h1>
-      <ul class="menu">
-        <li id="title_bar">真的假的</li>
-        <li id="title_bar">關你屁事</li>
-        <li id="title_bar">關於我們</li>
-      </ul>
-    </div>
-  </header>
-
-  <nav>
-    <a href="index.html" id="home_btn">首頁&nbsp&nbsp&nbsp</a>
-    <hr><br>
-  </nav>
   <main>
     <section class="pic">
       <img src="image/front_image.png" id="image">
@@ -21,7 +6,7 @@
     <section>
       <div id="btn">
         <br><br><br><br><br><br>
-        <a href="" id="btn_text">門診時間</a>
+        <a href="time.html" id="btn_text">門診時間</a>
       </div>
       <div id="btn">
         <br><br><br><br><br><br>
@@ -41,10 +26,6 @@
 
 <style scoped>
 
-.header{display: flex;justify-content: space-around;}
-.header h1{font-size: 40px;font-family:"微軟正黑體";color: #29528F;line-height: 100px;}
-.menu{display: flex;align-items: center;list-style: none;}
-.menu li{margin-right: 50px;}
 a:link, a:visited,  a:hover, a:active{color: #000000; text-decoration: none;}
 section{display: flex;justify-content: space-around;}
 #btn{
