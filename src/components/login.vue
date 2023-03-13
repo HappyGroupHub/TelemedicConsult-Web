@@ -42,7 +42,6 @@
   #submit{
     box-shadow: gray 2px 2px;
     border:0;
-
     border-radius:7px;
   }
   #first_use{
@@ -64,7 +63,6 @@
     border-radius:20px;
     border:0;
     box-shadow: gray 1px 2px;
-
   }
   #title{
     font-size: 25px;
