@@ -7,6 +7,8 @@ import reservation from './reservation.vue'
 import description from './description1.vue'
 import front_page from './front_page.vue'
 import check from './check_patient_base.vue'
+import click from './click_next.vue'
+import check2 from './check_reservation.vue'
 
 
 
@@ -17,3 +19,5 @@ createApp(join_linebot).mount('#join_linebot')
 createApp(reservation).mount('#reservation')
 createApp(description).mount('#description')
 createApp(front_page).mount('#front_page')
+createApp(click).mount('#click')
+createApp(check2).mount('#check2')
