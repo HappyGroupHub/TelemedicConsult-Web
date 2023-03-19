@@ -79,7 +79,7 @@ const address = ref("");
   function register_patient() {
   let config = { headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'}
+      'Access-Control-Allow-Origin': 'localhost:5000'}
   }
   axios.post('http://127.0.0.1:5000/register_patient', {
     name: name.value,
