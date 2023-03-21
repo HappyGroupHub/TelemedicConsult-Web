@@ -3,7 +3,6 @@
     <br>
     <h2>初診基本資料</h2>
     <div class="basic">
-      <child-component v-on:form-submitted="submitForm" />
       <form>
         <div id="left">
           姓名<br>
@@ -20,36 +19,6 @@
             <input v-model="sex"  name="sex" type="radio" value="男"  required="required">男
             <input v-model="sex"  name="sex" type="radio" value="女"  required="required">女
           </session>
-
-<<<<<<< HEAD
-        </div>
-        <div id="right">
-          <section class="first">
-            <label for="id_card_number">健保卡卡號</label><br>
-            <label><input name="ic_card_number" required="required"></label>
-          </section><br>
-          <section class="first">
-            <label for="phone_number">手機號碼</label><br>
-            <label><input name="phone_number" required="required" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
-          </section><br>
-          <section class="first">
-            <label for="blood_type">血型</label><br>
-            <label><input name="blood_type">型</label>
-          </section><br>
-          <section class="first">
-            <label for="address">地址</label><br>
-            <label><input name="address" required="required"></label>
-          </section><br>
-          <section class="first">
-            <label for="height">身高</label><br>
-            <label><input name="height">公分</label>
-          </section><br>
-          <section class="first">
-            <label for="weight">體重</label><br>
-            <label><input name="weight">公斤</label>
-          </section><br>
-
-=======
           <br>
           緊急聯絡人姓名<br>
           <input v-model="ice_contact"  id="ice_contact" name="ice_contact" required="required">
@@ -60,9 +29,8 @@
           緊急聯絡人關係<br>
           <input v-model="ice_relation"  name="ice_relation" required="required">
           <br>
-          <a href="index.html"><button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button></a>
-          <br>
         </div>
+
         <div id="right">
           健保卡卡號<br>
           <input v-model="ic_card_number"  name="ic_card_number" required="required">
@@ -88,17 +56,13 @@
           <br>
           地址<br>
           <input v-model="address" type="text"  id="address" name="address" required="required" />
-          <br>
-          <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
-          <br>
->>>>>>> origin/master
+
         </div>
       </form><br>
       <div id="down_btn">
-
         <button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回去更改</button>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <button id="next" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >送出資料</button>
+        <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
         <br>
       </div>
     </div>
@@ -136,23 +100,9 @@ form{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-<<<<<<< HEAD
   align-items: flex-start;
+}
 
-}
-#right{
-
-=======
-  align-items: flex-end;
->>>>>>> origin/master
-}
-#left{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  margin-right: 50px;
-}
 #right{
   display: flex;
   flex-direction: column;
@@ -160,6 +110,15 @@ form{
   align-items: flex-start;
   margin-left: 50px;
 }
+
+#left{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-right: 50px;
+}
+
 #back{
   box-shadow: gray 2px 2px
 }

@@ -58,18 +58,13 @@
           <br>
             地址<br>
             <input v-model="address" type="text"  id="address" name="address" required="required" />
-          <br>
-<<<<<<< HEAD
-=======
-          <button   id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
-          <br>
->>>>>>> origin/master
+
         </div>
     </form><br>
       <div id="down_btn">
         <a href="index.html"><button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button></a>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
+        <a href="check_patient_base.html"> <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button></a>
         <br>
       </div>
    </div>
