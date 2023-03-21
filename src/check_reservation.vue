@@ -1,4 +1,6 @@
 <template>
+  <bar/>
+  <banner/>
   <div class="all">
     <div class="information">
       <div class="second">
@@ -23,6 +25,8 @@
 </template>
 
 <script setup>
+import bar from './components/bar.vue'
+import banner from './components/banner_check_reservation.vue'
 
 </script>
 
@@ -79,6 +83,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 30px;
+  margin: 0 auto;
 }
 #back{
   width: 125px;
