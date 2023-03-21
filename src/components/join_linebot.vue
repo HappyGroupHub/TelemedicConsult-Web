@@ -37,7 +37,7 @@
 .flex_container {
   display: flex;
   padding: 15px;
-  justify-content:space-between;
+  justify-content:space-evenly;
 
 }
 #gray_block {

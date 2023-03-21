@@ -65,6 +65,10 @@
   justify-content: center;
   align-items: center;
 }
+.flex_container {
+  display: flex;
+  justify-content: space-around;
+}
 table{
   width: 900px;
   height:300px;
