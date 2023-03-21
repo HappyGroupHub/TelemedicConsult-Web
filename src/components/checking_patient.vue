@@ -21,6 +21,35 @@
             <input v-model="sex"  name="sex" type="radio" value="女"  required="required">女
           </session>
 
+<<<<<<< HEAD
+        </div>
+        <div id="right">
+          <section class="first">
+            <label for="id_card_number">健保卡卡號</label><br>
+            <label><input name="ic_card_number" required="required"></label>
+          </section><br>
+          <section class="first">
+            <label for="phone_number">手機號碼</label><br>
+            <label><input name="phone_number" required="required" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx"></label>
+          </section><br>
+          <section class="first">
+            <label for="blood_type">血型</label><br>
+            <label><input name="blood_type">型</label>
+          </section><br>
+          <section class="first">
+            <label for="address">地址</label><br>
+            <label><input name="address" required="required"></label>
+          </section><br>
+          <section class="first">
+            <label for="height">身高</label><br>
+            <label><input name="height">公分</label>
+          </section><br>
+          <section class="first">
+            <label for="weight">體重</label><br>
+            <label><input name="weight">公斤</label>
+          </section><br>
+
+=======
           <br>
           緊急聯絡人姓名<br>
           <input v-model="ice_contact"  id="ice_contact" name="ice_contact" required="required">
@@ -62,8 +91,16 @@
           <br>
           <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
           <br>
+>>>>>>> origin/master
         </div>
-      </form>
+      </form><br>
+      <div id="down_btn">
+
+        <button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回去更改</button>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <button id="next" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >送出資料</button>
+        <br>
+      </div>
     </div>
     <br><br>
   </div>
@@ -99,7 +136,15 @@ form{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+<<<<<<< HEAD
+  align-items: flex-start;
+
+}
+#right{
+
+=======
   align-items: flex-end;
+>>>>>>> origin/master
 }
 #left{
   display: flex;
