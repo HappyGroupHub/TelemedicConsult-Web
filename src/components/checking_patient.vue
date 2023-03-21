@@ -35,8 +35,6 @@
             <input id="ice_relation" name="ice_relation" required="required">
           </section><br>
 
-          <button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回去更改</button>
-          <br>
         </div>
         <div id="right">
           <section class="first">
@@ -63,10 +61,16 @@
             <label for="weight">體重</label><br>
             <label><input name="weight">公斤</label>
           </section><br>
-          <button id="next" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >送出資料</button>
-          <br>
+
         </div>
-      </form>
+      </form><br>
+      <div id="down_btn">
+
+        <button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回去更改</button>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <button id="next" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >送出資料</button>
+        <br>
+      </div>
     </div>
     <br><br>
   </div>
@@ -99,7 +103,7 @@ form{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: flex-start;
 
 }
 #right{

@@ -9,14 +9,11 @@
           >&nbsp&nbsp&nbsp
           <li> 使用說明</li>
 
-
         </ul>
         <hr>
+        <br>
       </div>
     </div>
-
-
-
 
 
 </template>

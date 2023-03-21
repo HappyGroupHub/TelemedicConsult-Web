@@ -7,12 +7,9 @@
         <p id="title">臺北市立聯合醫院 醫生資訊入口</p>
       </ul>
       <hr>
+      <br>
     </div>
   </div>
-
-
-
-
 
 </template>
 

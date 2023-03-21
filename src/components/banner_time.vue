@@ -7,10 +7,9 @@
         <a href="index.html"><li>首頁&nbsp&nbsp&nbsp</li></a>
         >&nbsp&nbsp&nbsp
         <li> 門診時間</li>
-
-
       </ul>
       <hr>
+      <br>
     </div>
   </div>
 </template>

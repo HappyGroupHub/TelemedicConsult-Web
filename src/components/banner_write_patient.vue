@@ -13,12 +13,9 @@
 
         </ul>
         <hr>
+        <br>
       </div>
     </div>
-
-
-
-
 
 </template>
 
