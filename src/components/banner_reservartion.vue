@@ -12,12 +12,9 @@
         <a href="check_patient_base.html"><li> 確認資料&nbsp&nbsp&nbsp</li></a>
         >&nbsp&nbsp&nbsp
         <a href="reservation.html"><li> 選擇日期時段&nbsp&nbsp&nbsp</li></a>
-
-
-
-
       </ul>
       <hr>
+      <br>
     </div>
   </div>
 

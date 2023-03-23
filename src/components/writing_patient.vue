@@ -5,6 +5,7 @@
     <div class="basic">
       <form @submit.prevent="register_patient">
         <div id="left">
+          <br>
             姓名<br>
             <input v-model="name" type="text" id="name" name="name" required="required" />
             <br>
@@ -30,10 +31,9 @@
             緊急聯絡人關係<br>
             <input v-model="ice_relation"  name="ice_relation" required="required">
           <br>
-          <a href="index.html"><button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button></a>
-          <br>
         </div>
         <div id="right">
+          <br>
             健保卡卡號<br>
             <input v-model="ic_card_number"  name="ic_card_number" required="required">
          <br>
@@ -58,11 +58,15 @@
           <br>
             地址<br>
             <input v-model="address" type="text"  id="address" name="address" required="required" />
-          <br>
-          <button   id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
-          <br>
+
         </div>
-    </form>
+    </form><br>
+      <div id="down_btn">
+        <a href="index.html"><button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button></a>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <a href="check_patient_base.html"> <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button></a>
+        <br>
+      </div>
    </div>
     <br><br>
   </div>
@@ -136,7 +140,7 @@ form{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 #left{
   display: flex;
@@ -152,6 +156,12 @@ form{
   align-items: flex-start;
   margin-left: 50px;
 }
+
+#down_btn{
+  display: flex;
+  justify-content: center;
+}
+
 #back{
   box-shadow: gray 2px 2px
 }

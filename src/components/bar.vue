@@ -3,9 +3,9 @@
     <div class="header">
       <h1>臺北市立聯合醫院 線上掛號</h1>
       <ul class="menu">
-        <li id="title_bar">門診時間</li>
-        <li id="title_bar">關於我們</li>
-        <li id="title_bar">使用說明</li>
+        <li id="title_bar" ><a href="time.html">門診時間</a></li>
+        <li id="title_bar"><a href="index.html">關於我們</a></li>
+        <li id="title_bar"><a href="description.html">使用說明</a></li>
       </ul>
     </div>
   </header>

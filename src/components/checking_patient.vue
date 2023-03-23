@@ -3,7 +3,6 @@
     <br>
     <h2>初診基本資料</h2>
     <div class="basic">
-      <child-component v-on:form-submitted="submitForm" />
       <form>
         <div id="left">
           姓名<br>
@@ -20,7 +19,6 @@
             <input v-model="sex"  name="sex" type="radio" value="男"  required="required">男
             <input v-model="sex"  name="sex" type="radio" value="女"  required="required">女
           </session>
-
           <br>
           緊急聯絡人姓名<br>
           <input v-model="ice_contact"  id="ice_contact" name="ice_contact" required="required">
@@ -31,9 +29,8 @@
           緊急聯絡人關係<br>
           <input v-model="ice_relation"  name="ice_relation" required="required">
           <br>
-          <a href="index.html"><button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button></a>
-          <br>
         </div>
+
         <div id="right">
           健保卡卡號<br>
           <input v-model="ic_card_number"  name="ic_card_number" required="required">
@@ -59,11 +56,15 @@
           <br>
           地址<br>
           <input v-model="address" type="text"  id="address" name="address" required="required" />
-          <br>
-          <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
-          <br>
+
         </div>
-      </form>
+      </form><br>
+      <div id="down_btn">
+        <button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回去更改</button>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
+        <br>
+      </div>
     </div>
     <br><br>
   </div>
@@ -99,15 +100,9 @@ form{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-end;
-}
-#left{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   align-items: flex-start;
-  margin-right: 50px;
 }
+
 #right{
   display: flex;
   flex-direction: column;
@@ -115,6 +110,15 @@ form{
   align-items: flex-start;
   margin-left: 50px;
 }
+
+#left{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-right: 50px;
+}
+
 #back{
   box-shadow: gray 2px 2px
 }
