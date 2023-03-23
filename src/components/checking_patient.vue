@@ -3,59 +3,57 @@
     <br>
     <h2>初診基本資料</h2>
     <div class="basic">
+      <child-component v-on:form-submitted="submitForm" />
       <form>
         <div id="left">
           姓名<br>
-          <input v-model="name" type="text" id="name" name="name" required="required" />
+          <input v-model="formData.name" @input="$emit('updateFormData', formData)"   type="text"  required="required" />
           <br>
           身分證字號<br>
-          <input v-model="id" type="text"  id="identity" name="id" required="required" />
+          <input v-model="formData.id" @input="$emit('updateFormData', formData)"  type="text"   required="required" />
           <br>
           生日<br>
-          <input v-model="birthday" type="date"  id="birthday" name="birthday" required="required" />
+          <input v-model="formData.birthday" @input="$emit('updateFormData', formData)"    id="birthday" name="birthday" required="required" />
           <br>
-          <session class="form_session">
             生理性別<br>
-            <input v-model="sex"  name="sex" type="radio" value="男"  required="required">男
-            <input v-model="sex"  name="sex" type="radio" value="女"  required="required">女
-          </session>
+            <input v-model="formData.sex" @input="$emit('updateFormData', formData)"   name="sex" type="text" required="required">
           <br>
           緊急聯絡人姓名<br>
-          <input v-model="ice_contact"  id="ice_contact" name="ice_contact" required="required">
+          <input v-model="formData.ice_contact" @input="$emit('updateFormData', formData)"   id="ice_contact" name="ice_contact" required="required">
           <br>
           緊急聯絡人電話<br>
-          <input v-model="ice_phone"  name="ice_phone" required="required"  type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx">
+          <input v-model="formData.ice_phone" @input="$emit('updateFormData', formData)"   name="ice_phone" required="required"  type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx">
           <br>
           緊急聯絡人關係<br>
-          <input v-model="ice_relation"  name="ice_relation" required="required">
+          <input v-model="formData.ice_relation" @input="$emit('updateFormData', formData)"   name="ice_relation" required="required">
           <br>
         </div>
-
         <div id="right">
           健保卡卡號<br>
-          <input v-model="ic_card_number"  name="ic_card_number" required="required">
+          <input v-model="formData.ic_card_number" @input="$emit('updateFormData', formData)"   name="ic_card_number" required="required">
           <br>
           手機號碼<br>
-          <input v-model="phone_number" name="phone_number"  required="required" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx">
+          <input v-model="formData.phone_number" @input="$emit('updateFormData', formData)"  name="phone_number"  required="required" type="text" maxlength="10" pattern="09\d{8}" placeholder="09xxxxxxxx">
           <br>
-          <session class="form_session">
+          <div>
             身高<br>
-            <input v-model="height" type="text"  id="height" name="height" />公分
-          </session>
+            <input v-model="formData.height" @input="$emit('updateFormData', formData)"  type="text"  id="height" name="height" />公分
+          </div>
 
           <br>
-          <session class="form_session">
+          <div>
             體重<br>
-            <input v-model="weight" type="text" id="weight" name="weight" />公斤
-          </session>
+            <input v-model="formData.weight" @input="$emit('updateFormData', formData)"  type="text" id="weight" name="weight" />公斤
+          </div>
           <br>
-          <session class="form_session">
+          <div>
             血型<br>
-            <input v-model="blood_type" type="text"  id="blood_type" name="blood_type" required="required" />型
-          </session>
+            <input v-model="formData.blood_type" @input="$emit('updateFormData', formData)"  type="text"  id="blood_type" name="blood_type" required="required" />型
+          </div>
           <br>
           地址<br>
-          <input v-model="address" type="text"  id="address" name="address" required="required" />
+          <input v-model="formData.address" @input="$emit('updateFormData', formData)"  type="text"  id="address" name="address" required="required" />
+          <br>
 
         </div>
       </form><br>
@@ -71,13 +69,52 @@
 </template>
 
 <script setup>
-import writing_patient from './writing_patient.vue'
-import { ref} from 'vue'
-const name = ref('');
+import axios from "axios";
 
-function submitForm() {
-  this.name = submitForm.name;
+const formData={
+  name: '',
+  id: '',
+  birthday: '',
+  sex: '',
+  ice_contact: '',
+  ice_phone: '',
+  ice_relation: '',
+  ic_card_number: '',
+  phone_number: '',
+  height: '',
+  weight: '',
+  blood_type: '',
+  address: ''
+};
+
+function register_patient() {
+  let config = { headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'}
+  }
+  axios.post('http://127.0.0.1:5000/register_patient', {
+    name: formData.name,
+    id: formData.id,
+    sex: formData.sex,
+    birthday: formData.birthday,
+    blood_type: formData.blood_type,
+    ic_card_number: formData.ic_card_number,
+    phone_number: formData.phone_number,
+    address: formData.address,
+    height: formData.height,
+    weight: formData.weight,
+    ice_contact: formData.ice_contact,
+    ice_relation: formData.ice_relation,
+    ice_phone: formData.ice_phone
+  }, config)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      });
 }
+
 </script>
 
 <style >

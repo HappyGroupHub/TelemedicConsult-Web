@@ -12,6 +12,7 @@ import check2 from './check_reservation.vue'
 
 
 
+
 createApp(App).mount('#app')
 createApp(patient_base).mount('#patient_base')
 createApp(check).mount('#check')
