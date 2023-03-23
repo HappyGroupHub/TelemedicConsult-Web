@@ -5,10 +5,11 @@
 
         <h4>身分證字號</h4>
         <input v-model="id"  id="id" type="text"  />
-        <h4>生日</h4>
-        <input v-model="birthday" id="birthday" type="text" />
+        <h4>健保卡卡號</h4>
+        <input v-model="ic_card_number" id="ic_card_number" type="text" />
         <p></p>
-        <input @click="login_patient"  id="submit" type="submit" value="登入" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >
+        <input @click="get_patient_info_by_id()"  id="submit" type="submit" value="登入" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >
+        <p v-if="message">{{message}}</p>
 
 
     </div>
@@ -21,29 +22,38 @@
 
 <script setup>
 import axios from "axios";
-import {ref} from "vue";
+import {reactive, ref} from "vue";
+
 
 const id = ref("")
-const birthday = ref("")
+const ic_card_number = ref("")
+const message = ref("");
 
-function login_patient() {
+function get_patient_info_by_id() {
   let config = { headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'}
   }
-  axios.post('', {
+  axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
     id: id.value,
-    birthday: birthday.value,
-
   }, config)
       .then(res => {
-        console.log(res)
+        if(res.data.status === "success"){
+          const patientInfo = res.data;
+          if(patientInfo.ic_card_number === ic_card_number.value){
+            window.location.href = "write_patient_base.html";
+            message.value = "成功拉";
+          }else {
+            message.value = "錯誤"
+          }
+        }else {
+          message.value = "身分證字號不存在"
+        }
       })
       .catch(err => {
         console.log(err)
       });
 }
-
 
 </script>
 

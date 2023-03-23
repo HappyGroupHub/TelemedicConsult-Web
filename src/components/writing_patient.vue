@@ -5,7 +5,6 @@
     <div class="basic">
       <form @submit.prevent="register_patient">
         <div id="left">
-          <br>
             姓名<br>
             <input v-model="name" type="text" id="name" name="name" required="required" />
             <br>
@@ -31,9 +30,11 @@
             緊急聯絡人關係<br>
             <input v-model="ice_relation"  name="ice_relation" required="required">
           <br>
+          <a href="index.html"><button id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回首頁</button></a>
+          <br>
         </div>
         <div id="right">
-          <br>
+
             健保卡卡號<br>
             <input v-model="ic_card_number"  name="ic_card_number" required="required">
          <br>
@@ -73,51 +74,44 @@
 </template>
 
 <script setup>
+import WritingPatient from './checking_patient.vue'
+import { ref, defineComponent } from "vue";
 
-import axios from "axios";
-import { ref } from "vue";
+const component = defineComponent({
+  components: { WritingPatient },
+});
+const name = ref("");
+const id = ref('');
+const birthday = ref('');
+const sex = ref('');
+const ice_contact = ref('');
+const ice_phone = ref('');
+const ice_relation = ref('');
+const ic_card_number = ref('');
+const phone_number = ref('');
+const height = ref('');
+const weight = ref('');
+const blood_type = ref('');
+const address = ref('');
+const formData = ref({});
 
- const name = ref("");
- const id = ref("");
- const birthday = ref("");
- const ice_contact = ref("");
- const sex = ref("");
- const ice_phone = ref("");
- const ice_relation = ref("");
- const ic_card_number = ref("");
- const phone_number = ref("");
- const height = ref("");
- const weight = ref("");
- const blood_type = ref("");
- const address = ref("");
-
-  function register_patient() {
-  let config = { headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'}
-  }
-  axios.post('http://127.0.0.1:5000/register_patient', {
+function submitHTML() {
+  formData.value = {
     name: name.value,
     id: id.value,
-    sex: sex.value,
     birthday: birthday.value,
-    blood_type: blood_type.value,
+    sex: sex.value,
+    ice_contact: ice_contact.value,
+    ice_phone: ice_phone.value,
+    ice_relation: ice_relation.value,
     ic_card_number: ic_card_number.value,
     phone_number: phone_number.value,
-    address: address.value,
     height: height.value,
     weight: weight.value,
-    ice_contact: ice_contact.value,
-    ice_relation: ice_relation.value,
-    ice_phone: ice_phone.value
-  }, config)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
+    blood_type: blood_type.value,
+    address: address.value
+  }
+  }
 </script>
 
 <style >
