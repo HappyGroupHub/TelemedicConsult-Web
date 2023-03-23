@@ -4,7 +4,7 @@
 
 ## 本專案提供網站給病人掛號及醫生看診
 
-![image](./readme_imgs/home_page.png)
+<img width="400" src="./readme_imgs/home_page.png">
 
 ### 專案簡述
 
@@ -26,8 +26,9 @@
 - 複診病人可透過**身分驗證**直接進入掛號階段
 - 完成看診掛號
 
-![image](./readme_imgs/login.png)
-![image](./readme_imgs/book_confirmation.png)
+<img width="400" src="./readme_imgs/login.png">
+
+<img width="400" src="./readme_imgs/book_confirmation.png">
 
 #### > 醫生
 
@@ -36,11 +37,12 @@
 - 提供工作時段及診間
 - 看診前，上傳在LINE的會議室連結
 - 看診期間，隨時更新看診進度及留下看診紀錄
+  <br>
 
-![image](./readme_imgs/doctor_home.png)
-![image](./readme_imgs/doctor_working.png)
-
-(醫生看診網站仍未實作，以上為預計功能，**不代表台北市立聯合醫院**)
+<img width="400" src="./readme_imgs/doctor_home.png">
+<img width="400" src="./readme_imgs/doctor_working.png">
+  <br>
+  (醫生看診網站仍未實作，以上為預計功能，**不代表台北市立聯合醫院**)
 
 #### > 管理者
 
@@ -91,13 +93,13 @@
     3. 在指令端輸入`yarn dev`
     4. 即可開始進行測試/使用
 3. 後端網頁開發及部署
-    -
-    請至 [通訊診療與個案管理系統 - 後端API及LineBot](https://github.com/HappyGroupHub/TelemedicConsult-Backend-LineBot)
-    查看
+   -
+   請至 [通訊診療與個案管理系統 - 後端API及LineBot](https://github.com/HappyGroupHub/TelemedicConsult-Backend-LineBot)
+   查看
 4. Line機器人開發及部署
-    -
-    請至 [通訊診療與個案管理系統 - 後端API及LineBot](https://github.com/HappyGroupHub/TelemedicConsult-Backend-LineBot)
-    查看
+   -
+   請至 [通訊診療與個案管理系統 - 後端API及LineBot](https://github.com/HappyGroupHub/TelemedicConsult-Backend-LineBot)
+   查看
 
 ---
 
@@ -141,6 +143,6 @@
 
 # TelemedicConsult-Web
 
-📖 [繁體中文版README.md](#通訊診療與個案管理系統-前端網頁) 📖
+📖 [繁體中文版README.md](#通訊診療與個案管理系統---前端網頁) 📖
 
 Not yet supported...
