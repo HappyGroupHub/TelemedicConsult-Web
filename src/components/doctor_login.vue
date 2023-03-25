@@ -36,7 +36,6 @@
 #input_base {
 
   background-color: #E1E1E1;
-  width: 100%;
   height: 350px;
   padding: 30px;
   text-align: center;
