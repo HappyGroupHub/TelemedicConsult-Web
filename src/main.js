@@ -9,6 +9,7 @@ import front_page from './front_page.vue'
 import check from './check_patient_base.vue'
 import time from './time1.vue'
 import check2 from './check_reservation.vue'
+import doctor_login from './doctor_login.vue'
 
 
 
@@ -22,6 +23,7 @@ createApp(description).mount('#description')
 createApp(front_page).mount('#front_page')
 createApp(time).mount('#time')
 createApp(check2).mount('#check2')
+createApp(doctor_login).mount('#doctor_login')
 
 
 

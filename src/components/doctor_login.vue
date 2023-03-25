@@ -6,7 +6,7 @@
         <h4 style="text-align: left">帳號</h4>
         <input id="id" type="text"/>
         <h4 style="text-align: left">密碼</h4>
-        <input id="birthday" type="text"/>
+        <input id="birthday" type="password"/>
       </div>
 
       <p></p>
