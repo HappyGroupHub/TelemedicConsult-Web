@@ -9,7 +9,7 @@
           >&nbsp&nbsp&nbsp
           <a href="patient_login.html"><li> 線上掛號登入&nbsp&nbsp&nbsp</li></a>
           >&nbsp&nbsp&nbsp
-          <a href="write_patient_base.html"><li> 確認資料&nbsp&nbsp&nbsp</li></a>
+          <a href="../../register_patient.html"><li> 確認資料&nbsp&nbsp&nbsp</li></a>
           >&nbsp&nbsp&nbsp
           <a href="description.html"><li> 選擇日期時段&nbsp&nbsp&nbsp</li></a>>
           &nbsp&nbsp&nbsp

@@ -9,9 +9,9 @@
           >&nbsp&nbsp&nbsp
           <a href="patient_login.html"><li> 線上掛號登入&nbsp&nbsp&nbsp</li></a>
           >&nbsp&nbsp&nbsp
-          <a href="write_patient_base.html"><li> 填寫初診基本資料&nbsp&nbsp&nbsp</li></a>
+          <a href="../../register_patient.html"><li> 填寫初診基本資料&nbsp&nbsp&nbsp</li></a>
           >&nbsp&nbsp&nbsp
-          <a href="check_patient_base.html"><li> 確認資料&nbsp&nbsp&nbsp</li></a>
+          <li> 確認資料&nbsp&nbsp&nbsp</li>
 
         </ul>
         <hr>
