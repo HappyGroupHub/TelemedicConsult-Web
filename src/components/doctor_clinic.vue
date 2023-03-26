@@ -4,12 +4,14 @@
     <div id="input_base">
       <div id="number">8</div>
       <div id="inner_template">
-        <button id='finish'
-                style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">看完
-        </button>
-        <button id='Examine'
-                style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">過號
-        </button>
+        <div class="button-container">
+          <button class="finish"
+                  style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">看完
+          </button>
+          <button class="examine"
+                  style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">過號
+          </button>
+        </div>
       </div>
     </div>
     <div id="input_base_list">
@@ -32,15 +34,16 @@
 
   <br>
 
-<div id="under_box">
-  <h2>當前病人資料</h2>
-  <div id="under_box_gray">
-    <p >2222/22/22 星期天 早班</p>
-    <p style ="margin-top:0;">姓名: 陳小明</p>
-    <hr>
+  <div id="under_box">
+    <h2>當前病人資料</h2>
+    <div id="under_box_gray">
+      <div class="container">
+        <p class="clinic_date">2222/22/22 星期天 早班</p>
+        <p class="status">看診中</p>
+      </div>
+      <hr>
+    </div>
   </div>
-</div>
-
 </template>
 
 
@@ -105,7 +108,8 @@
   font-size: 30px;
   margin: 5px 5px 5px 5px;
 }
-#under_box_gray{
+
+#under_box_gray {
 
   background-color: #E1E1E1;
   height: 300px;
@@ -116,12 +120,39 @@
   width: 50%;
   text-align: center;
 }
-#nav{
-  color:white;
+
+#nav {
+  color: white;
 }
-#under_box{
+
+#under_box {
   margin: auto;
   width: 100%;
   text-align: center;
 }
+
+.container {
+  width: 100%;
+  overflow: hidden; /* 用來清除float浮動產生的高度塌陷 */
+}
+
+.clinic_date {
+  display: inline-block;
+  float: left;
+}
+
+.status {
+  display: inline-block;
+  float: right;
+  color: red;
+}
+.button-container {
+  text-align: center;
+}
+
+.finish, .examine {
+  display: inline-block;
+  margin: 20px;
+}
+
 </style>

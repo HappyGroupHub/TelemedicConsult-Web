@@ -1,7 +1,7 @@
-<template xmlns="http://www.w3.org/1999/html" >
-  <div id="flex_container" >
+<template xmlns="http://www.w3.org/1999/html">
+  <div id="flex_container">
     <div id="input_base">
-      <div id= "inner_template">
+      <div id="inner_template">
         <h2 style="text-align: left">登入系統</h2>
         <h4 style="text-align: left">帳號</h4>
         <input id="id" type="text"/>
@@ -12,9 +12,11 @@
       <p></p>
       <div id="inner_template">
         <button id="submit"
-                style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">登入</button>
+                style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">登入
+        </button>
         <button id="submit"
-                style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">返回</button>
+                style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">返回
+        </button>
       </div>
     </div>
   </div>
@@ -34,7 +36,7 @@
 }
 
 #input_base {
-
+  width: 400px;
   background-color: #E1E1E1;
   height: 350px;
   padding: 30px;
@@ -42,7 +44,8 @@
   border-radius: 30px;
   margin-left: 20px;
   box-shadow: gray 2px 2px;
-  margin-top: 0px;
+  margin-top: 0;
+  margin-bottom: 5px;
 
 }
 
@@ -53,17 +56,17 @@
   color: white;
   text-align: center;
   font-size: 16px;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 30px;
   box-shadow: gray 2px 2px;
   border: 0;
   border-radius: 7px;
+  margin: 20px 30px 10px 20px;
 }
-#inner_template{
+
+#inner_template {
   justify-content: center;
 }
-#id{
+
+#id {
   justify-content: center;
 }
 
