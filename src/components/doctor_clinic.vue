@@ -35,7 +35,7 @@
   <br>
 
   <div id="under_box">
-    <h2>當前病人資料</h2>
+    <h2 style="margin-right: 800px">當前病人資料</h2>
     <div id="under_box_gray">
       <div class="container">
         <p class="clinic_date">2222/22/22 星期天 早班</p>
@@ -52,12 +52,13 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-top: 30px;
 }
 
-#input_base {
 
+
+#input_base {
   background-color: #E1E1E1;
   height: 350px;
   padding: 30px;
@@ -121,15 +122,14 @@
   text-align: center;
 }
 
-#nav {
-  color: white;
-}
+
 
 #under_box {
   margin: auto;
   width: 100%;
   text-align: center;
 }
+
 
 .container {
   width: 100%;

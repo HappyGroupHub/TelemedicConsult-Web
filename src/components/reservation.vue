@@ -7,12 +7,9 @@
   <div class="flex_container">
     <div id="gray_background">
       <div class="container">
-        <button id="button">年
-        </button>
-        <button id="button">月
-        </button>
-        <button id="button">週
-        </button>
+        <button id="button">年</button>
+        <button id="button">月</button>
+        <button id="button">週</button>
       </div>
       <table align="center">
         <tr>
@@ -29,18 +26,18 @@
           <th>早</th>
           <td><button id="dot"></button></td>
           <td><button id="dot"></button></td>
+          <td><button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button></td>
           <td><button id="dot"></button></td>
           <td><button id="dot"></button></td>
-          <td><button id="dot"></button></td>
-          <td><button id="dot"></button></td>
+          <td><button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button></td>
           <td><button id="dot"></button></td>
         </tr>
         <tr>
           <th>中</th>
           <td><button id="dot"></button></td>
           <td><button id="dot"></button></td>
-          <td><button id="dot"></button></td>
-          <td><button id="dot"></button></td>
+          <td><button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button></td>
+          <td><button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button></td>
           <td><button id="dot"></button></td>
           <td><button id="dot"></button></td>
           <td><button id="dot"></button></td>
@@ -49,11 +46,11 @@
           <th>晚</th>
           <td><button id="dot"></button></td>
           <td><button id="dot"></button></td>
+          <td><button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button></td>
           <td><button id="dot"></button></td>
           <td><button id="dot"></button></td>
           <td><button id="dot"></button></td>
-          <td><button id="dot"></button></td>
-          <td><button id="dot"></button></td>
+          <td><button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button></td>
         </tr>
       </table>
     </div>
@@ -100,6 +97,7 @@ th,td,tr{
   border-radius: 15px;
   margin:30px 40px 40px 20px;
 }
+
 #dot{
   background-color: #1a69a4;
   width: 20px;
