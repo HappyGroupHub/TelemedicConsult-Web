@@ -2,7 +2,7 @@
 
 <template>
   <bar v-if="view===1 || view===2"/>
-  <banner_write_patient v-if="view===1"/>
+  <banner v-if="view===1"/>
   <div id="container1" v-if="view===1">
     <br>
     <h2>初診基本資料</h2>
@@ -148,6 +148,7 @@ import {ref} from "vue";
 import axios from "axios";
 import bar from "./components/bar.vue";
 import banner_check_patient from "./components/banner_check_patient.vue";
+import banner from "./components/banner_write_patient.vue"
 
 
 const view = ref(1)

@@ -110,16 +110,7 @@ th,td,tr{
   box-shadow: gray 2px 2px;
   margin:10px 5px 15px 20px;
 }
-#button{
-  width:150px;
-  height:75px;
-  font-size: 25px;
-  background-color: #00317B;
-  color:white;
-  text-align: center;
-  border-radius: 15px;
-  margin:30px 40px 40px 20px;
-}
+
 #select{
   width:150px;
   height:75px;
