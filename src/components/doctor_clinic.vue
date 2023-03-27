@@ -1,5 +1,5 @@
 <template>
-  <div id="flex_container">
+  <div id="flex_container_clinic">
     <h2>目前號碼</h2>
     <div id="input_base">
       <div id="number">8</div>
@@ -48,12 +48,12 @@
 
 
 <style>
-#flex_container {
+#flex_container_clinic {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
   margin-top: 30px;
+  align-content: flex-start;
 }
 
 

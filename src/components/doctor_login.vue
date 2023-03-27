@@ -32,7 +32,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 30px;
 }
 
 #input_base {
