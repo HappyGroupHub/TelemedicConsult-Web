@@ -2,7 +2,7 @@
 
 <template>
   <bar v-if="view===1 || view===2"/>
-  <banner_write_patient v-if="view===1"/>
+  <banner v-if="view===1"/>
   <div id="container1" v-if="view===1">
     <br>
     <h2>初診基本資料</h2>
@@ -135,7 +135,7 @@
       <div id="down_btn">
         <button v-on:click="changeView(1)" id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回去更改</button>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
+        <a href="join_linebot.html"><button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button></a>
         <br>
       </div>
     </div>
@@ -148,7 +148,7 @@ import {ref} from "vue";
 import axios from "axios";
 import bar from "./components/bar.vue";
 import banner_check_patient from "./components/banner_check_patient.vue";
-import banner_write_patient from "./components/banner_patient.vue"
+import banner from "./components/banner_write_patient.vue"
 
 
 const view = ref(1)

@@ -37,7 +37,7 @@
   <div id="under_box">
     <h2 style="margin-right: 800px">當前病人資料</h2>
     <div id="under_box_gray">
-      <div class="container">
+      <div class="container" style="justify-content: space-around">
         <p class="clinic_date">2222/22/22 星期天 早班</p>
         <p class="status">看診中</p>
       </div>

@@ -21,7 +21,7 @@
           if(res.data.status === "success"){
             const patientInfo = res.data;
             if(patientInfo.ic_card_number === ic_card_number.value){
-              window.location.href = "register_patient.html";
+              window.location.href = "reservation.html";
               message.value = "成功拉";
             }else {
               message.value = "錯誤"

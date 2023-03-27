@@ -10,8 +10,6 @@ import time from './time.vue'
 import check2 from './check_reservation.vue'
 import doctor_login from './doctor_login.vue'
 import doctor_update from './doctor_update.vue'
-
-
 import doctor_schedule from './doctor_schedule.vue'
 import doctor_clinic from './doctor_clinic.vue'
 
