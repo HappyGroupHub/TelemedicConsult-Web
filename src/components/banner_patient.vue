@@ -15,22 +15,22 @@ const href = {
   homepage: "http://localhost:5173/",
   time: "http://localhost:5173/time.html",
   patient_login: "http://localhost:5173/patient_login.html",
-  register_patient_base: "http://localhost:5173/register_patient.html",
+  register_patient: "http://localhost:5173/register_patient.html",
   reservation: "http://localhost:5173/reservation.html",
   description: "http://localhost:5173/description.html",
-  join_line_bot: "http://localhost:5173/join_linebot.html",
+  join_linebot: "http://localhost:5173/join_linebot.html",
   check_reservation: "http://localhost:5173/check_reservation.html",
 }
 
-function flowBanner(a, b, c, d, e, g, h, i) {
+function flowBanner(a, b, c, d, e, f, g, h) {
   banner.homepage = a;
   banner.time = b;
   banner.patient_login = c;
   banner.register_patient = d;
   banner.reservation = e;
-  banner.description = g;
-  banner.join_linebot = h;
-  banner.check_reservation = i;
+  banner.description = f;
+  banner.join_linebot = g;
+  banner.check_reservation = h;
 }
 
 if (window.location.href === href.homepage) {
