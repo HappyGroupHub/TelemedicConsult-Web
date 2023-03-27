@@ -10,7 +10,7 @@
       </div>
 
       <p></p>
-      <div id="inner_template">
+      <div id="inner_template_loin">
         <button id="submit"
                 style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">登入
         </button>
@@ -61,8 +61,9 @@
   margin: 20px 30px 10px 20px;
 }
 
-#inner_template {
-  justify-content: center;
+#inner_template_loin {
+  justify-content: flex-end;
+  margin: 60px 60px 60px 60px;
 }
 
 #id {

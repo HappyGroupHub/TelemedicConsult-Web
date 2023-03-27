@@ -1,15 +1,29 @@
 
 <script setup>
-
+function btn(){
+  alert("掛號")
+}
 </script>
 
 <template>
   <div class="flex_container">
     <div id="gray_background">
       <div class="container">
-        <button id="button">年</button>
-        <button id="button">月</button>
-        <button id="button">週</button>
+        <select id="select">
+          <option value="option1">年</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+        <select id="select">
+          <option value="option1">月</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+        <select id="select">
+          <option value="option1">周</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
       </div>
       <table align="center">
         <tr>
