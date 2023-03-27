@@ -135,7 +135,7 @@
       <div id="down_btn">
         <button v-on:click="changeView(1)" id="back" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >回去更改</button>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button>
+        <a href="join_linebot.html"><button @click="register_patient"  id="check_writing" type="submit"  style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >確認填寫</button></a>
         <br>
       </div>
     </div>

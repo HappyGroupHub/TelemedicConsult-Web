@@ -2,6 +2,10 @@
 <script setup>
   import bar from './components/bar.vue'
   import banner from './components/banner_reservartion.vue'
+   function btn(){
+    alert("掛號")
+   }
+
 
 
 </script>
@@ -11,9 +15,23 @@
   <div class="flex_container">
     <div id="gray_background">
       <div class="container">
-        <button id="button">年</button>
-        <button id="button">月</button>
-        <button id="button">週</button>
+
+          <select id="select">
+            <option value="option1">年</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        <select id="select">
+            <option value="option1">月</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+        <select id="select">
+            <option value="option1">周</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+
       </div>
       <table align="center">
         <tr>
@@ -102,6 +120,17 @@ th,td,tr{
   border-radius: 15px;
   margin:30px 40px 40px 20px;
 }
+#select{
+  width:150px;
+  height:75px;
+  font-size: 25px;
+  background-color: #00317B;
+  color:white;
+  text-align: center;
+  border-radius: 15px;
+  margin:30px 40px 40px 20px;
+}
+
 
 #dot{
   background-color: #1a69a4;
