@@ -24,7 +24,7 @@
 
 <script setup>
 import  bar  from  './components/bar.vue'
-import banner from './components/banner_front_page.vue'
+import banner from './components/banner_patient.vue'
 
 
 </script>

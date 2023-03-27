@@ -1,6 +1,6 @@
 <script setup>
   import bar from './components/bar.vue'
-  import banner_login from './components/banner_login.vue'
+  import banner_login from './components/banner_patient.vue'
   import axios from "axios";
   import {reactive, ref} from "vue";
 

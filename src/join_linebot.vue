@@ -1,7 +1,7 @@
 
 <script setup>
   import bar from './components/bar.vue'
-  import banner from './components/banner_join_linebot.vue'
+  import banner from './components/banner_patient.vue'
 </script>
 <template>
   <bar />

@@ -1,7 +1,7 @@
 <script setup>
 import bar from "./components/bar.vue";
 import time_time from './components/time.vue'
-import Banner_time from "./components/banner_time.vue";
+import Banner_time from "./components/banner_patient.vue";
 
 
 </script>

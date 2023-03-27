@@ -1,7 +1,7 @@
 
 <script setup>
   import bar from './components/bar.vue'
-  import banner from './components/banner_reservartion.vue'
+  import banner from './components/banner_patient.vue'
 
 
 </script>

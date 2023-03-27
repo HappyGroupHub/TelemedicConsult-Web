@@ -26,7 +26,7 @@
 
 <script setup>
 import bar from './components/bar.vue'
-import banner from './components/banner_check_reservation.vue'
+import banner from './components/banner_patient.vue'
 
 </script>
 
