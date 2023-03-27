@@ -46,4 +46,22 @@ function get_patient_info_by_id(id) {
 }
 
 
-get_patient_info_by_id('F130937605')
+function if_patient_registered_line(id) {
+    let config = { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'}
+    }
+    axios.post('http://127.0.0.1:5000/if_patient_registered_line', {
+        id: id
+    } , config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
+
+// get_patient_info_by_id('F130937605')
+if_patient_registered_line('F130937605')
