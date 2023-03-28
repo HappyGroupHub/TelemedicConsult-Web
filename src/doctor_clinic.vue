@@ -1,6 +1,6 @@
 <script setup>
 import bar_doctor from './components/bar_doctor.vue'
-import banner_doctor_clinic from './components/banner_doctor_clinic.vue'
+import banner_doctor_clinic from './components/banner_doctor.vue'
 import doctor_clinic from './components/doctor_clinic.vue'
 </script>
 <template>

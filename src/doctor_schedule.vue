@@ -2,7 +2,7 @@
 <script setup>
 import doctor_schedule from './components/doctor_schedule.vue';
 import bar_doctor from './components/bar_doctor_login.vue';
-import banner_doctor_schedule from './components/banner_doctor_schedule.vue';
+import banner_doctor_schedule from './components/banner_doctor.vue';
 import bar_doctor_login from "./components/bar_doctor_login.vue";
 </script>
 
