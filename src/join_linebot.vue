@@ -2,6 +2,45 @@
 <script setup>
   import bar from './components/bar.vue'
   import banner from './components/banner_patient.vue'
+
+  import axios from "axios";
+  import {computed, ref} from "vue";
+
+
+
+  const msg = ref('')
+  let userID = sessionStorage.getItem('user_id')
+
+  function if_patient_registered_line() {
+    let config = { headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'localhost:5000'}
+    }
+    axios.post('http://127.0.0.1:5000/if_patient_registered_line', {
+      id:userID
+    } , config)
+        .then(response => {
+          console.log(response)
+          if(response.data.status === "success"){
+            let is_registered = (Boolean(response.data['registered']))
+            if (is_registered === true) {
+              msg.value = '已經註冊過了'
+            }
+            else {
+              msg.value = '尚未註冊'
+            }
+
+
+        }else {
+            msg.value = "還沒註冊過"
+          }
+        })
+        .catch(err => {
+          console.log(err)
+          msg.value= "沒有收到的意思"
+        });
+  }
+
 </script>
 <template>
   <bar />
@@ -30,7 +69,8 @@
         <h5>回本網頁按下右方按鈕即完成</h5>
       </div>
       <br><br><br><br><br><br>
-      <button id="button" >加好官方帳號了</button>
+      <button @click="if_patient_registered_line" id="button" >加好官方帳號了</button>
+      {{msg}}
     </div>
   </div>
 </template>

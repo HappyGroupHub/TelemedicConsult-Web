@@ -14,6 +14,10 @@ import doctor_schedule from './doctor_schedule.vue'
 import doctor_clinic from './doctor_clinic.vue'
 
 
+
+
+
+
 createApp(App).mount('#app')
 createApp(patient_base).mount('#patient_base')
 createApp(join_linebot).mount('#join_linebot')
@@ -26,5 +30,6 @@ createApp(doctor_login).mount('#doctor_login')
 createApp(doctor_update).mount('#doctor_update')
 createApp(doctor_schedule).mount('#doctor_schedule')
 createApp(doctor_clinic).mount('#doctor_clinic')
+
 
 

@@ -63,5 +63,5 @@ function if_patient_registered_line(id) {
 }
 
 
-// get_patient_info_by_id('F130937605')
+//get_patient_info_by_id('F130937605')
 if_patient_registered_line('F130937605')

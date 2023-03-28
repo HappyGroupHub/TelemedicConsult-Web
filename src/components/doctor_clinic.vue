@@ -2,17 +2,12 @@
   <div id="flex_container_clinic">
     <h2>目前號碼</h2>
     <div id="input_base">
-      <div id="number">8</div>
-      <div id="inner_template">
-        <div class="button-container">
-          <button class="finish"
-                  style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">看完
-          </button>
-          <button class="examine"
-                  style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">過號
-          </button>
-        </div>
+      <p class="num">{{num}}</p>
+      <div class="two_buttons">
+        <button @click="add" id="pass">過號</button>
+        <button @click="add" id="next">看完</button>
       </div>
+
     </div>
     <div id="input_base_list">
       <ol>
@@ -46,7 +41,17 @@
   </div>
 </template>
 
-
+<script setup>
+import { ref } from 'vue'
+import {watch} from 'vue'
+const num = ref(1)
+const add = () => {
+  num.value++
+}
+watch(num, (newNum, oldNum) => {
+  console.log(`num changed from ${oldNum} to ${newNum}`)
+})
+</script>
 <style>
 #flex_container_clinic {
   display: flex;
@@ -57,39 +62,53 @@
 }
 
 
-
+.num {
+  background-color: #7ea3cc;
+  font-size: 50px;
+  text-align: center;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  padding-top: 35px;
+  color: white;
+}
+.two_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+}
 #input_base {
   background-color: #E1E1E1;
   height: 350px;
   padding: 30px;
-  text-align: center;
   border-radius: 30px;
-  margin-left: 20px;
   box-shadow: gray 2px 2px;
-  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+
+
 
 }
-
-#number {
-  font-size: 100px;
-  display: inline-block;
-  padding: 50px 100px;
-  opacity: 0.8;
-  background-color: #29528F;
-  color: whitesmoke;
+#next {
+  width: 125px;
+  height: 50px;
+  background-color: #00317B;
+  color: white;
   text-align: center;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 30px;
-  box-shadow: gray 2px 2px;
   border: 0;
-  border-radius: 7px;
+}
+#pass {
+  width: 125px;
+  height: 50px;
+  background-color: #00317B;
+  color: white;
+  text-align: center;
+  border: 0;
 }
 
-#inner_template {
-  justify-content: flex-end;
-  margin: 60px 60px 60px 60px;
-}
 
 #input_base_list {
 
@@ -146,13 +165,6 @@
   float: right;
   color: red;
 }
-.button-container {
-  text-align: center;
-}
 
-.finish, .examine {
-  display: inline-block;
-  margin: 20px;
-}
 
 </style>

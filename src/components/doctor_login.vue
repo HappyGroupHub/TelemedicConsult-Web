@@ -7,17 +7,18 @@
         <input id="id" type="text"/>
         <h4 style="text-align: left">密碼</h4>
         <input id="birthday" type="password"/>
+        <div id="inner_btn">
+          <button id="submit"
+                  style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">登入
+          </button>
+          <button id="submit"
+                  style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">返回
+          </button>
+        </div>
       </div>
 
       <p></p>
-      <div id="inner_template_loin">
-        <button id="submit"
-                style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">登入
-        </button>
-        <button id="submit"
-                style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">返回
-        </button>
-      </div>
+
     </div>
   </div>
 </template>
@@ -61,9 +62,8 @@
   margin: 20px 30px 10px 20px;
 }
 
-#inner_template_loin {
-  justify-content: flex-end;
-  margin: 60px 60px 60px 60px;
+#inner_template {
+  justify-content: center;
 }
 
 #id {

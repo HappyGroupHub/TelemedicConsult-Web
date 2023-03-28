@@ -14,18 +14,26 @@
 
           <select id="select">
             <option value="option1">年</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="option2">2023</option>
+            <option value="option3">2024</option>
           </select>
         <select id="select">
             <option value="option1">月</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="option2">3</option>
+            <option value="option3">4</option>
+          <option value="option3">5</option>
+          <option value="option3">6</option>
+          <option value="option3">7</option>
+          <option value="option3">8</option>
+          <option value="option3">9</option>
           </select>
         <select id="select">
             <option value="option1">周</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
+            <option value="option2">1</option>
+            <option value="option3">2</option>
+          <option value="option3">3</option>
+          <option value="option3">4</option>
+          <option value="option3">5</option>
           </select>
 
       </div>

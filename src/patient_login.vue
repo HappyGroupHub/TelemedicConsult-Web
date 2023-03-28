@@ -2,12 +2,13 @@
   import bar from './components/bar.vue'
   import banner_login from './components/banner_patient.vue'
   import axios from "axios";
-  import {reactive, ref} from "vue";
+  import { ref} from "vue";
 
 
   const id = ref("")
   const ic_card_number = ref("")
   const message = ref("");
+
 
   function get_patient_info_by_id() {
     let config = { headers: {
@@ -21,8 +22,10 @@
           if(res.data.status === "success"){
             const patientInfo = res.data;
             if(patientInfo.ic_card_number === ic_card_number.value){
-              window.location.href = "reservation.html";
+              window.location.href = "join_linebot.html";
+              sessionStorage.setItem("user_id", id.value);
               message.value = "成功拉";
+
             }else {
               message.value = "錯誤"
             }
@@ -43,8 +46,8 @@
   <bar />
   <banner_login/>
 
-  <div id="flex_container">
-    <div id="input_base" >
+  <div id="flex_container1">
+    <div id="input_base1" >
       <h2 style="text-align: left">登入系統</h2>
 
       <h4>身分證字號</h4>
@@ -70,14 +73,14 @@ h4 {
   font-weight: 500;
   text-align: left;
 }
-#flex_container {
+#flex_container1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
   margin-top: 90px;
 }
-#input_base {
+#input_base1 {
 
   background-color: #E1E1E1;
   width: 300px;
