@@ -168,6 +168,7 @@ const height = ref('')
 const weight = ref('')
 const blood_type = ref('')
 const address = ref('')
+
 function register_patient() {
   let config = { headers: {
       'Content-Type': 'application/json',
@@ -190,6 +191,7 @@ function register_patient() {
   }, config)
       .then(res => {
         console.log(res)
+        sessionStorage.setItem("user_id", id.value);
       })
       .catch(err => {
         console.log(err)

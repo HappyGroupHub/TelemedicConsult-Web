@@ -12,6 +12,7 @@ import doctor_login from './doctor_login.vue'
 import doctor_update from './doctor_update.vue'
 import doctor_schedule from './doctor_schedule.vue'
 import doctor_clinic from './doctor_clinic.vue'
+import update from './update_patient.vue'
 
 
 
@@ -30,6 +31,7 @@ createApp(doctor_login).mount('#doctor_login')
 createApp(doctor_update).mount('#doctor_update')
 createApp(doctor_schedule).mount('#doctor_schedule')
 createApp(doctor_clinic).mount('#doctor_clinic')
+createApp(update).mount('#update')
 
 
 

@@ -25,8 +25,8 @@
             let is_registered = (Boolean(response.data['registered']))
             if (is_registered === true) {
               msg.value = '已經註冊過了'
-            }
-            else {
+              window.location.href = "/reservation.html";
+            } else {
               msg.value = '尚未註冊'
             }
 

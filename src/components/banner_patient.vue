@@ -10,6 +10,7 @@ const banner = {
   description: 0,
   join_line_bot: 0,
   check_reservation: 0,
+  update_patient : 0,
 }
 const href = {
   homepage: "http://localhost:5173/",
@@ -20,9 +21,10 @@ const href = {
   description: "http://localhost:5173/description.html",
   join_linebot: "http://localhost:5173/join_linebot.html",
   check_reservation: "http://localhost:5173/check_reservation.html",
+  update_patient: "http://localhost:5173/update_patient.html",
 }
 
-function flowBanner(a, b, c, d, e, f, g, h) {
+function flowBanner(a, b, c, d, e, f, g, h,i) {
   banner.homepage = a;
   banner.time = b;
   banner.patient_login = c;
@@ -31,6 +33,7 @@ function flowBanner(a, b, c, d, e, f, g, h) {
   banner.description = f;
   banner.join_linebot = g;
   banner.check_reservation = h;
+  banner.update_patient = i;
 }
 
 if (window.location.href === href.homepage) {
@@ -49,6 +52,8 @@ if (window.location.href === href.homepage) {
   flowBanner(1, 0, 1, 1, 0, 0, 1, 0);
 } else if (window.location.href === href.check_reservation) {
   flowBanner(1, 0, 1, 1, 1, 0, 0, 1);
+} else if(window.location.href === href.update_patient){
+  flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 1);
 }
 
 
@@ -96,6 +101,11 @@ if (window.location.href === href.homepage) {
         <div v-if="banner.check_reservation ===1">
           <a href="check_reservation.html">
             <li> >&nbsp&nbsp&nbsp 確認掛號 &nbsp&nbsp&nbsp</li>
+          </a>
+        </div>
+        <div v-if="banner.update_patient ===1">
+          <a href="update_patient.html">
+            <li> >&nbsp&nbsp&nbsp 確認資料 &nbsp&nbsp&nbsp</li>
           </a>
         </div>
       </ul>

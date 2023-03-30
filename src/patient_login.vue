@@ -22,7 +22,7 @@
           if(res.data.status === "success"){
             const patientInfo = res.data;
             if(patientInfo.ic_card_number === ic_card_number.value){
-              window.location.href = "join_linebot.html";
+              window.location.href = "/update_patient.html";
               sessionStorage.setItem("user_id", id.value);
               message.value = "成功拉";
 
@@ -55,14 +55,14 @@
       <h4>健保卡卡號</h4>
       <input v-model="ic_card_number" id="ic_card_number" type="text" />
       <p></p>
-      <input @click="get_patient_info_by_id()"  id="submit" type="submit" value="登入" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >
+      <button @click="get_patient_info_by_id()"  id="submit" type="submit" value="登入" style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0" >登入</button>
       <p v-if="message">{{message}}</p>
 
 
     </div>
     <div id="first_use">
       <h2 id="title">第一次使用嗎</h2>
-      <a href="../register_patient.html"> <input id="submit2" type="submit" value="初診登入" style="width:150px;height:80px;background-color: white;color:#00317B;text-align: center;border:0" ></a>
+      <a href="../register_patient.html"> <button id="submit2" type="submit" value="初診登入" style="width:150px;height:80px;background-color: white;color:#00317B;text-align: center;border:0" >初診登入</button></a>
     </div>
   </div>
 </template>
