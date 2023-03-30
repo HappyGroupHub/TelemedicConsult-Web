@@ -63,5 +63,25 @@ function if_patient_registered_line(id) {
 }
 
 
+function update_patient_info_by_id(id, phone_number, address, height, weight, ice_contact,
+                                   ice_relation, ice_phone) {
+    let config = { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'}
+        }
+    axios.post('http://127.0.0.1:5000/update_patient_info_by_id', {
+        id: id, phone_number: phone_number, address: address, height: height, weight: weight,
+        ice_contact: ice_contact, ice_relation: ice_relation, ice_phone: ice_phone
+    }, config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
+
 //get_patient_info_by_id('F130937605')
-if_patient_registered_line('F130937605')
+// if_patient_registered_line('F130937605')
+update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
