@@ -16,7 +16,7 @@
     </div>
 
     <div class="buttons">
-      <button id="back">返回上一頁</button>
+      <button id="back">返回</button>
       <button id="check_reservation">確認預約</button>
     </div>
 

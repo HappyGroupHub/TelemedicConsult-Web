@@ -5,7 +5,7 @@
       <p class="num">{{num}}</p>
       <div class="two_buttons">
         <button @click="add" id="pass">過號</button>
-        <button @click="add" id="next">看完</button>
+        <button @click="add" id="next">完成</button>
       </div>
 
     </div>
@@ -127,6 +127,7 @@ watch(num, (newNum, oldNum) => {
   color: white;
   font-size: 30px;
   margin: 5px 5px 5px 5px;
+  list-style-type: none;
 }
 
 #under_box_gray {
