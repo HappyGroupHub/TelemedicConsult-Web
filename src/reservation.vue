@@ -2,7 +2,31 @@
 <script setup>
   import bar from './components/bar.vue'
   import banner from './components/banner_patient.vue'
+  import {computed, ref} from "vue";
+  import {watch} from "vue";
 
+  const select1 = ref('年');
+  const select2 = ref('月');
+  const select3 = ref('周');
+  const disableOption1 = true;
+  const showConfirm = ref(false);
+
+
+  watch([select1,select2,select3], (newValue, oldValue) => {
+    if (selectionsComplete.value) {
+      submitSelections();
+    }
+  });
+
+  const selectionsComplete = computed(()=>
+    select1.value !== '年' &&
+    select2.value !== '月' &&
+    select3.value !== '周'
+  );
+  function submitSelections() {
+    showConfirm.value = true;
+    alert('將要選擇' + select1.value + '年'+ select2.value + '月第'+ select3.value+ '周');
+  }
 
 </script>
 <template>
@@ -12,28 +36,33 @@
     <div id="gray_background">
       <div class="container">
 
-          <select id="select">
-            <option value="option1">年</option>
-            <option value="option2">2023</option>
-            <option value="option3">2024</option>
+          <select v-model="select1">
+            <option value="年"  :disabled="disableOption1">年</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
           </select>
-        <select id="select">
-            <option value="option1">月</option>
-            <option value="option2">3</option>
-            <option value="option3">4</option>
-          <option value="option3">5</option>
-          <option value="option3">6</option>
-          <option value="option3">7</option>
-          <option value="option3">8</option>
-          <option value="option3">9</option>
+        <select v-model="select2">
+            <option value="月" :disabled="disableOption1">月</option>
+            <option value="1">1月</option>
+            <option value="2">2月</option>
+            <option value="3">3月</option>
+            <option value="4">4月</option>
+            <option value="5">5月</option>
+            <option value="6">6月</option>
+            <option value="7">7月</option>
+            <option value="8">8月</option>
+            <option value="9">9月</option>
+            <option value="10">10月</option>
+            <option value="11">11月</option>
+            <option value="12">12月</option>
           </select>
-        <select id="select">
-            <option value="option1">周</option>
-            <option value="option2">1</option>
-            <option value="option3">2</option>
-          <option value="option3">3</option>
-          <option value="option3">4</option>
-          <option value="option3">5</option>
+        <select v-model="select3">
+            <option value="周" :disabled="disableOption1">周</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </select>
 
       </div>
@@ -115,7 +144,7 @@ th,td,tr{
   margin:10px 5px 15px 20px;
 }
 
-#select{
+select{
   width:150px;
   height:75px;
   font-size: 25px;
@@ -125,6 +154,7 @@ th,td,tr{
   border-radius: 15px;
   margin:30px 40px 40px 20px;
 }
+
 
 #dot{
   background-color: #1a69a4;
