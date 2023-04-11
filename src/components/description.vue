@@ -1,8 +1,6 @@
 <template>
 
-  <main>
-    <h3>線上掛號使用說明</h3>
-    <div id="directions">
+
       <section class="directions" style="background-color: #00317B;">
         網站說明
       </section>
@@ -15,15 +13,16 @@
       <section  class="directions" style="background-color: #63C7FF;">
         LINE說明
       </section>
-    </div>
-  </main>
+
 </template>
 
-<script setup></script>
+<script setup>
+
+</script>
 
 <style scoped>
 a:link, a:visited,  a:hover, a:active{color: #000000; text-decoration: none;}
 section{width: 100%;}
-.directions{position: center; height: 513px;box-shadow: inset 9px 16px 55px rgba(0, 0, 0, 0.25); color: white}
+.directions{position: center; height: 400px; color: white;}
 
 </style>

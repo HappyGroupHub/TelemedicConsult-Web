@@ -2,9 +2,20 @@
   <div id="list">
     <div id="input_base">
       <div class="container">
-        <div class="left" id="inner_title">2222/22/22 星期天 早班</div>
+        <div class="left" id="inner_title">2222/22/22 星期三 午班</div>
         <div class="right" style="color: red">看診中</div>
+      </div><hr>
+      <div class="container2">
+        <div class="left" id="inner_title">目前看診號碼 7</div>
+        <div class="right" style="color: red">會議連結 sdfghjklkjhgfdrtyh</div>
       </div>
+    </div>
+    <br><br><br>
+    <div id="input_base">
+      <div class="container">
+        <div class="left" id="inner_title">2222/22/22 星期四 早班</div>
+        <div class="right" style="color: red">未看診</div>
+      </div><hr>
       <div class="container2">
         <div class="left" id="inner_title">目前看診號碼 7</div>
         <div class="right" style="color: red">會議連結 sdfghjklkjhgfdrtyh</div>
@@ -14,19 +25,8 @@
     <div id="input_base">
       <div class="container">
         <div class="left" id="inner_title">2222/22/22 星期天 早班</div>
-        <div class="right" style="color: red">看診中</div>
-      </div>
-      <div class="container2">
-        <div class="left" id="inner_title">目前看診號碼 7</div>
-        <div class="right" style="color: red">會議連結 sdfghjklkjhgfdrtyh</div>
-      </div>
-    </div>
-    <br><br><br>
-    <div id="input_base">
-      <div class="container">
-        <div class="left" id="inner_title">2222/22/22 星期天 早班</div>
-        <div class="right" style="color: red">看診中</div>
-      </div>
+        <div class="right" style="color: red">未看診</div>
+      </div><hr>
       <div class="container2">
         <div class="left" id="inner_title">目前看診號碼 7</div>
         <div class="right" style="color: red">會議連結 sdfghjklkjhgfdrtyh</div>
