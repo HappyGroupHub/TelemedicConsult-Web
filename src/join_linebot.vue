@@ -52,7 +52,7 @@
         <h5>點擊左方加官方Line帳號</h5>
       </div>
       <br><br><br><br><br><br>
-      <button id="button">點我</button>
+      <button id="button">點我加入</button>
     </div>
     <div id="gray_block">
       <div id="step">
@@ -69,7 +69,7 @@
         <h5>回本網頁按下右方按鈕即完成</h5>
       </div>
       <br><br><br><br><br><br>
-      <button @click="if_patient_registered_line" id="button" >加好官方帳號了</button>
+      <button @click="if_patient_registered_line" id="button" >完成加入好友</button>
       {{msg}}
     </div>
   </div>

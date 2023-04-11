@@ -62,7 +62,7 @@
     </div>
     <div id="first_use">
       <h2 id="title">第一次使用嗎</h2>
-      <a href="../register_patient.html"> <button id="submit2" type="submit" value="初診登入" style="width:150px;height:80px;background-color: white;color:#00317B;text-align: center;border:0" >初診登入</button></a>
+      <a href="../register_patient.html"> <button id="submit2" type="submit" value="初診登入" style="width:150px;height:80px;background-color: white;color:#00317B;text-align: center;border:0" >初診註冊</button></a>
     </div>
   </div>
 </template>
