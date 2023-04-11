@@ -9,7 +9,7 @@
 
 
   const msg = ref('')
-  let userID = sessionStorage.getItem('user_id')
+  let userID = sessionStorage.getItem('use_id')
 
   function if_patient_registered_line() {
     let config = { headers: {
