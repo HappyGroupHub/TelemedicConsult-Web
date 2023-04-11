@@ -1,12 +1,18 @@
+<script setup>
+
+function btn_update(){
+  alert("請填入會議連結")
+}
+
+</script>
+
 <template>
   <section id="doctor_btn">
     <div id="dr_btn">
-      <img src="" id="dr_img">
-      <p><a href="" >開始看診</a></p>
+      <p style="margin-top: 150px"><a href="doctor_clinic.html" >開始看診</a></p>
     </div>
     <div id="dr_btn">
-      <img src="" id="dr_img">
-      <p style="color: black">上傳會議連結</p>
+      <p style="color: black; margin-top: 150px" v-on:click="btn_update">上傳會議連結</p>
     </div>
   </section>
 
@@ -34,9 +40,4 @@ section{display: flex;justify-content: space-around;font-size: x-large;}
 }
 
 </style>
-
-
-<script setup>
-
-</script>
 
