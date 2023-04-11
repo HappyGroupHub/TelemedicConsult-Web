@@ -109,11 +109,15 @@
         </tr>
       </table>
     </div>
+    <div id="redblue">
+      紅色按鈕：不開放該時段<br>
+      藍色按鈕：開放時段
+    </div>
   </div>
 </template>
 
 
-<style>
+<style scoped>
 .container{
   display: flex;
   justify-content: center;
@@ -121,7 +125,8 @@
 }
 .flex_container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  align-items: center;
 }
 table{
   width: 900px;
@@ -161,5 +166,16 @@ select{
   width: 20px;
   height: 20px;
   border-radius: 100px;
+}
+
+#redblue{
+  background-color: #FFFFD4;
+  border-radius: 50px;
+  width: 330px;
+  height: 100px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
 }
 </style>
