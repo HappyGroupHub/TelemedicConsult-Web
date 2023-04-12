@@ -191,7 +191,7 @@ function register_patient() {
   }, config)
       .then(res => {
         console.log(res)
-        sessionStorage.setItem("use_id", id.value);
+        sessionStorage.setItem("user_id", id.value);
       })
       .catch(err => {
         console.log(err)

@@ -83,5 +83,6 @@ function update_patient_info_by_id(id, phone_number, address, height, weight, ic
 
 
 //get_patient_info_by_id('F130937605')
-// if_patient_registered_line('F130937605')
-update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
+if_patient_registered_line('A123456789')
+// update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
+// register_patient('王小明', 'F130937605', '男', '1990-01-01', 'A', 'A123456789', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')

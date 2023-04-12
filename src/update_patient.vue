@@ -102,7 +102,7 @@ const mess = ref('')
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'}
     }
-    axios.post('http://127.0.0.1:5000/get_patient_info_by_id',JSON.stringify( {
+    axios.post('http://127.0.0.1:5000/get_patient_info_by_id', JSON.stringify( {
       id: userID,
     }), config)
         .then(res => {
