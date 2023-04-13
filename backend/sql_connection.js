@@ -1,10 +1,12 @@
 import axios from "axios";
 
 function register_patient(name, id, sex, birthday, blood_type, ic_card_number, phone_number, address, height, weight,
-                  ice_contact, ice_relation, ice_phone) {
-    let config = { headers: {
+                          ice_contact, ice_relation, ice_phone) {
+    let config = {
+        headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'localhost:5000'}
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
     }
     axios.post('http://127.0.0.1:5000/register_patient', {
         name: name,
@@ -30,9 +32,11 @@ function register_patient(name, id, sex, birthday, blood_type, ic_card_number, p
 }
 
 function get_patient_info_by_id(id) {
-    let config = { headers: {
+    let config = {
+        headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'localhost:5000'}
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
     }
     axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
         id: id
@@ -47,13 +51,15 @@ function get_patient_info_by_id(id) {
 
 
 function if_patient_registered_line(id) {
-    let config = { headers: {
+    let config = {
+        headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'localhost:5000'}
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
     }
     axios.post('http://127.0.0.1:5000/if_patient_registered_line', {
         id: id
-    } , config)
+    }, config)
         .then(response => {
             console.log(response)
         })
@@ -65,10 +71,12 @@ function if_patient_registered_line(id) {
 
 function update_patient_info_by_id(id, phone_number, address, height, weight, ice_contact,
                                    ice_relation, ice_phone) {
-    let config = { headers: {
+    let config = {
+        headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'localhost:5000'}
+            'Access-Control-Allow-Origin': 'localhost:5000'
         }
+    }
     axios.post('http://127.0.0.1:5000/update_patient_info_by_id', {
         id: id, phone_number: phone_number, address: address, height: height, weight: weight,
         ice_contact: ice_contact, ice_relation: ice_relation, ice_phone: ice_phone
