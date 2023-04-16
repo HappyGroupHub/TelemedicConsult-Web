@@ -1,4 +1,7 @@
 <script setup>
+
+import Banner from "./components/banner_patient.vue";
+import bar from "./components/bar.vue"
 import {computed, ref, watch} from "vue";
 
 const select1 = ref('年');

@@ -1,6 +1,8 @@
 <script setup>
-import axios from "axios";
-import {ref} from "vue";
+  import bar from './components/bar.vue'
+  import banner_login from './components/banner_patient.vue'
+  import axios from "axios";
+  import { ref} from "vue";
 
 
 const id = ref("")

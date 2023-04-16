@@ -24,7 +24,11 @@
   *溫馨提醒:可以在LINE上得到更多資訊ㄛ
 </template>
 
-<script setup></script>
+<script setup>
+import bar from './components/bar.vue'
+import banner from './components/banner_patient.vue'
+
+</script>
 
 <style>
 #blue {

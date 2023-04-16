@@ -22,7 +22,12 @@
     </main>
 </template>
 
-<script setup></script>
+<script setup>
+import  bar  from  './components/bar.vue'
+import banner from './components/banner_patient.vue'
+
+
+</script>
 
 <style scoped>
 

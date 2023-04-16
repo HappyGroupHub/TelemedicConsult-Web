@@ -82,6 +82,9 @@
 </template>
 
 <script setup>
+import bar from "./components/bar.vue"
+import banner from "./components/banner_patient.vue"
+
 import {ref} from "vue";
 import axios from "axios";
 

@@ -1,4 +1,7 @@
 <script setup>
+import bar from "./components/bar.vue"
+import banner from "./components/banner_patient.vue"
+
 import axios from "axios";
 import {ref} from "vue";
 

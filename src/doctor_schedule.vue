@@ -1,4 +1,9 @@
-<script setup></script>
+
+<script setup>
+import doctor_schedule from './components/doctor_schedule.vue';
+import banner_doctor_schedule from './components/banner_doctor.vue';
+import bar_doctor_login from "./components/bar_doctor_login.vue";
+</script>
 
 <template>
     <bar_doctor_login/>

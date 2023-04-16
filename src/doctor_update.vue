@@ -1,4 +1,6 @@
 <script setup>
+import banner_doctor_update from "./components/banner_doctor.vue";
+import doctor_update from "./components/doctor_update.vue"
 import Bar_doctor from "./components/bar_doctor.vue";
 </script>
 

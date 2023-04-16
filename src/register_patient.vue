@@ -165,7 +165,7 @@
 import {ref} from "vue";
 import axios from "axios";
 import Banner_check_patient from "./components/banner_patient.vue";
-
+import bar from "./components/bar.vue"
 
 const view = ref(1)
 const changeView = (index) => {
