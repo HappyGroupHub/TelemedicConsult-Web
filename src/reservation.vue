@@ -149,8 +149,12 @@ function submitSelections() {
             </table>
         </div>
         <div id="redblue">
-            紅色按鈕：不開放該時段<br>
-            藍色按鈕：開放時段
+          <div id="redblue1">
+            <div id="color_blue"></div>&nbsp;開放時段
+          </div>
+          <div id="redblue1">
+            <div id="color_red"></div>&nbsp;不開放該時段
+          </div>
         </div>
     </div>
 </template>
@@ -218,7 +222,23 @@ select {
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+}
 
+#redblue1{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#color_red{
+  width: 20px;
+  height: 20px;
+  background-color: #EA0000;
+}
+#color_blue{
+  width: 20px;
+  height: 20px;
+  background-color: #1a69a4;
 }
 </style>
