@@ -90,7 +90,27 @@ function update_patient_info_by_id(id, phone_number, address, height, weight, ic
 }
 
 
+function check_if_time_have_clinic(date, time_period) {
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/check_if_time_have_clinic', {
+        date: date, time_period: time_period
+    }, config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
+
 //get_patient_info_by_id('F130937605')
-if_patient_registered_line('A123456789')
+// if_patient_registered_line('A123456789')
 // update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
 // register_patient('王小明', 'F130937605', '男', '1990-01-01', 'A', 'A123456789', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
+check_if_time_have_clinic('2023-05-05', '早')
