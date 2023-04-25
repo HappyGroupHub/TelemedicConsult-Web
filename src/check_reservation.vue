@@ -2,6 +2,10 @@
     <bar/>
     <banner/>
     <div class="all">
+        <div class="hello_to_patient">
+          <h2>{{patient_name_from_login}}</h2>
+          <h3>{{female_or_male}}</h3>
+        </div>
         <div class="information">
             <div class="second">
                 <h2 id="white">您已預約</h2>
@@ -9,15 +13,15 @@
                 <h2 id="white">您的號碼牌</h2>
             </div>
             <div class="first1">
-                <h3 id="blue">2022年12月5日 星期一 早上</h3>
-                <h3 id="blue">早上九點整</h3>
-                <h3 id="blue">05號</h3>
+                <h3 id="blue">{{clinic_date}}</h3>
+                <h3 id="blue">{{clinic_time}}</h3>
+                <h3 id="blue">{{clinic_number}}</h3>
             </div>
         </div>
 
         <div class="buttons">
-            <button id="back">返回</button>
-            <button id="check_reservation">確認預約</button>
+            <button id="back" @click="back_to_select_time">返回</button>
+            <button id="check_reservation" @click="insert_check_clinic_content_to_db">確認預約</button>
         </div>
 
     </div>
@@ -27,7 +31,90 @@
 <script setup>
 import bar from './components/bar.vue'
 import banner from './components/banner_patient.vue'
+import {computed, ref} from "vue";
+import axios from "axios";
 
+const clinic_date = ref("2000-00-00");
+const clinic_time = ref("早上0點");
+const clinic_number = ref("0號");
+const get_clinic_number = sessionStorage.getItem("clinic_number");
+const patient_name_from_login = ref('吳修瑩');
+const female_or_male = ref('小姐');
+const get_clinic_id = sessionStorage.getItem("clinic_id");
+
+function get_patient_id(){
+    return sessionStorage.getItem("user_id");
+}
+if(window.location.href=== 'http://localhost:5173/check_reservation.html'){
+  get_patient_id();
+  get_patient_info_by_id()
+}
+
+
+function insert_check_clinic_content_to_db(){
+/*按下按鈕之後儲存掛號資料*/
+  let config = { headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'}
+  }
+  axios.post('http://127.0.0.1:5000/', {
+    clinic_id: get_clinic_id,
+
+  }, config)
+      .then(res => {
+
+
+      })
+      .catch(err => {
+        console.log(err)
+      });
+
+}
+function get_patient_info_by_id() {
+  let config = { headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'}
+  }
+  axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
+    id: get_patient_id(),
+  }, config)
+      .then(res => {
+        patient_name_from_login.value = res.data['name']
+        if(res.data['sex']==='男'){
+          female_or_male.value= '先生'
+        }else{
+          female_or_male.value= '小姐'
+        }
+
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+function back_to_select_time(){
+  window.location.href = "http://localhost:5173/reservation.html";
+}
+
+function get_clinic_info_by_clinic_id() {
+  /*根據clinic_id得到date跟time*/
+  let config = { headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'}
+  }
+  axios.post('http://127.0.0.1:5000/', {
+    clinic_id:get_clinic_id,
+  }, config)
+      .then(res => {
+        clinic_date.value = res.data['date']
+        clinic_time.value = res.data['time']
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+if(window.location.href=== 'http://localhost:5173/check_reservation.html'){
+  get_clinic_info_by_clinic_id();
+}
 </script>
 
 <style>
@@ -109,5 +196,16 @@ import banner from './components/banner_patient.vue'
     box-shadow: gray 2px 2px;
     border-radius: 10px;
     margin-left: 50px;
+}
+.hello_to_patient{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0px;
+  background-color: #00317B;
+  color: white;
+  border-radius: 10px;
+  width: 800px;
 }
 </style>

@@ -1,247 +1,175 @@
+
 <script setup>
+  import bar from './components/bar.vue'
+  import banner from './components/banner_patient.vue'
+  import {computed, ref} from "vue";
+  import {watch} from "vue";
+  import axios from "axios";
 
-import Banner from "./components/banner_patient.vue";
-import bar from "./components/bar.vue"
-import {computed, ref, watch} from "vue";
+  const clinic_date = ref('')
+  const time_period = ref('時段');
+  const disableOption1 = true;
+  const showConfirm = ref(false);
+  const if_this_can_be_selected = ref('');
+  const showWaitingNum = ref('');
+  const button_visible = ref(false);
+  const button_visible2 = ref(false);
+  const clinic_id = ref('');
+  const have_clinic = ref(false);
 
-const select1 = ref('年');
-const select2 = ref('月');
-const select3 = ref('周');
-const disableOption1 = true;
-const showConfirm = ref(false);
 
-
-watch([select1, select2, select3], (newValue, oldValue) => {
+  watch([clinic_date,time_period], (newValue, oldValue) => {
     if (selectionsComplete.value) {
-        submitSelections();
+      submitSelections();
     }
-});
+  });
 
-const selectionsComplete = computed(() =>
-    select1.value !== '年' &&
-    select2.value !== '月' &&
-    select3.value !== '周'
-);
-
-function submitSelections() {
+  const selectionsComplete = computed(()=>
+    clinic_date.value !== '' &&
+    time_period.value !== '時段'
+  );
+  function submitSelections() {
     showConfirm.value = true;
-    alert('將要選擇' + select1.value + '年' + select2.value + '月第' + select3.value + '周');
-}
+    if(window.confirm('確定選擇' + clinic_date.value + time_period.value + '時段?')){
+      check_if_exist_clinic()
+    }else{
+      showConfirm.value = false;
+    }
+  }
+  function check_if_exist_clinic(){
+/*查看有沒有病人選擇時段可以選擇*/
+    let config = { headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'}
+    }
+    axios.post('http://127.0.0.1:5000/check_if_time_have_clinic', {
+      date:clinic_date.value,
+      time_period:time_period.value
+    }, config)
+        .then(res => {
+          console.log(res)
+          if(res.data['have_clinic'] === true){
+            if_this_can_be_selected.value = '可以選擇';
+            button_visible.value = true;
+            clinic_id.value = res.data['clinic_id']
+            sessionStorage.setItem('clinic_id', clinic_id.value)
+          }else{
+            if_this_can_be_selected.value = '此時段未開放掛號，請重新選擇';
+
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        });
+  }
+  function showRegisterNum(){
+    /*顯示目前掛號是第幾號*/
+    let config = { headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'}
+    }
+    axios.post('http://127.0.0.1:5000/', {
+      clinic_id: clinic_id.value
+    }, config)
+        .then(res => {
+          console.log(res)
+          button_visible2.value = true;
+          showWaitingNum.value = res.data['waiting_num']+1
+          sessionStorage.setItem('waiting_num', showWaitingNum.value)
+        })
+        .catch(err => {
+          console.log(err)
+        });
+  }
+
+  function check_reservation(){
+    window.location.href = 'http://localhost:5173/check_reservation.html';
+  }
+
 
 </script>
 <template>
-    <bar/>
-    <banner/>
-    <div class="flex_container">
-        <div id="gray_background">
-            <div class="container">
+  <bar />
+  <banner />
+  <div class="flex_container">
+    <div id="gray_background">
+      <div class="container">
+          <p>選看診日期</p>
+          <input type="date" v-model="clinic_date" class="my_input">
+        <p>選看診時段</p>
+        <select v-model="time_period">
 
-                <select v-model="select1">
-                    <option value="年" :disabled="disableOption1">年</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                </select>
-                <select v-model="select2">
-                    <option value="月" :disabled="disableOption1">月</option>
-                    <option value="1">1月</option>
-                    <option value="2">2月</option>
-                    <option value="3">3月</option>
-                    <option value="4">4月</option>
-                    <option value="5">5月</option>
-                    <option value="6">6月</option>
-                    <option value="7">7月</option>
-                    <option value="8">8月</option>
-                    <option value="9">9月</option>
-                    <option value="10">10月</option>
-                    <option value="11">11月</option>
-                    <option value="12">12月</option>
-                </select>
-                <select v-model="select3">
-                    <option value="周" :disabled="disableOption1">周</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-
-            </div>
-            <table align="center">
-                <tr>
-                    <th width="100"></th>
-                    <th>一</th>
-                    <th>二</th>
-                    <th>三</th>
-                    <th>四</th>
-                    <th>五</th>
-                    <th>六</th>
-                    <th>日</th>
-                </tr>
-                <tr>
-                    <th>早</th>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                </tr>
-                <tr>
-                    <th>中</th>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button>
-                    </td>
-                    <td>
-                        <button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                </tr>
-                <tr>
-                    <th>晚</th>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot"></button>
-                    </td>
-                    <td>
-                        <button id="dot" style="background-color: #EA0000; cursor: not-allowed"></button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="redblue">
-          <div id="redblue1">
-            <div id="color_blue"></div>&nbsp;開放時段
-          </div>
-          <div id="redblue1">
-            <div id="color_red"></div>&nbsp;不開放該時段
-          </div>
-        </div>
+            <option value="時段" :disabled="disableOption1">時段</option>
+            <option value="早">早</option>
+            <option value="中">中</option>
+            <option value="晚">晚</option>
+          </select>
+      </div>
+      {{if_this_can_be_selected}}
+      <button v-show="button_visible" @click="showRegisterNum">查看現在預約是幾號</button>
+      {{showWaitingNum}}
+      <button v-show="button_visible2" @click="check_reservation">確定掛號</button>
     </div>
+  </div>
 </template>
 
 
 <style scoped>
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.flex_container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-table {
-    width: 900px;
-    height: 300px;
-    text-align: center;
-    font-size: 20px;
-    border: 2px #7d7d7d solid;
-    background-color: whitesmoke;
-}
-
-th, td, tr {
-    border: 0.1px #7d7d7d solid;
-    margin: -1px 0 0 -1px;
-}
-
-#gray_background {
-    width: 1080px;
-    height: 500px;
-    background-color: #E1E1E1;
-    border-radius: 20px;
-    box-shadow: gray 2px 2px;
-    margin: 10px 5px 15px 20px;
-}
-
-select {
-    width: 150px;
-    height: 75px;
-    font-size: 25px;
-    background-color: #00317B;
-    color: white;
-    text-align: center;
-    border-radius: 15px;
-    margin: 30px 40px 40px 20px;
-}
-
-
-#dot {
-    background-color: #1a69a4;
-    width: 20px;
-    height: 20px;
-    border-radius: 100px;
-}
-
-#redblue {
-    background-color: #FFFFD4;
-    border-radius: 50px;
-    width: 330px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-#redblue1{
+.container{
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  align-items: center;
+}
+.flex_container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+table{
+  width: 900px;
+  height:300px;
+  text-align: center;
+  font-size: 20px;
+  border:2px #7d7d7d solid;
+  background-color: whitesmoke;
+}
+th,td,tr{
+  border: 0.1px #7d7d7d solid;
+  margin:-1px 0 0 -1px;
+}
+#gray_background {
+  width: 1080px;
+  height: 500px;
+  background-color: #E1E1E1;
+  border-radius: 20px;
+  box-shadow: gray 2px 2px;
+  margin:10px 5px 15px 20px;
+  display: flex;
+  justify-content: center;
 }
 
-#color_red{
-  width: 20px;
-  height: 20px;
-  background-color: #EA0000;
+select{
+  width:150px;
+  height:75px;
+  font-size: 25px;
+  background-color: #00317B;
+  color:white;
+  text-align: center;
+  border-radius: 15px;
+  margin:30px 40px 40px 20px;
 }
-#color_blue{
-  width: 20px;
-  height: 20px;
-  background-color: #1a69a4;
+.my_input{
+  width:200px;
+  height:75px;
+  font-size: 25px;
+  background-color: #00317B;
+  color:white;
+  text-align: center;
+  border-radius: 15px;
+  margin:30px 40px 40px 20px;
 }
+
+
+
+
 </style>
