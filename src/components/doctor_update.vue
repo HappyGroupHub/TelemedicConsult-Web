@@ -1,7 +1,7 @@
 <script setup>
 
 function btn_update() {
-    alert("請填入會議連結")
+
 }
 
 </script>
@@ -12,7 +12,7 @@ function btn_update() {
             <p style="margin-top: 150px"><a href="doctor_clinic.html">開始看診</a></p>
         </div>
         <div id="dr_btn">
-            <p style="color: black; margin-top: 150px" v-on:click="btn_update">上傳會議連結</p>
+            <p style="color: black; margin-top: 150px" @click="btn_update">上傳會議連結</p>
         </div>
     </section>
 
@@ -40,11 +40,6 @@ section {
     opacity: .83;
 }
 
-#dr_img {
-    margin-top: 10px;
-    width: 200px;
-    height: 200px;
-}
 
 </style>
 

@@ -9,19 +9,13 @@
       <div id="inner_template">
         <h2 style="text-align: left">登入系統</h2>
         <h4 style="text-align: left">帳號</h4>
-        <input id="id" type="text"/>
+        <input id="id" type="text" v-model="doctor_id"/>
         <h4 style="text-align: left">密碼</h4>
-        <input id="birthday" type="password"/>
+        <input id="password" type="password" v-model="doctor_password">
         <div id="inner_btn">
-          <button id="submit"
-                  style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">
-            登入
-          </button>
-          <button id="submit"
-                  style="width:80px;height:40px;background-color: #00317B;color:white;text-align: center;border:0">
-            返回
-          </button>
+          <button id="submit_login" @click="check_doctor_login">登入</button>
         </div>
+        <p v-if="show_login_or_not">{{ show_login_or_not }}</p>
       </div>
 
       <p></p>
@@ -34,6 +28,41 @@
 
 import banner_doctor_login from "./components/banner_doctor.vue";
 import Bar from "./components/bar_doctor_login.vue";
+import {ref} from "vue";
+import axios from "axios";
+
+const doctor_id = ref('');
+const doctor_password = ref('');
+const show_login_or_not = ref('');
+
+function check_doctor_login() {
+  let config = { headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'}
+  }
+  axios.post('http://127.0.0.1:5000/', {
+    id: doctor_id.value,
+  }, config)
+      .then(res => {
+        if(res.data.status === "success"){
+          const patientInfo = res.data;
+          if(patientInfo.ic_card_number === ic_card_number.value){
+            window.location.href = "";
+            sessionStorage.setItem("doctor_id", id.value);
+            show_login_or_not.value = "成功拉";
+
+          }else {
+            show_login_or_not.value = "錯誤"
+          }
+        }else {
+          show_login_or_not.value = "醫師代碼"
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      });
+
+}
 
 </script>
 
@@ -59,7 +88,7 @@ import Bar from "./components/bar_doctor_login.vue";
 
 }
 
-#submit {
+#submit_login {
   display: inline-block;
   padding: 10px 20px;
   background-color: #4CAF50;
