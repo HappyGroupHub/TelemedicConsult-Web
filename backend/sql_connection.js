@@ -108,9 +108,33 @@ function check_if_time_have_clinic(date, time_period) {
         });
 }
 
+function update_clinic_status(clinic_id, status_dict) {
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/update_clinic_status', {
+        clinic_id: clinic_id, status_dict: status_dict
+    }, config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
 
-get_patient_info_by_id('F130937605')
+
+//get_patient_info_by_id('F130937605')
 // if_patient_registered_line('A123456789')
 // update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
 // register_patient('王小明', 'F130937605', '男', '1990-01-01', 'A', 'A123456789', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
-//check_if_time_have_clinic('2023-05-05', '早')
+// check_if_time_have_clinic('2023-05-05', '早')
+update_clinic_status('2', {
+    'start_time': '2023-4-27 14:10',
+    'end_time': '2023-4-27 14:20',
+    'link': 'https://google.com',
+    'progress': '88'
+})
