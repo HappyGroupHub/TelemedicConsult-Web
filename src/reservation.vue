@@ -52,13 +52,11 @@
         .then(res => {
           console.log(res)
           if(res.data['have_clinic'] === true){
-            if_this_can_be_selected.value = '可以選擇';
-            button_visible.value = true;
             clinic_id.value = res.data['clinic_id']
             sessionStorage.setItem('clinic_id', clinic_id.value)
+            showClinicInfo()
           }else{
             if_this_can_be_selected.value = '此時段未開放掛號，請重新選擇';
-
           }
         })
         .catch(err => {
@@ -88,53 +86,70 @@
 
   function turn_next_page() {
     window.location.href = 'http://localhost:5173/check_reservation.html';
-
   }
 
 </script>
 <template>
   <bar />
   <banner />
-  <div class="flex_container">
+
     <div id="gray_background">
       <div class="container">
-          <p>選看診日期</p>
+        <div id="choose_date">
+          <p id="choose_date_1">選看診日期</p>
           <input type="date" v-model="clinic_date" class="my_input">
-        <p>選看診時段</p>
-        <select v-model="time_period">
-
+        </div>
+        <div id="choose_time_period">
+          <p id="choose_date_1">選看診時段</p>
+          <select v-model="time_period" class="my_input">
             <option value="時段" :disabled="disableOption1">時段</option>
             <option value="早">早</option>
             <option value="中">中</option>
             <option value="晚">晚</option>
           </select>
+        </div>
       </div>
-      {{if_this_can_be_selected}}
-      <button v-show="button_visible" @click="showClinicInfo">查看診間資訊</button>
-      <div v-show="show_clinic_info">
-        {{clinic_doctor}}
-        {{total_appointment}}
-        {{clinic_date}}
-        {{time_period}}
+      <div>
+        {{if_this_can_be_selected}}
       </div>
-
+      <div v-show="show_clinic_info" id="clinic_info">
+        看診醫師: {{clinic_doctor}}<br>
+        目前掛號人數:{{total_appointment}}<br>
+        診間時間:{{clinic_date}}{{time_period}}<br>
+      </div>
       <button v-show="button_visible2" @click="turn_next_page">我要預約</button>
     </div>
-  </div>
 </template>
-
-
 <style scoped>
+#clinic_info{
+  background-color: #00317B;
+  color: white;
+  width: 300px;
+  height: 100px;
+}
+#choose_date_1{
+  background-color: white;
+  border-radius: 15px;
+  font-size: 25px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  color: #00317B;
+}
+#choose_date{
+  display: flex;
+  flex-direction: row;
+}
+#choose_time_period{
+  display: flex;
+  flex-direction: row;
+}
 .container{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
-.flex_container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
+
 table{
   width: 900px;
   height:300px;
@@ -155,7 +170,8 @@ th,td,tr{
   box-shadow: gray 2px 2px;
   margin:10px 5px 15px 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 select{
@@ -169,7 +185,7 @@ select{
   margin:30px 40px 40px 20px;
 }
 .my_input{
-  width:200px;
+  width:500px;
   height:75px;
   font-size: 25px;
   background-color: #00317B;
@@ -178,8 +194,4 @@ select{
   border-radius: 15px;
   margin:30px 40px 40px 20px;
 }
-
-
-
-
 </style>
