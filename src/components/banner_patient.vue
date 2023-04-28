@@ -55,15 +55,16 @@ if (window.location.href === href.homepage) {
     flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 1);
 }
 
+
 window.onscroll = function () {
     scrollFunction()
 };
 
 function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("nav").style.fontSize = "10px";
+        document.getElementById("wrapper").style.fontSize = "10px";
     } else {
-        document.getElementById("nav").style.fontSize = "20px";
+        document.getElementById("wrapper").style.fontSize = "20px";
     }
 }
 </script>
