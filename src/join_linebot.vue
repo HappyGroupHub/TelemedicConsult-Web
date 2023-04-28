@@ -55,7 +55,7 @@
         <div id="circle">1</div>
         <div id="whitebox">
           &nbsp;&nbsp;&nbsp;&nbsp;<h5>加入LINE好友</h5>&nbsp;&nbsp;&nbsp;&nbsp;
-          <div id="bluebox"><button id="button"><a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=027rvwqj">點我加入好友</a></button></div>
+          <div id="bluebox"><button id="button"><a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=027rvwqj" style="color: white">點我加入好友</a></button></div>
         </div>
       </div>
 
@@ -64,8 +64,8 @@
       <div id="step">
         <div id="circle">2</div>
         <div id="iimg">
-          <img src="">阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷
-          <img src="">阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷阿拉雷
+          <img src="image/line1.png" style="width: 50%">綁定帳號
+          <img src="image/line2.png" style="width: 50%">重新綁定帳號
         </div>
         <br><br>
       </div>
@@ -157,6 +157,9 @@ a:link, a:visited, a:hover, a:active {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  position: relative;
+  left: -77px;
+  top: -2px;
 }
 
 #iimg{
