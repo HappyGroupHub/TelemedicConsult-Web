@@ -11,11 +11,14 @@
   const disableOption1 = true;
   const showConfirm = ref(false);
   const if_this_can_be_selected = ref('');
-  const showWaitingNum = ref('');
   const button_visible = ref(false);
   const button_visible2 = ref(false);
   const clinic_id = ref('');
   const have_clinic = ref(false);
+  const clinic_doctor = ref('');
+  const total_appointment = ref('');
+  const show_clinic_info = ref(false);
+
 
 
   watch([clinic_date,time_period], (newValue, oldValue) => {
@@ -62,30 +65,31 @@
           console.log(err)
         });
   }
-  function showRegisterNum(){
-    /*顯示目前掛號是第幾號*/
+  function showClinicInfo(){
+    /*顯示診間資訊*/
     let config = { headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'}
     }
-    axios.post('http://127.0.0.1:5000/', {
+    axios.post('http://127.0.0.1:5000/get_clinic_info', {
       clinic_id: clinic_id.value
     }, config)
         .then(res => {
           console.log(res)
           button_visible2.value = true;
-          showWaitingNum.value = res.data['waiting_num']+1
-          sessionStorage.setItem('waiting_num', showWaitingNum.value)
+          show_clinic_info.value = true;
+          clinic_doctor.value = res.data['doc_name']
+          total_appointment.value = res.data.total_appointment
         })
         .catch(err => {
           console.log(err)
         });
   }
 
-  function check_reservation(){
+  function turn_next_page() {
     window.location.href = 'http://localhost:5173/check_reservation.html';
-  }
 
+  }
 
 </script>
 <template>
@@ -106,9 +110,15 @@
           </select>
       </div>
       {{if_this_can_be_selected}}
-      <button v-show="button_visible" @click="showRegisterNum">查看現在預約是幾號</button>
-      {{showWaitingNum}}
-      <button v-show="button_visible2" @click="check_reservation">確定掛號</button>
+      <button v-show="button_visible" @click="showClinicInfo">查看診間資訊</button>
+      <div v-show="show_clinic_info">
+        {{clinic_doctor}}
+        {{total_appointment}}
+        {{clinic_date}}
+        {{time_period}}
+      </div>
+
+      <button v-show="button_visible2" @click="turn_next_page">我要預約</button>
     </div>
   </div>
 </template>
