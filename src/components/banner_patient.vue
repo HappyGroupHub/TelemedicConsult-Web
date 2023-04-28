@@ -61,72 +61,93 @@ window.onscroll = function () {
 };
 
 function scrollFunction() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("wrapper").style.fontSize = "10px";
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("header").style.fontSize = "8px";
     } else {
-        document.getElementById("wrapper").style.fontSize = "20px";
+        document.getElementById("header").style.fontSize = "15px";
+      document.body.style.paddingTop = header.offsetHeight + 'px';
     }
 }
 </script>
 
 <template>
-    <div id="wrapper">
+  <header>
+    <div id="header">
+      <div id="head">
+        <h1>臺北市立聯合醫院 線上掛號</h1>
+        <ul class="menu">
+          <li id="title_bar"><a href="time.html">門診時間</a></li>
+          <li id="title_bar"><a href="index.html">關於我們</a></li>
+          <li id="title_bar"><a href="description.html">使用說明</a></li>
+        </ul>
+      </div>
+      <div id="wrapper">
         <div id="nav">
-            <ul>
-                <div v-if="banner.homepage===1">
-                    <a href="index.html">
-                        <li>首頁&nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-                <div v-if="banner.time===1">
-                    <a href="time.html">
-                        <li> >&nbsp&nbsp&nbsp 門診時間 &nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-                <div v-if="banner.patient_login===1">
-                    <a href="patient_login.html">
-                        <li> >&nbsp&nbsp&nbsp 線上掛號登入 &nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-                <div v-if="banner.register_patient===1">
-                    <a href="register_patient.html">
-                        <li> >&nbsp&nbsp&nbsp 填寫基本資料 &nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-                <div v-if="banner.reservation ===1">
-                    <a href="reservation.html">
-                        <li> >&nbsp&nbsp&nbsp 選擇日期時段 &nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-                <div v-if="banner.description ===1">
-                    <a href="description.html">
-                        <li> >&nbsp&nbsp&nbsp 使用說明 &nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-                <div v-if="banner.join_line_bot ===1">
-                    <a href="join_linebot.html">
-                        <li> >&nbsp&nbsp&nbsp 加入Line &nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-                <div v-if="banner.check_reservation ===1">
-                    <a href="check_reservation.html">
-                        <li> >&nbsp&nbsp&nbsp 確認掛號 &nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-                <div v-if="banner.update_patient ===1">
-                    <a href="update_patient.html">
-                        <li> >&nbsp&nbsp&nbsp 確認資料 &nbsp&nbsp&nbsp</li>
-                    </a>
-                </div>
-            </ul>
-            <hr>
-            <br>
+          <ul>
+            <div v-if="banner.homepage===1">
+              <a href="index.html">
+                <li>首頁&nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.time===1">
+              <a href="time.html">
+                <li> >&nbsp&nbsp&nbsp 門診時間 &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.patient_login===1">
+              <a href="patient_login.html">
+                <li> >&nbsp&nbsp&nbsp 線上掛號登入 &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.register_patient===1">
+              <a href="register_patient.html">
+                <li> >&nbsp&nbsp&nbsp 填寫基本資料 &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.reservation ===1">
+              <a href="reservation.html">
+                <li> >&nbsp&nbsp&nbsp 選擇日期時段 &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.description ===1">
+              <a href="description.html">
+                <li> >&nbsp&nbsp&nbsp 使用說明 &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.join_line_bot ===1">
+              <a href="join_linebot.html">
+                <li> >&nbsp&nbsp&nbsp 加入Line &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.check_reservation ===1">
+              <a href="check_reservation.html">
+                <li> >&nbsp&nbsp&nbsp 確認掛號 &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.update_patient ===1">
+              <a href="update_patient.html">
+                <li> >&nbsp&nbsp&nbsp 確認資料 &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+          </ul>
+          <hr>
         </div>
+      </div>
     </div>
+  </header>
+
 </template>
 
 
 <style scoped>
+#header{
+  position: fixed;
+  top: 0%;
+  background-color: white;
+  width: 100%;
+
+}
+
 #wrapper {
     width: 100%;
     margin-top: 0;
@@ -143,8 +164,33 @@ function scrollFunction() {
     list-style: none;
 }
 
-a:link, a:visited, a:hover, a:active {
-    color: #000000;
-    text-decoration: none;
+#head {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 0;
 }
+
+.header h1 {
+  font-size: 40px;
+  font-family: "微軟正黑體";
+  color: #29528F;
+  line-height: 100px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.menu li {
+  margin-right: 50px;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: #000000;
+  text-decoration: none;
+}
+
 </style>
