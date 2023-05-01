@@ -55,17 +55,20 @@ if (window.location.href === href.homepage) {
   flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 1);
 }
 
+window.addEventListener('load', function() {
+  document.body.style.paddingTop = document.getElementById('header').offsetHeight + 'px';
+});
 
-window.onscroll = function () {
-  scrollFunction()
-};
+window.onscroll = function (){
+  scrollFunction()};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+function scrollFunction(){
+  if (window.scrollY < 20){
+    document.getElementById("header").style.fontSize = "16px";
+    document.body.style.paddingTop = document.getElementById("header").offsetHeight + 'px';
+  }else {
     document.getElementById("header").style.fontSize = "8px";
-  } else {
-    document.getElementById("header").style.fontSize = "15px";
-    document.body.style.paddingTop = header.offsetHeight + 'px';
+    document.body.style.paddingTop = document.getElementById("header").offsetHeight + 'px';
   }
 }
 
