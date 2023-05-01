@@ -198,4 +198,4 @@ function get_clinic_info(clinic_id) {
 // })
 // make_appointment('2', 'F130937605')
 // cancel_appointment('F130937605', '2')
-get_clinic_info('2')
+ get_clinic_info('2')

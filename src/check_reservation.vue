@@ -1,10 +1,11 @@
 <template>
     <bar/>
     <banner/>
-    <div class="all">
+    <div class="all" v-if="view_check===2">
         <div class="hello_to_patient">
           <h2>{{patient_name_from_login}}</h2>
           <h3>{{female_or_male}}</h3>
+
         </div>
         <div class="information">
             <div class="second">
@@ -15,105 +16,129 @@
             <div class="first1">
                 <h3 id="blue">{{clinic_date}}</h3>
                 <h3 id="blue">{{clinic_time}}</h3>
-                <h3 id="blue">{{clinic_number}}</h3>
+                <h3 id="blue">{{your_appointment_num}}</h3>
             </div>
         </div>
 
         <div class="buttons">
-            <button id="back" @click="back_to_select_time">返回</button>
-            <button id="check_reservation" @click="insert_check_clinic_content_to_db">確認預約</button>
+            <button id="back" @click="back_to_index">返回首頁</button>
         </div>
-
+      *溫馨提醒:可以在LINE上得到更多資訊ㄛ
     </div>
-  *溫馨提醒:可以在LINE上得到更多資訊ㄛ
+
+
+  <div class="all" v-if="view_check===1">
+    <div class="hello_to_patient">
+      <h2>{{patient_name_from_login}}</h2>
+      <h3>{{female_or_male}}</h3>
+    </div>
+    <div class="information">
+      <div class="second">
+        <h2 id="white">您將要預約</h2>
+        <h2 id="white">開始看診時間</h2>
+        <h2 id="white">已預約人數</h2>
+      </div>
+      <div class="first1">
+        <h3 id="blue">{{clinic_date}}</h3>
+        <h3 id="blue">{{clinic_time}}</h3>
+        <h3 id="blue">{{appointment_num}}</h3>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="back" @click="back_to_select_time">返回</button>
+      <button id="check_reservation"  @click="double_check_reservation">確認預約</button>
+    </div>
+    *溫馨提醒:可以在LINE上得到更多資訊ㄛ
+  </div>
+
 </template>
 
 <script setup>
 import bar from './components/bar.vue'
 import banner from './components/banner_patient.vue'
+
 import {computed, ref} from "vue";
 import axios from "axios";
-
+const patient_name_from_login = sessionStorage.getItem('name')
 const clinic_date = ref("2000-00-00");
 const clinic_time = ref("早上0點");
-const clinic_number = ref("0號");
-const get_clinic_number = sessionStorage.getItem("clinic_number");
-const patient_name_from_login = ref('吳修瑩');
-const female_or_male = ref('小姐');
+const appointment_num = ref("5人");
+const female_or_male = ref('先生');
 const get_clinic_id = sessionStorage.getItem("clinic_id");
-
-function get_patient_id(){
-    return sessionStorage.getItem("user_id");
+const view_check = ref(1);
+const your_appointment_num = ref("6號")
+const id_id = sessionStorage.getItem("user_id")
+const changeViewCheck = (index) => {
+  view_check.value = index
 }
+
+
+if(sessionStorage.getItem('patient_sex')==='男'){
+  female_or_male.value ='先生'
+}else{
+  female_or_male.value ='小姐'
+}
+
 if(window.location.href=== 'http://localhost:5173/check_reservation.html'){
-  get_patient_id();
-  get_patient_info_by_id()
+
+  get_clinic_info_by_clinic_id_id()
 }
 
 
-function insert_check_clinic_content_to_db(){
-/*按下按鈕之後儲存掛號資料*/
-  let config = { headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'}
-  }
-  axios.post('http://127.0.0.1:5000/', {
-    clinic_id: get_clinic_id,
-
-  }, config)
-      .then(res => {
 
 
-      })
-      .catch(err => {
-        console.log(err)
-      });
-
-}
-function get_patient_info_by_id() {
-  let config = { headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'}
-  }
-  axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
-    id: get_patient_id(),
-  }, config)
-      .then(res => {
-        patient_name_from_login.value = res.data['name']
-        if(res.data['sex']==='男'){
-          female_or_male.value= '先生'
-        }else{
-          female_or_male.value= '小姐'
-        }
-
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
 function back_to_select_time(){
   window.location.href = "http://localhost:5173/reservation.html";
 }
+function back_to_index(){
+  window.location.href = "http://localhost:5173/";
+}
 
-function get_clinic_info_by_clinic_id() {
+function get_clinic_info_by_clinic_id_id() {
   /*根據clinic_id得到date跟time*/
   let config = { headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'}
   }
-  axios.post('http://127.0.0.1:5000/', {
+  axios.post('http://127.0.0.1:5000/get_clinic_info', {
     clinic_id:get_clinic_id,
   }, config)
       .then(res => {
         clinic_date.value = res.data['date']
-        clinic_time.value = res.data['time']
+        appointment_num.value = res.data.total_appointment
+        if(res.data['time_period']==='早') {
+          clinic_time.value = '早上9點'
+        }else if(res.data['time_period']==='中'){
+          clinic_time.value = '下午2點'
+        }else{if(res.data['time_period']==='晚') {
+          clinic_time.value = '晚上7點'
+        }
+
+        }
       })
       .catch(err => {
         console.log(err)
       });
 }
-if(window.location.href=== 'http://localhost:5173/check_reservation.html'){
-  get_clinic_info_by_clinic_id();
+
+function double_check_reservation(){
+  /*確認掛號*/
+  let config = { headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'}
+  }
+  axios.post('http://127.0.0.1:5000/make_appointment', {
+    clinic_id:get_clinic_id,
+    patient_id:id_id,
+  }, config)
+      .then(res => {
+        console.log(res)
+        changeViewCheck(2)
+      })
+      .catch(err => {
+        console.log(err)
+      });
 }
 </script>
 
