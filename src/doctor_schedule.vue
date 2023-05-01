@@ -10,7 +10,7 @@
         <div class="hr-line"></div>
         <div class="schedule_link">
           <div class="left_side" id="inner_title">目前看診號碼 {{item.current_number}}</div>
-          <div class="right_side" style="color: red">會議連結 {{item.meet_link}}</div>
+          <div class="right_side" >會議連結 {{item.meet_link}}</div>
         </div>
       </div>
   </div>
@@ -21,6 +21,8 @@
 import banner_doctor_schedule from './components/banner_doctor.vue';
 import bar_doctor_login from "./components/bar_doctor_login.vue";
 import { ref} from "vue";
+import axios from "axios";
+const doctor_id = ref(sessionStorage.getItem("doctor_id"));
 
 
 const list = ref([
@@ -31,24 +33,35 @@ const list = ref([
     clinic_situation: '未看診',
     current_number: '0',
     meet_link: '無'
-  },
-  {
-    date: '2023/04/27',
-    day: '星期三',
-    period: '下午',
-    clinic_situation: '已看診',
-    current_number: '10',
-    meet_link: 'https://meet.google.com/abc-xyz'
-  },
-  {
-    date: '2023/04/28',
-    day: '星期四',
-    period: '晚上',
-    clinic_situation: '已看診',
-    current_number: '15',
-    meet_link: 'https://meet.google.com/def-xyz'
   }
 ]);
+
+if(window.location.href === "http://localhost:5173/doctor_schedule.html"){
+  get_schedule()
+}
+
+function get_schedule() {
+  let config = { headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'}
+  }
+  axios.post('http://127.0.0.1:5000/', {
+    id: doctor_id.value,
+  }, config)
+      .then(res => {
+        if(res.data.status === "success"){
+          list.value = res.data.schedule;
+        }else {
+          console.log("error")
+        }
+
+
+      })
+      .catch(err => {
+        console.log(err)
+      });
+
+}
 </script>
 
 <style scoped>
@@ -65,7 +78,8 @@ const list = ref([
 }
 
 .hr-line {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid white;
+  margin-top: 10px;
 }
 
 

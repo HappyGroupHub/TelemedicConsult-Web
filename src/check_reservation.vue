@@ -74,6 +74,7 @@ const changeViewCheck = (index) => {
 }
 
 
+
 if(sessionStorage.getItem('patient_sex')==='男'){
   female_or_male.value ='先生'
 }else{
@@ -135,6 +136,27 @@ function double_check_reservation(){
       .then(res => {
         console.log(res)
         changeViewCheck(2)
+        get_patient_appointment_with_clinic_id()
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+
+function get_patient_appointment_with_clinic_id() {
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'localhost:5000'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/get_patient_appointment_with_clinic_id', {
+    patient_id: id_id,
+    clinic_id: get_clinic_id
+  }, config)
+      .then(response => {
+        console.log(response)
+        your_appointment_num.value = response.data.appointment_num
       })
       .catch(err => {
         console.log(err)

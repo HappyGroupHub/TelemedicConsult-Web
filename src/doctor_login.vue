@@ -45,8 +45,8 @@ function check_doctor_login() {
   }, config)
       .then(res => {
         if(res.data.status === "success"){
-          const patientInfo = res.data;
-          if(patientInfo.ic_card_number === ic_card_number.value){
+
+          if(res.data.doctor_password === doctor_password.value){
             window.location.href = "";
             sessionStorage.setItem("doctor_id", id.value);
             show_login_or_not.value = "成功拉";

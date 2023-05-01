@@ -1,8 +1,6 @@
 <script setup>
 
-function btn_update() {
 
-}
 
 </script>
 
