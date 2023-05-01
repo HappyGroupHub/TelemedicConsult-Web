@@ -103,7 +103,7 @@ const height = ref('')
 const weight = ref('')
 const blood_type = ref('')
 const address = ref('')
-let userID = sessionStorage.getItem('user_id')
+let userID = localStorage.getItem('user_id')
 const mess = ref('')
 
 
@@ -133,6 +133,7 @@ function show_patient_info_by_id() {
                 weight.value = res.data.weight;
                 blood_type.value = res.data.blood_type;
                 address.value = res.data.address;
+
 
 
             } else {
@@ -170,6 +171,8 @@ function update_patient_info_by_id() {
     }, config)
         .then(response => {
             console.log(response)
+            sessionStorage.setItem('name', name.value);
+            sessionStorage.setItem('patient_sex', sex.value);
             window.location.href = "http://localhost:5173/reservation.html"
         })
         .catch(err => {
