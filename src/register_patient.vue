@@ -1,69 +1,70 @@
 <template>
     <bar v-if="view===1 || view===2"/>
     <banner_check_patient v-if="view===1"/>
+  <br>
     <div id="container1" v-if="view===1">
-        <br>
+      <br>
         <h2>初診基本資料</h2>
+      <br>
         <div className="basic">
             <form>
                 <div id="left">
-                    姓名<br>
+                    姓名
                     <input v-model="name" type="text" id="name" name="name" required="required"/>
-                    <br>
-                    身分證字號<br>
+                    <br><br>
+                    身分證字號
                     <input v-model="id" type="text" id="identity" name="id" required="required"/>
                     {{ check_id_msg }}
-                    <br>
-                    生日<br>
+                    <br><br>
+                    生日
                     <input v-model="birthday" type="date" id="birthday" name="birthday" required="required"/>
-                    <br>
+                    <br><br>
                     <session className="form_session">
-                        生理性別<br>
+                        生理性別
                         <input v-model="sex" name="sex" type="radio" value="男" required="required">男
                         <input v-model="sex" name="sex" type="radio" value="女" required="required">女
                     </session>
 
-                    <br>
-                    緊急聯絡人姓名<br>
+                    <br><br>
+                    緊急聯絡人姓名
                     <input v-model="ice_contact" id="ice_contact" name="ice_contact" required="required">
-                    <br>
-                    緊急聯絡人電話<br>
+                    <br><br>
+                    緊急聯絡人電話
                     <input v-model="ice_phone" name="ice_phone" required="required" type="text" maxLength="10"
                            pattern="09\d{8}" placeholder="09xxxxxxxx">
                     {{ check_ice_number_msg }}
-                    <br>
-                    緊急聯絡人關係<br>
+                    <br><br>
+                    緊急聯絡人關係
                     <input v-model="ice_relation" name="ice_relation" required="required">
-                    <br>
+                    <br><br>
 
                 </div>
                 <div id="right">
 
-                    健保卡卡號<br>
+                    健保卡卡號
                     <input v-model="ic_card_number" name="ic_card_number" required="required">
-                    <br>
-                    手機號碼<br>
+                    <br><br>
+                    手機號碼
                     <input v-model="phone_number" name="phone_number" required="required" type="text" maxLength="10"
                            pattern="09\d{8}" placeholder="09xxxxxxxx">
                     {{ check_number_msg }}
-                    <br>
+                    <br><br>
                     <session className="form_session">
                         身高<br>
                         <input v-model="height" type="text" id="height" name="height"/>公分
                     </session>
-
-                    <br>
+                    <br><br>
                     <session className="form_session">
                         體重<br>
                         <input v-model="weight" type="text" id="weight" name="weight"/>公斤
                     </session>
-                    <br>
+                    <br><br>
                     <session className="form_session">
                         血型<br>
                         <input v-model="blood_type" type="text" id="blood_type" name="blood_type" required="required"/>型
                     </session>
-                    <br>
-                    地址<br>
+                    <br><br>
+                    地址
                     <input v-model="address" type="text" id="address" name="address" required="required"/>
 
                 </div>
@@ -93,56 +94,53 @@
         <div className="basic">
             <form>
                 <div id="left">
-                    姓名<br>
+                    姓名
                     <input v-model="name" type="text" disabled/>
-                    <br>
-                    身分證字號<br>
+                  <br><br>
+                    身分證字號
                     <input v-model="id" type="text" disabled/>
-                    <br>
-                    生日<br>
+                  <br><br>
+                    生日
                     <input v-model="birthday" id="birthday" name="birthday" disabled/>
-                    <br>
-                    生理性別<br>
+                  <br><br>
+                    生理性別
                     <input v-model="sex" name="sex" type="text" disabled>
-                    <br>
-                    緊急聯絡人姓名<br>
+                  <br><br>
+                    緊急聯絡人姓名
                     <input v-model="ice_contact" id="ice_contact" name="ice_contact" disabled>
-                    <br>
-                    緊急聯絡人電話<br>
+                  <br><br>
+                    緊急聯絡人電話
                     <input v-model="ice_phone" name="ice_phone" type="text" disabled>
-                    <br>
-                    緊急聯絡人關係<br>
+                  <br><br>
+                    緊急聯絡人關係
                     <input v-model="ice_relation " id="ice_relation" name="ice_relation" disabled>
-                    <br>
+                  <br><br>
                 </div>
                 <div id="right">
-                    健保卡卡號<br>
+                    健保卡卡號
                     <input v-model="ic_card_number " id="ic_card_number" name="ic_card_number" disabled>
-                    <br>
-                    手機號碼<br>
+                  <br><br>
+                    手機號碼
                     <input v-model="phone_number" name="phone_number" id="phone_number" type="text" disabled>
-
-                    <br>
+                  <br><br>
                     <div>
                         身高<br>
                         <input v-model="height" type="text" id="height" name="height" disabled/>公分
                     </div>
-
-                    <br>
+                  <br><br>
                     <div>
                         體重<br>
                         <input v-model="weight" type="text" id="weight" name="weight" disabled/>公斤
                     </div>
-                    <br>
+                  <br><br>
                     <div>
                         血型<br>
                         <input v-model="blood_type" type="text" id="blood_type" name="blood_type" disabled>型
                     </div>
-                    <br>
-                    地址<br>
+                  <br><br>
+                    地址
                     <input v-model="address" type="text" id="address" name="address" disabled/>
-                    <br>
-
+                  <br>
                 </div>
             </form>
             <br>
@@ -151,7 +149,6 @@
                         style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0">
                     回去更改
                 </button>
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <a href="join_linebot.html">
                     <button @click="register_patient" id="check_writing" type="submit"
                             style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0">
@@ -310,6 +307,7 @@ form {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
+  margin-bottom: 5px;
 }
 
 #left {

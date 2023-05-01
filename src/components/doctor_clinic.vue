@@ -7,7 +7,6 @@
                 <button @click="add" id="pass">過號</button>
                 <button @click="add" id="next">完成</button>
             </div>
-
         </div>
         <div id="input_base_list">
             <ol>
@@ -79,7 +78,7 @@ watch(num, (newNum, oldNum) => {
     justify-content: space-around;
     align-items: center;
     width: 300px;
-    height: 100px;
+    height: 122px;
 }
 
 #input_base {
@@ -90,8 +89,7 @@ watch(num, (newNum, oldNum) => {
     box-shadow: gray 2px 2px;
     display: flex;
     flex-direction: column;
-
-
+  align-items: center;
 }
 
 #next {

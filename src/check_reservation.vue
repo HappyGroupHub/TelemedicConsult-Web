@@ -1,6 +1,7 @@
 <template>
     <bar/>
     <banner/>
+    <br>
     <div class="all" v-if="view_check===2">
         <div class="hello_to_patient">
           <h2>{{patient_name_from_login}}</h2>
@@ -44,12 +45,12 @@
         <h3 id="blue">{{appointment_num}}</h3>
       </div>
     </div>
-
+    <br>
     <div class="buttons">
       <button id="back" @click="back_to_select_time">返回</button>
       <button id="check_reservation"  @click="double_check_reservation">確認預約</button>
     </div>
-    *溫馨提醒:可以在LINE上得到更多資訊ㄛ
+    <p style="margin-bottom: 0">*溫馨提醒:可以在LINE上得到更多資訊ㄛ</p>
   </div>
 
 </template>
@@ -167,7 +168,7 @@ function get_patient_appointment_with_clinic_id() {
 <style>
 #blue {
     height: 35px;
-    width: 350px;
+    width: 340px;
     font-size: 20px;
     background-color: #00317B;
     color: white;
@@ -175,6 +176,7 @@ function get_patient_appointment_with_clinic_id() {
     border-radius: 15px;
     padding-top: 15px;
     box-shadow: gray 2px 2px;
+    margin-left: 5px;
 }
 
 .first1 {
@@ -190,7 +192,7 @@ function get_patient_appointment_with_clinic_id() {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .second {
@@ -200,7 +202,7 @@ function get_patient_appointment_with_clinic_id() {
 }
 
 #white {
-    width: 150px;
+    width: 165px;
     height: 35px;
     background-color: white;
     color: #00317B;
@@ -208,6 +210,7 @@ function get_patient_appointment_with_clinic_id() {
     border-radius: 10px;
     padding-top: 15px;
     box-shadow: gray 2px 2px;
+    margin-right: 5px;
 }
 
 .all {
