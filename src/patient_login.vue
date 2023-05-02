@@ -23,7 +23,8 @@
             const patientInfo = res.data;
             if(patientInfo.ic_card_number === ic_card_number.value){
               window.location.href = "/update_patient.html";
-              sessionStorage.setItem("user_id", id.value);
+              localStorage.setItem("user_id", id.value);
+              localStorage.setItem('name', patientInfo.name);
               message.value = "成功拉";
 
             }else {

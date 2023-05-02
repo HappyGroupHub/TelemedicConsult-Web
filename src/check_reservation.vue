@@ -61,22 +61,22 @@ import banner from './components/banner_patient.vue'
 
 import {computed, ref} from "vue";
 import axios from "axios";
-const patient_name_from_login = sessionStorage.getItem('name')
+const patient_name_from_login = localStorage.getItem('name')
 const clinic_date = ref("2000-00-00");
 const clinic_time = ref("早上0點");
 const appointment_num = ref("5人");
 const female_or_male = ref('先生');
-const get_clinic_id = sessionStorage.getItem("clinic_id");
+const get_clinic_id = localStorage.getItem("clinic_id");
 const view_check = ref(1);
 const your_appointment_num = ref("6號")
-const id_id = sessionStorage.getItem("user_id")
+const id_id = localStorage.getItem("user_id")
 const changeViewCheck = (index) => {
   view_check.value = index
 }
 
 
 
-if(sessionStorage.getItem('patient_sex')==='男'){
+if(localStorage.getItem('patient_sex')==='男'){
   female_or_male.value ='先生'
 }else{
   female_or_male.value ='小姐'

@@ -8,7 +8,7 @@
   import {computed, ref} from "vue";
 
   const msg = ref('')
-  let userID = sessionStorage.getItem('user_id')
+  let userID = localStorage.getItem('user_id')
 
   function if_patient_registered_line() {
     let config = { headers: {

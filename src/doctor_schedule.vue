@@ -22,7 +22,7 @@ import banner_doctor_schedule from './components/banner_doctor.vue';
 import bar_doctor_login from "./components/bar_doctor_login.vue";
 import { ref} from "vue";
 import axios from "axios";
-const doctor_id = ref(sessionStorage.getItem("doctor_id"));
+const doctor_id = ref(localStorage.getItem("doctor_id"));
 
 
 const list = ref([

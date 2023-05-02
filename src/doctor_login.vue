@@ -48,7 +48,7 @@ function check_doctor_login() {
 
           if(res.data.doctor_password === doctor_password.value){
             window.location.href = "";
-            sessionStorage.setItem("doctor_id", id.value);
+            localStorage.setItem("doctor_id", id.value);
             show_login_or_not.value = "成功拉";
 
           }else {
