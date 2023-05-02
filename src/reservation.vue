@@ -92,14 +92,15 @@
 <template>
   <bar />
   <banner />
+  <br><br>
     <div id="gray_background">
       <div class="container">
         <div id="choose_date">
-          <div id="choose_date_1">選看診日期</div>
+          <div id="choose_date_1">看診日期</div>
           <input type="date" v-model="clinic_date" class="my_input">
         </div>
         <div id="choose_time_period">
-          <div id="choose_date_1">選看診時段</div>
+          <div id="choose_date_1">看診時段</div>
           <select v-model="time_period" class="my_input">
             <option value="時段" :disabled="disableOption1">時段</option>
             <option value="早">早</option>
@@ -192,8 +193,7 @@ th,td,tr{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 220px;
-  margin-top: 50px;
+  margin: auto;
 }
 
 select{

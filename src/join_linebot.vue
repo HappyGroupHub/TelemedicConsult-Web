@@ -45,27 +45,35 @@
   <bar />
   <banner />
   <div class="flex_container">
-
     <div id=blue_block>
       <h2>綁定LINE流程</h2>
     </div>
-
     <div id="box">
       <div id="step">
         <div id="circle">1</div>
         <div id="whitebox">
-          &nbsp;&nbsp;&nbsp;&nbsp;<h5>加入LINE好友</h5>&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h5>加入LINE好友</h5>&nbsp;&nbsp;&nbsp;
           <div id="bluebox"><button id="button"><a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=027rvwqj" style="color: white">點我加入好友</a></button></div>
         </div>
       </div>
-
       <hr>
-
       <div id="step">
         <div id="circle">2</div>
         <div id="iimg">
-          <img src="image/line1.png" style="width: 50%">綁定帳號
-          <img src="image/line2.png" style="width: 50%">重新綁定帳號
+          <div id="whiteboxb">
+            <img src="image/LINE2.jpg" style="width: 65%; border-radius: 50px">
+            <div id="blueboxb">
+              1. 點選會員服務<br><br>
+              2. 點選帳號綁定<br><br>
+              3. 輸入身分證字號<br><br>
+              4. 輸入生日<br><br>
+              5. 點選確定綁定<br><br>
+            </div>
+          </div>
+          <div id="whiteboxb">
+            <img src="image/LINE1.jpg" style="width: 65%; border-radius: 50px">
+            <div id="blueboxb">重新綁定LINE帳號</div>
+          </div>
         </div>
         <br><br>
       </div>
@@ -140,7 +148,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 #button{
-  width:250px;
+  width:200px;
   height:75px;
   background-color: #00317B;
   color:white;
@@ -166,4 +174,27 @@ a:link, a:visited, a:hover, a:active {
   display: flex;
   flex-direction: column;
 }
+
+#whiteboxb{
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: #7d7d7d;
+  margin: 20px;
+  width: 850px;
+  height: 355px;
+}
+
+#blueboxb{
+  display: flex;
+  color: white;
+  background: #00317B;
+  border-radius: 20px;
+  height: 355px;
+  align-items: center;
+  width: 321px;
+  justify-content: center;
+}
+
 </style>

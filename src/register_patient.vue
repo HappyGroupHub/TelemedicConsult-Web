@@ -149,6 +149,7 @@
                         style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0">
                     回去更改
                 </button>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <a href="join_linebot.html">
                     <button @click="register_patient" id="check_writing" type="submit"
                             style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0">
