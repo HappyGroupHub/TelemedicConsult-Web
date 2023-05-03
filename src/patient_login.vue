@@ -25,6 +25,7 @@
               window.location.href = "/update_patient.html";
               localStorage.setItem("user_id", id.value);
               localStorage.setItem('name', patientInfo.name);
+              localStorage.setItem('patient_sex',patientInfo.sex)
               message.value = "成功拉";
 
             }else {

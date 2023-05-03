@@ -218,6 +218,7 @@ function register_patient() {
         localStorage.clear()
         localStorage.setItem("user_id", id.value);
         localStorage.setItem('name', name.value);
+        localStorage.setItem('patient_sex',sex.value)
         window.location.href = "/join_linebot.html"
       })
       .catch(err => {
