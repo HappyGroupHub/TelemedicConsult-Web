@@ -1,26 +1,60 @@
 <script setup>
+import {ref} from "vue";
+import axios from "axios";
+
+const clinic_id = ref(localStorage.getItem('clinic_id'))
+const line_link = ref('')
+const status_dict = ref({
+
+})
+
+function btn_update_link(){
+  line_link.value = prompt("請輸入會議室連結");
+  if(line_link.value!=null){
+    submit_line_link_to_db();
+  }
+  status_dict.value = ref({
+    'link': line_link.value,
+
+  })
+}
+
+function submit_line_link_to_db() {
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'localhost:5000'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/update_clinic_status', {
+    clinic_id: clinic_id.value,
+    status_dict: status_dict.value
+  }, config)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(err => {
+        console.log(err)
+      });
 
 
+}
 
 </script>
 
 <template>
     <section id="doctor_btn">
         <div id="dr_btn">
-            <p style="margin-top: 150px"><a href="doctor_clinic.html">開始看診</a></p>
+            <p style="margin-top: 150px" >開始看診</p>
         </div>
         <div id="dr_btn">
-            <p style="color: black; margin-top: 150px" @click="btn_update">上傳會議連結</p>
+            <button style="color: black; margin-top: 150px" @click="btn_update_link">上傳會議連結</button>
         </div>
     </section>
 
 </template>
 
 <style scoped>
-a:link, a:visited, a:hover, a:active {
-    color: #000000;
-    text-decoration: none;
-}
 
 section {
     display: flex;

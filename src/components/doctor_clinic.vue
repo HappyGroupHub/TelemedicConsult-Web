@@ -10,18 +10,7 @@
         </div>
         <div id="input_base_list">
             <ol>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
-                <li id='number_list'>rrr</li>
+                <li id='number_list'>{{patient_appointment_number}}.{{this_clinic_patient_name}}</li>
             </ol>
         </div>
     </div>
@@ -43,7 +32,9 @@
 <script setup>
 import {ref, watch} from 'vue'
 
-const num = ref(1)
+const patient_appointment_number = ref(1)
+const this_clinic_patient_name = ref('你好阿')
+const num = ref(0)
 const add = () => {
     num.value++
 }
@@ -126,9 +117,10 @@ watch(num, (newNum, oldNum) => {
 
 #number_list {
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     margin: 5px 5px 5px 5px;
     list-style-type: none;
+  text-align: left;
 }
 
 #under_box_gray {

@@ -11,7 +11,6 @@
   const disableOption1 = true;
   const showConfirm = ref(false);
   const if_this_can_be_selected = ref('');
-  const button_visible = ref(false);
   const button_visible2 = ref(false);
   const clinic_id = ref('');
   const have_clinic = ref(false);
@@ -53,7 +52,7 @@
           console.log(res)
           if(res.data['have_clinic'] === true){
             clinic_id.value = res.data['clinic_id']
-            sessionStorage.setItem('clinic_id', clinic_id.value)
+            localStorage.setItem('clinic_id', clinic_id.value)
             showClinicInfo()
           }else{
             if_this_can_be_selected.value = '此時段未開放掛號，請重新選擇';
@@ -135,6 +134,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
 }
 
 #choose_date_1{
