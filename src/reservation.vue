@@ -9,7 +9,6 @@
   const clinic_date = ref('')
   const time_period = ref('時段');
   const disableOption1 = true;
-  const showConfirm = ref(false);
   const if_this_can_be_selected = ref('');
   const button_visible2 = ref(false);
   const clinic_id = ref('');
@@ -22,7 +21,7 @@
 
   watch([clinic_date,time_period], (newValue, oldValue) => {
     if (selectionsComplete.value) {
-      submitSelections();
+      check_if_exist_clinic()
     }
   });
 
@@ -30,14 +29,7 @@
     clinic_date.value !== '' &&
     time_period.value !== '時段'
   );
-  function submitSelections() {
-    showConfirm.value = true;
-    if(window.confirm('確定選擇' + clinic_date.value + time_period.value + '時段?')){
-      check_if_exist_clinic()
-    }else{
-      showConfirm.value = false;
-    }
-  }
+
   function check_if_exist_clinic(){
 /*查看有沒有病人選擇時段可以選擇*/
     let config = { headers: {
@@ -51,11 +43,15 @@
         .then(res => {
           console.log(res)
           if(res.data['have_clinic'] === true){
+            if_this_can_be_selected.value = ''
             clinic_id.value = res.data['clinic_id']
             localStorage.setItem('clinic_id', clinic_id.value)
             showClinicInfo()
           }else{
             if_this_can_be_selected.value = '此時段未開放掛號，請重新選擇';
+            clinic_date.value = ''
+            time_period.value = ''
+            clinic_doctor.value = ''
           }
         })
         .catch(err => {
