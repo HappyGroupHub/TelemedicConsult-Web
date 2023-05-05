@@ -15,7 +15,6 @@ function btn_update_link(){
   }
   status_dict.value = ref({
     'link': line_link.value,
-
   })
 }
 
@@ -27,8 +26,8 @@ function submit_line_link_to_db() {
     }
   }
   axios.post('http://127.0.0.1:5000/update_clinic_status', {
-    clinic_id: clinic_id.value,
-    status_dict: status_dict.value
+    clinic_id: '2',
+    status_dict:{ 'link': line_link.value,}
   }, config)
       .then(response => {
         console.log(response)
