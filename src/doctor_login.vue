@@ -40,24 +40,25 @@ function check_doctor_login() {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'}
   }
-  axios.post('http://127.0.0.1:5000/', {
-    id: doctor_id.value,
+  axios.post('http://127.0.0.1:5000/doctor_login', {
+    doc_id: doctor_id.value,
+    password: doctor_password.value
   }, config)
       .then(res => {
         if(res.data.status === "success"){
-
-          if(res.data.doctor_password === doctor_password.value){
-            window.location.href = "";
-            localStorage.setItem("doctor_id", id.value);
-            show_login_or_not.value = "成功拉";
-
+          const doctorInfo = res.data;
+          if(doctorInfo['login'] === true) {
+            show_login_or_not.value = "登入成功";
+            localStorage.setItem("doctor_id", doctor_id.value);
+            window.location.href = "/doctor_schedule.html";
           }else {
-            show_login_or_not.value = "錯誤"
+            show_login_or_not.value = '登入失敗';
           }
-        }else {
-          show_login_or_not.value = "醫師代碼"
-        }
+          }
+
+
       })
+
       .catch(err => {
         console.log(err)
       });

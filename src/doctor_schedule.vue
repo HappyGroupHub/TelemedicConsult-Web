@@ -2,109 +2,137 @@
   <bar_doctor_login/>
   <banner_doctor_schedule/>
   <div id="list_for_schedule">
-      <div v-for="item in list" :key="list" id="input_base">
-        <div class="yellow_container">
-          <div class="left_side" id="inner_title">{{item.date}} {{item.day}} {{item.period}}</div>
-          <div class="right_side" style="color: red">{{item.clinic_situation}}</div>
-        </div>
-        <div class="hr-line"></div>
-        <div class="schedule_link">
-          <div class="left_side" id="inner_title">目前看診號碼 {{item.current_number}}</div>
-          <div class="right_side" >會議連結 {{item.meet_link}}</div>
+    <div v-for="item in list" :key="item.clinic_id" id="input_base">
+      <div class="yellow_container">
+        <div class="left_side" id="inner_title">{{ item.date }}{{ getWeekDay(item.date) }}{{ item.time_period }}班</div>
+        <div class="right_side" style="color: red">
+          {{ item.progress === 0 ? '未看診' : (item.progress === item.biggest_appointment_num ? '已完成看診' : '看診中') }}
         </div>
       </div>
+      <div class="hr-line"></div>
+      <div class="schedule_link">
+        <div class="left_side" id="inner_title">目前看診號碼 {{ item.progress }}</div>
+        <button @click="update_schedule(item.clinic_id)">更新</button>
+        <div class="right_side">會議連結 {{ item.link }}</div>
+      </div>
+    </div>
   </div>
-
 </template>
 
 <script setup>
-import banner_doctor_schedule from './components/banner_doctor.vue';
 import bar_doctor_login from "./components/bar_doctor_login.vue";
-import { ref} from "vue";
+import banner_doctor_schedule from "./components/banner_doctor.vue";
+import {ref} from "vue";
 import axios from "axios";
+
+
 const doctor_id = ref(localStorage.getItem("doctor_id"));
+const list = ref([]);
+const situation = ref("");
 
-
-const list = ref([
-  {
-    date: '2023/04/26',
-    day: '星期二',
-    period: '上午',
-    clinic_situation: '未看診',
-    current_number: '0',
-    meet_link: '無'
-  }
-]);
-
-if(window.location.href === "http://localhost:5173/doctor_schedule.html"){
-  get_schedule()
+if (window.location.href === "http://localhost:5173/doctor_schedule.html") {
+  get_schedule();
 }
 
 function get_schedule() {
-  let config = { headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'}
-  }
-  axios.post('http://127.0.0.1:5000/', {
-    id: doctor_id.value,
-  }, config)
-      .then(res => {
-        if(res.data.status === "success"){
-          list.value = res.data.schedule;
-        }else {
-          console.log("error")
-        }
-
-
+  let config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+  };
+  axios
+      .post("http://127.0.0.1:5000/get_doctor_clinic_list", {
+        doc_id: doctor_id.value,
+      }, config)
+      .then((res) => {
+        list.value = res.data.clinic_list
       })
-      .catch(err => {
-        console.log(err)
+      .catch((err) => {
+        console.log(err);
       });
-
 }
+
+function getWeekDay(date) {
+  let weekDay = new Date(date).getDay();
+  let weekDayString = "";
+  switch (weekDay) {
+    case 0:
+      weekDayString = " 星期日";
+      break;
+    case 1:
+      weekDayString = " 星期一";
+      break;
+    case 2:
+      weekDayString = " 星期二";
+      break;
+    case 3:
+      weekDayString = " 星期三";
+      break;
+    case 4:
+      weekDayString = " 星期四";
+      break;
+    case 5:
+      weekDayString = " 星期五";
+      break;
+    case 6:
+      weekDayString = " 星期六";
+      break;
+  }
+  return weekDayString;
+}
+
+const update_schedule = (clinic_id) => {
+  localStorage.setItem("clinic_id", clinic_id);
+  window.location.href = "/doctor_update.html";
+};
 </script>
 
 <style scoped>
-
 #input_base {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: #FDE982;
   width: 900px;
   height: 100px;
   padding: 30px;
   border-radius: 30px;
-  margin: 15px 25% 15px 25%;
+  margin: 15px auto;
+}
 
+.yellow_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.schedule_link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.left_side, .right_side {
+  flex: 1;
+  text-align: center;
+}
+
+.left_side {
+  text-align: left;
+
+}
+
+.right_side {
+  text-align: right;
 }
 
 .hr-line {
   border-bottom: 1px solid white;
-  margin-top: 10px;
-}
-
-
-.yellow_container {
-  display: flex;
-  justify-content: space-between; /* 左右分别对齐 */
-}
-
-.schedule_link{
-  display: flex;
-  justify-content: space-between; /* 左右分别对齐 */
-  margin-top: 40px;
-}
-
-.left_side {
-  order: 1; /* 调整左边元素的顺序 */
-}
-
-.right_side {
-  order: 2; /* 调整右边元素的顺序 */
-
-}
-#list_for_schedule {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  margin: 10px 0;
 }
 </style>

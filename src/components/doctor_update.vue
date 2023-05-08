@@ -1,4 +1,5 @@
 <script setup>
+
 import {ref} from "vue";
 import axios from "axios";
 
@@ -42,6 +43,7 @@ function submit_line_link_to_db() {
 </script>
 
 <template>
+
     <section id="doctor_btn">
         <div id="dr_btn">
             <p style="margin-top: 150px" >開始看診</p>
