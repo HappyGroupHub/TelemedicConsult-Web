@@ -220,6 +220,25 @@ function doctor_login(doc_id, password) {
         });
 }
 
+
+function get_doctor_clinic_list(doc_id) {
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/get_doctor_clinic_list', {
+        doc_id: doc_id
+    }, config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
 //get_patient_info_by_id('F130937605')
 // if_patient_registered_line('A123456789')
 // update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
@@ -236,4 +255,5 @@ function doctor_login(doc_id, password) {
 // cancel_appointment('F130937605', '2')
 // get_clinic_info('2')
 // get_patient_appointment_with_clinic_id('N126761037', '2')
-doctor_login('12345', 6969)
+// doctor_login('12345', 6969)
+get_doctor_clinic_list('12345')
