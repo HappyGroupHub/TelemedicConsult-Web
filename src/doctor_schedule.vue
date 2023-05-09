@@ -28,7 +28,7 @@ import axios from "axios";
 
 const doctor_id = ref(localStorage.getItem("doctor_id"));
 const list = ref([]);
-const situation = ref("");
+
 
 if (window.location.href === "http://localhost:5173/doctor_schedule.html") {
   get_schedule();

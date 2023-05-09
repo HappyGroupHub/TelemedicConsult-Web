@@ -35,6 +35,7 @@ const doctor_id = ref('');
 const doctor_password = ref('');
 const show_login_or_not = ref('');
 
+
 function check_doctor_login() {
   let config = { headers: {
       'Content-Type': 'application/json',
@@ -50,6 +51,7 @@ function check_doctor_login() {
           if(doctorInfo['login'] === true) {
             show_login_or_not.value = "登入成功";
             localStorage.setItem("doctor_id", doctor_id.value);
+            localStorage.setItem("doctor_password", doctor_password.value);
             window.location.href = "/doctor_schedule.html";
           }else {
             show_login_or_not.value = '登入失敗';
