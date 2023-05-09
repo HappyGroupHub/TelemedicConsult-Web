@@ -3,6 +3,7 @@
   <banner_doctor_schedule/>
   <div id="list_for_schedule">
     <div v-for="item in list" :key="item.clinic_id" id="input_base">
+      <button @click="update_schedule(item.clinic_id)">進入診間</button>
       <div class="yellow_container">
         <div class="left_side" id="inner_title">{{ item.date }}{{ getWeekDay(item.date) }}{{ item.time_period }}班</div>
         <div class="right_side" style="color: red">
@@ -12,11 +13,11 @@
       <div class="hr-line"></div>
       <div class="schedule_link">
         <div class="left_side" id="inner_title">目前看診號碼 {{ item.progress }}</div>
-        <button @click="update_schedule(item.clinic_id)">更新</button>
         <div class="right_side">會議連結 {{ item.link }}</div>
       </div>
     </div>
   </div>
+
 </template>
 
 <script setup>
@@ -26,32 +27,37 @@ import {ref} from "vue";
 import axios from "axios";
 
 
-const doctor_id = ref(localStorage.getItem("doctor_id"));
+const doctor_id_id = ref(localStorage.getItem("doctor_id"));
 const list = ref([]);
 
 
 if (window.location.href === "http://localhost:5173/doctor_schedule.html") {
+
   get_schedule();
+}else {
+
 }
+
 
 function get_schedule() {
   let config = {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-  };
-  axios
-      .post("http://127.0.0.1:5000/get_doctor_clinic_list", {
-        doc_id: doctor_id.value,
-      }, config)
-      .then((res) => {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'localhost:5000'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/get_doctor_clinic_list', {
+    doc_id: doctor_id_id.value
+  }, config)
+      .then(res => {
+        console.log(res)
         list.value = res.data.clinic_list
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        console.log(err)
       });
 }
+
 
 function getWeekDay(date) {
   let weekDay = new Date(date).getDay();
@@ -95,7 +101,7 @@ const update_schedule = (clinic_id) => {
   justify-content: center;
   background-color: #FDE982;
   width: 900px;
-  height: 100px;
+  height: 120px;
   padding: 30px;
   border-radius: 30px;
   margin: 15px auto;
