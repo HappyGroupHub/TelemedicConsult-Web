@@ -253,7 +253,7 @@ function get_doctor_clinic_list(doc_id) {
 // })
 // make_appointment('2', 'F130937605')
 // cancel_appointment('F130937605', '2')
-// get_clinic_info('2')
+get_clinic_info('2')
 // get_patient_appointment_with_clinic_id('N126761037', '2')
 // doctor_login('12345', 6969)
 // get_doctor_clinic_list('12345')

@@ -27,7 +27,7 @@
 <script setup>
 
 import banner_doctor_login from "./components/banner_doctor.vue";
-import Bar from "./components/bar_doctor_login.vue";
+import Bar from "./components/bar_doctor.vue";
 import {ref} from "vue";
 import axios from "axios";
 
@@ -57,10 +57,7 @@ function check_doctor_login() {
             show_login_or_not.value = '登入失敗';
           }
           }
-
-
       })
-
       .catch(err => {
         console.log(err)
       });

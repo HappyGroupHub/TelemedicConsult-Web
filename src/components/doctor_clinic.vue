@@ -19,34 +19,37 @@
     <h2 style="margin-right: 800px">當前病人資料</h2>
     <div id="under_box_gray">
       <div class="container" style="justify-content: space-around">
-        <p class="clinic_date">2222/22/22 星期天 早班</p>
+        <p class="clinic_date">{{date}} {{ getWeekDay(date) }} {{time_period}}班</p>
         <p class="status">看診中</p>
       </div>
       <hr>
       <div id="patient_base_for_doctor">
-        姓名:{{name}}
-        血型:{{blood_type}}
-        身分證字號:{{id}}
-        生日:{{birthday}}
-        性別:{{sex}}
-        電話:{{phone_number}}
-        地址:{{address}}
-        緊急聯絡人:{{ice_contact}}
-        緊急聯絡人關係:{{ice_relation}}
-        緊急聯絡人電話:{{ice_number}}
-        身高:{{height}}
-        體重:{{weight}}
-        健保卡卡號:{{ic_card_number}}
+        <div id="left_patient_base">
+          <p>姓名:{{ name }}</p>
+          <p>血型:{{ blood_type }}</p>
+          <p>生日:{{ birthday }}</p>
+          <p>身分證字號:{{ id }}</p>
+          <p>性別:{{ sex }}</p>
+          <p>電話:{{ phone_number }}</p>
+          <p>地址:{{ address }}</p>
+        </div>
+        <div id="right_patient_base">
+          <p>緊急聯絡人:{{ ice_contact }}</p>
+          <p>緊急聯絡人關係:{{ ice_relation }}</p>
+          <p>緊急聯絡人電話:{{ ice_number }}</p>
+          <p>身高:{{ height }}</p>
+          <p>體重:{{ weight }}</p>
+          <p>健保卡卡號:{{ ic_card_number }}</p>
+        </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script setup>
 import {ref, watch} from 'vue'
 import axios from "axios";
+
 const clinic_ID = ref(localStorage.getItem('clinic_id'))
 const name = ref('')
 const blood_type = ref('')
@@ -61,6 +64,8 @@ const ice_number = ref('')
 const height = ref('')
 const weight = ref('')
 const ic_card_number = ref('')
+const date = ref('2000/00/00')
+const time_period = ref('早')
 
 
 const sequence_and_patient_name = ref([
@@ -76,10 +81,11 @@ const add = () => {
 watch(num, (newNum, oldNum) => {
   change_progress_in_db()
 })
-if(window.location.href === "http://localhost:5173/doctor_clinic.html"){
+if (window.location.href === "http://localhost:5173/doctor_clinic.html") {
   get_clinic_info()
 }
-function get_clinic_info(){
+
+function get_clinic_info() {
   let config = {
     headers: {
       'Content-Type': 'application/json',
@@ -91,11 +97,14 @@ function get_clinic_info(){
   }, config)
       .then(res => {
         num.value = res.data.progress
+        date.value = res.data['date']
+        time_period.value = res.data['time_period']
       })
       .catch(err => {
         console.log(err)
       });
 }
+
 function change_progress_in_db() {
   let config = {
     headers: {
@@ -104,8 +113,8 @@ function change_progress_in_db() {
     }
   }
   axios.post('http://127.0.0.1:5000/update_clinic_status', {
-    clinic_id: '2',
-    status_dict:{ 'progress': num.value,}
+    clinic_id: clinic_ID.value,
+    status_dict: {'progress': num.value,}
   }, config)
       .then(response => {
         console.log(response)
@@ -114,9 +123,56 @@ function change_progress_in_db() {
         console.log(err)
       });
 }
-
+function getWeekDay(date) {
+  let weekDay = new Date(date).getDay();
+  let weekDayString = "";
+  switch (weekDay) {
+    case 0:
+      weekDayString = " 星期日";
+      break;
+    case 1:
+      weekDayString = " 星期一";
+      break;
+    case 2:
+      weekDayString = " 星期二";
+      break;
+    case 3:
+      weekDayString = " 星期三";
+      break;
+    case 4:
+      weekDayString = " 星期四";
+      break;
+    case 5:
+      weekDayString = " 星期五";
+      break;
+    case 6:
+      weekDayString = " 星期六";
+      break;
+  }
+  return weekDayString;
+}
+/*用clinic_id列出appointment裏面的所有病人*/
+/*用clinic_id跟掛號號碼找到病人的資料*/
 </script>
 <style>
+#left_patient_base{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 50px;
+
+}
+#right_patient_base{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 30%;
+}
+#patient_base_for_doctor {
+  display: flex;
+  flex-direction: row;
+}
+
 #flex_container_clinic {
   display: flex;
   flex-direction: row;
@@ -200,7 +256,7 @@ function change_progress_in_db() {
 #under_box_gray {
 
   background-color: #E1E1E1;
-  height: 300px;
+  height: 450px;
   padding: 30px;
   border-radius: 30px;
   box-shadow: gray 2px 2px;
