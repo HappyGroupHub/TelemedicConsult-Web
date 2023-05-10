@@ -40,10 +40,6 @@
 
         </div>
         <div id="right">
-
-          健保卡卡號
-          <input v-model="ic_card_number" name="ic_card_number" required="required">
-          <br><br>
           手機號碼
           <input v-model="phone_number" name="phone_number" required="required" type="text" maxLength="10"
                  pattern="09\d{8}" placeholder="09xxxxxxxx">
@@ -117,9 +113,6 @@
           <br><br>
         </div>
         <div id="right">
-          健保卡卡號
-          <input v-model="ic_card_number " id="ic_card_number" name="ic_card_number" disabled>
-          <br><br>
           手機號碼
           <input v-model="phone_number" name="phone_number" id="phone_number" type="text" disabled>
           <br><br>
@@ -183,7 +176,6 @@ const sex = ref('')
 const ice_contact = ref('')
 const ice_phone = ref('')
 const ice_relation = ref('')
-const ic_card_number = ref('')
 const phone_number = ref('')
 const height = ref('')
 const weight = ref('')
@@ -204,7 +196,6 @@ function register_patient() {
     sex: sex.value,
     birthday: birthday.value,
     blood_type: blood_type.value,
-    ic_card_number: ic_card_number.value,
     phone_number: phone_number.value,
     address: address.value,
     height: height.value,
