@@ -3,11 +3,15 @@
 import {ref} from "vue";
 import axios from "axios";
 
+
 const clinic_id = ref(localStorage.getItem('clinic_id'))
 const line_link = ref('')
 const status_dict = ref({
 
 })
+function start_clinic(){
+  window.location.href = "/doctor_clinic.html"
+}
 
 function btn_update_link(){
   line_link.value = prompt("請輸入會議室連結");
@@ -27,7 +31,7 @@ function submit_line_link_to_db() {
     }
   }
   axios.post('http://127.0.0.1:5000/update_clinic_status', {
-    clinic_id: '2',
+    clinic_id: clinic_id.value,
     status_dict:{ 'link': line_link.value,}
   }, config)
       .then(response => {
@@ -43,10 +47,9 @@ function submit_line_link_to_db() {
 </script>
 
 <template>
-
     <section id="doctor_btn">
         <div id="dr_btn">
-            <p style="margin-top: 150px" >開始看診</p>
+            <button style="margin-top: 150px" @click="start_clinic">開始看診</button>
         </div>
         <div id="dr_btn">
             <button style="color: black; margin-top: 150px" @click="btn_update_link">上傳會議連結</button>

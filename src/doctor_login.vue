@@ -27,13 +27,14 @@
 <script setup>
 
 import banner_doctor_login from "./components/banner_doctor.vue";
-import Bar from "./components/bar_doctor_login.vue";
+import Bar from "./components/bar_doctor.vue";
 import {ref} from "vue";
 import axios from "axios";
 
 const doctor_id = ref('');
 const doctor_password = ref('');
 const show_login_or_not = ref('');
+
 
 function check_doctor_login() {
   let config = { headers: {
@@ -50,15 +51,13 @@ function check_doctor_login() {
           if(doctorInfo['login'] === true) {
             show_login_or_not.value = "登入成功";
             localStorage.setItem("doctor_id", doctor_id.value);
+            localStorage.setItem("doctor_password", doctor_password.value);
             window.location.href = "/doctor_schedule.html";
           }else {
             show_login_or_not.value = '登入失敗';
           }
           }
-
-
       })
-
       .catch(err => {
         console.log(err)
       });
