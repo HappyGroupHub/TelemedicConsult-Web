@@ -91,7 +91,7 @@ function check_doctor_login() {
 #submit_login {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #00317B;
   color: white;
   text-align: center;
   font-size: 16px;

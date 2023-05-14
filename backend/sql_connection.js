@@ -258,7 +258,7 @@ function get_patients_by_clinic_id(clinic_id) {
         });
 }
 
-//get_patient_info_by_id('F130937605')
+get_patient_info_by_id('F130937605')
 // if_patient_registered_line('A123456789')
 // update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
 // register_patient('王小明', 'F130937605', '男', '1990-01-01', 'A', 'A123456789', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
@@ -276,4 +276,4 @@ function get_patients_by_clinic_id(clinic_id) {
 // get_patient_appointment_with_clinic_id('N126761037', '2')
 // doctor_login('12345', 6969)
 // get_doctor_clinic_list('12345')
-get_patients_by_clinic_id('2')
+// get_patients_by_clinic_id('2')
