@@ -40,19 +40,16 @@ function submit_line_link_to_db() {
       .catch(err => {
         console.log(err)
       });
-
-
 }
-
 </script>
 
 <template>
     <section id="doctor_btn">
         <div id="dr_btn">
-            <button style="margin-top: 150px" @click="start_clinic">開始看診</button>
+            <button id="drbtn" @click="start_clinic">開始看診</button>
         </div>
         <div id="dr_btn">
-            <button style="color: black; margin-top: 150px" @click="btn_update_link">上傳會議連結</button>
+            <button id="drbtn" @click="btn_update_link">上傳會議連結</button>
         </div>
     </section>
 
@@ -67,15 +64,25 @@ section {
 }
 
 #dr_btn {
-    text-align: center;
-    width: 300px;
-    height: 340px;
-    background: #7C95BB;
-    border-radius: 20px;
-    box-shadow: gray 2px 2px;
-    opacity: .83;
+  text-align: center;
+  width: 460px;
+  height: 185px;
+  background: #a5b1cc;
+  border-radius: 20px;
+  box-shadow: gray 2px 2px;
+  opacity: .83;
+  margin-top: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+#drbtn{
+  background-color: #8b9acb;
+  height: 95px;
+  display: flex;
+  align-items: center;
+}
 
 </style>
 

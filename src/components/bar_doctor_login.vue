@@ -52,7 +52,7 @@ function sign_out() {
       <h1>臺北市立聯合醫院 醫師系統</h1>
       <ul class="menu">
         <section v-if="see">{{ doctor_name }}</section>
-        <button @click="sign_out" >登出</button>
+        <button id="btnn" @click="sign_out" >登出</button>
       </ul>
     </div>
 <!--    {{testforcheck}}-->
@@ -60,22 +60,20 @@ function sign_out() {
 </template>
 
 <style scoped>
-.dheader {
-  display: flex;
-  justify-content: flex-end;
-}
 
 .dheader h1 {
+  display: flex;
+  justify-content: center;
   font-size: 40px;
   font-family: "微軟正黑體";
   color: #29528F;
   line-height: 100px;
-  margin-right: 388px;
   margin-bottom: 10px;
 }
 
 .menu {
   display: flex;
+  justify-content: flex-end;
   margin:0px 16px;
   list-style: none;
 }
@@ -87,6 +85,11 @@ function sign_out() {
 a:link, a:visited, a:hover, a:active {
   color: #000000;
   text-decoration: none;
+}
+
+#btnn{
+  margin-bottom: -20px;
+  background-color: #f4f2f2;
 }
 
 </style>
