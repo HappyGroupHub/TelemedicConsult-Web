@@ -1,16 +1,3 @@
-<template>
-  <header>
-    <div class="header">
-      <h1>臺北市立聯合醫院 醫師系統</h1>
-      <ul class="menu">
-        <p v-if="see">{{ doctor_name }}</p>
-        <button @click="sign_out" >登出</button>
-      </ul>
-    </div>
-<!--    {{testforcheck}}-->
-  </header>
-</template>
-
 <script setup>
 import {computed, ref} from "vue";
 import axios from "axios";
@@ -57,25 +44,39 @@ function sign_out() {
   window.location.href = "/doctor_login.html";
 }
 
-
 </script>
 
+<template>
+
+    <div class="dheader">
+      <h1>臺北市立聯合醫院 醫師系統</h1>
+      <ul class="menu">
+        <section v-if="see">{{ doctor_name }}</section>
+        <button @click="sign_out" >登出</button>
+      </ul>
+    </div>
+<!--    {{testforcheck}}-->
+
+</template>
+
 <style scoped>
-.header {
+.dheader {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
-.header h1 {
+.dheader h1 {
   font-size: 40px;
   font-family: "微軟正黑體";
   color: #29528F;
   line-height: 100px;
+  margin-right: 388px;
+  margin-bottom: 10px;
 }
 
 .menu {
   display: flex;
-  align-items: center;
+  margin:0px 16px;
   list-style: none;
 }
 

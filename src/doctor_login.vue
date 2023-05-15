@@ -1,17 +1,17 @@
 
 
 <template xmlns="http://www.w3.org/1999/html">
-
-  <bar></bar>
+  <bar_doctor_login/>
   <banner_doctor_login/>
   <div id="flex_container">
     <div id="input_base">
       <div id="inner_template">
-        <h2 style="text-align: left">登入系統</h2>
-        <h4 style="text-align: left">帳號</h4>
+        <h2 style="text-align: left">登入系統</h2><br>
+        <section style="text-align: left;">帳號</section>
         <input id="id" type="text" v-model="doctor_id"/>
-        <h4 style="text-align: left">密碼</h4>
-        <input id="password" type="password" v-model="doctor_password">
+        <p></p>
+        <section style="text-align: left">密碼</section>
+        <input id="password" type="password" v-model="doctor_password"><br>
         <div id="inner_btn">
           <button id="submit_login" @click="check_doctor_login">登入</button>
         </div>
@@ -27,9 +27,9 @@
 <script setup>
 
 import banner_doctor_login from "./components/banner_doctor.vue";
-import Bar from "./components/bar_doctor.vue";
 import {ref} from "vue";
 import axios from "axios";
+import Bar_doctor_login from "./components/bar_doctor_login.vue";
 
 const doctor_id = ref('');
 const doctor_password = ref('');
@@ -83,7 +83,7 @@ function check_doctor_login() {
   border-radius: 30px;
   margin-left: 20px;
   box-shadow: gray 2px 2px;
-  margin-top: 0;
+  margin-top: 90px;
   margin-bottom: 5px;
 
 }
@@ -102,7 +102,8 @@ function check_doctor_login() {
 }
 
 #inner_template {
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 #id {

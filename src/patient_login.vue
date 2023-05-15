@@ -50,12 +50,12 @@
 
   <div id="flex_container1">
     <div id="input_base1" >
-      <h2 style="text-align: left">登入系統</h2>
+      <h2 style="text-align: left">登入系統</h2><br>
             <h4>身分證字號</h4>
             <input v-model="id" id="id" type="text"/>
             <h4>生日</h4>
             <input v-model="birthday" id="birthday" type="date"/>
-            <p></p>
+            <p></p><br>
             <button @click="get_patient_info_by_id()" id="submit" type="submit" value="登入"
                     style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0">登入
             </button>
@@ -78,6 +78,7 @@ h4 {
   font-size: 15px;
   font-weight: 500;
   text-align: left;
+  margin-bottom: 0;
 }
 #flex_container1 {
   display: flex;

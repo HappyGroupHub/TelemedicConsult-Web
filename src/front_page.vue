@@ -2,23 +2,23 @@
     <bar/>
     <banner/>
     <main>
-        <section class="pic">
-            <img src="image/front_image.png" id="image">
-        </section>
-        <section>
-            <div id="btn">
+        <div class="pic">
+            <img src="image/LOGO.png" id="image">
+        </div>
+      <div id="btn_space">
+        <div id="btn">
                 <br><br><br><br><br><br>
                 <a href="time.html" id="btn_text">門診時間</a>
-            </div>
-            <div id="btn">
+        </div>
+        <div id="btn">
                 <br><br><br><br><br><br>
                 <a href="patient_login.html" id="btn_text">線上掛號</a>
-            </div>
-            <div id="btn">
+        </div>
+        <div id="btn">
                 <br><br><br><br><br><br>
                 <a href="description.html" id="btn_text">使用說明</a>
-            </div>
-        </section>
+        </div>
+      </div>
     </main>
 </template>
 
@@ -36,24 +36,30 @@ a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
-section {
-    display: flex;
-    justify-content: space-around;
+.pic {
+  display: flex;
+  justify-content: center;
+  background-color: #264F8C;
+}
+
+#image {
+  width: 20%;
+  background-color: #264F8C;
+  margin-right: 5px;
 }
 
 #btn {
     text-align: center;
     width: 100%;
     height: 300px;
-    border-style: none solid;
-    border-color: white;
-    background: #00317B;
+    background: #001385;
     border-radius: 20px;
     margin-left: 3px;
     margin-right: 3px;
     margin-top: 2px;
-    box-shadow: silver 2px 2px;
+    box-shadow: silver 3px 3px;
     opacity: .83;
+  margin-top: 10px;
 }
 
 #btn_text {
@@ -62,11 +68,9 @@ section {
     margin-top: 30px;
 }
 
-#image {
-    width: 100%;
-    height: 34%;
-    border-radius: 10px;
-    margin-right: 5px;
-    margin-right: 5px;
+#btn_space{
+  display: flex;
+  justify-content: space-around;
 }
+
 </style>
