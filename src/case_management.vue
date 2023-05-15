@@ -72,7 +72,7 @@
       <br>
       <div id="down_btn">
         <button @click="case_management" id="check_writing" type="submit"
-                style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0">
+                style="width:150px;height:50px;background-color: #007b06;color:white;text-align: center;border:0">
           確認送出
         </button>
         <br>

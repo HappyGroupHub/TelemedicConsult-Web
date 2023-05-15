@@ -1,50 +1,3 @@
-<template>
-  <div id="flex_container_clinic">
-    <h2>目前號碼</h2>
-    <div id="input_base">
-      <p class="num">{{ num[0] }}</p>
-      <div class="two_buttons">
-        <button @click="add" id="pass">過號</button>
-        <button @click="add" id="next">完成</button>
-      </div>
-    </div>
-    <div id="input_base_list">
-      <ol v-for="name in sequence_and_patient_name" :key="name.appointment_num">
-        <li id='number_list'>{{ name.appointment_num }}.{{ name.patient_name }}</li>
-      </ol>
-    </div>
-  </div>
-  <br>
-  <div id="under_box">
-    <h2 style="margin-right: 800px">當前病人資料</h2>
-    <div id="under_box_gray">
-      <div class="container" style="justify-content: space-around">
-        <p class="clinic_date">{{ date }} {{ getWeekDay(date) }} {{ time_period }}班</p>
-        <p class="status">看診中</p>
-      </div>
-      <hr>
-      <div id="patient_base_for_doctor">
-        <div id="left_patient_base">
-          <p>姓名:{{ name }}</p>
-          <p>血型:{{ blood_type }}型</p>
-          <p>生日:{{ birthday }}</p>
-          <p>身分證字號:{{ id }}</p>
-          <p>性別:{{ sex }}</p>
-          <p>電話:{{ phone_number }}</p>
-          <p>地址:{{ address }}</p>
-        </div>
-        <div id="right_patient_base">
-          <p>緊急聯絡人:{{ ice_contact }}</p>
-          <p>緊急聯絡人關係:{{ ice_relation }}</p>
-          <p>緊急聯絡人電話:{{ ice_number }}</p>
-          <p>身高:{{ height }}公分</p>
-          <p>體重:{{ weight }}公斤</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import {ref} from 'vue'
 import axios from "axios";
@@ -248,15 +201,61 @@ function getWeekDay(date) {
   }
   return weekDayString;
 }
-
 </script>
+
+<template>
+  <div id="flex_container_clinic">
+    <h2 style="margin-top: 45px">目前號碼</h2>
+    <div id="input_base">
+      <p class="num">{{ num[0] }}</p>
+      <div class="two_buttons">
+        <button @click="add" id="pass">過號</button>
+        <button @click="add" id="next">完成</button>
+      </div>
+    </div>
+    <div id="input_base_list">
+      <select v-for="name in sequence_and_patient_name" :key="name.appointment_num">
+        <li id='number_list'>{{ name.appointment_num }}.{{ name.patient_name }}</li>
+      </select>
+    </div>
+  </div>
+  <br><br><hr>
+  <div id="under_box">
+    <h2 style="margin-right: 800px">當前病人資料</h2>
+    <div id="under_box_gray">
+      <div class="container" style="justify-content: space-around">
+        <p class="clinic_date">{{ date }} {{ getWeekDay(date) }} {{ time_period }}班</p>
+        <p class="status">看診中</p>
+      </div>
+      <hr>
+      <div id="patient_base_for_doctor">
+        <div id="left_patient_base">
+          <p>姓名:{{ name }}</p>
+          <p>血型:{{ blood_type }}型</p>
+          <p>生日:{{ birthday }}</p>
+          <p>身分證字號:{{ id }}</p>
+          <p>性別:{{ sex }}</p>
+          <p>電話:{{ phone_number }}</p>
+          <p>地址:{{ address }}</p>
+        </div>
+        <div id="right_patient_base">
+          <p>緊急聯絡人:{{ ice_contact }}</p>
+          <p>緊急聯絡人關係:{{ ice_relation }}</p>
+          <p>緊急聯絡人電話:{{ ice_number }}</p>
+          <p>身高:{{ height }}公分</p>
+          <p>體重:{{ weight }}公斤</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style>
 #left_patient_base {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: 50px;
-
 }
 
 #right_patient_base {
@@ -331,7 +330,6 @@ function getWeekDay(date) {
 
 
 #input_base_list {
-
   background-color: #29528F;
   height: 350px;
   width: 200px;
@@ -340,7 +338,7 @@ function getWeekDay(date) {
   border-radius: 30px;
   margin-left: 20px;
   box-shadow: gray 2px 2px;
-  margin-top: 0;
+  margin-top: 90px;
 }
 
 #number_list {
@@ -352,7 +350,6 @@ function getWeekDay(date) {
 }
 
 #under_box_gray {
-
   background-color: #E1E1E1;
   height: 450px;
   padding: 30px;
