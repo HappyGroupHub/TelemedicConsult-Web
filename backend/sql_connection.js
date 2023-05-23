@@ -298,4 +298,4 @@ function next_appointment(clinic_id, current_appointment_num, next_appointment_n
 // doctor_login('12345', 6969)
 // get_doctor_clinic_list('12345')
 // get_patients_by_clinic_id('2')
-next_appointment('2', '0', '16', '28')
+// next_appointment('2', '0', '16', '28')

@@ -122,7 +122,6 @@ function case_management() {
 }
 
 #container4 {
-  margin: auto;
   justify-content: center;
   align-items: center;
   width: 990px;

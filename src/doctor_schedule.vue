@@ -29,6 +29,7 @@ import axios from "axios";
 
 const doctor_id_id = ref(localStorage.getItem("doctor_id"));
 const list = ref([]);
+const test_test = ref('test')
 
 
 if (window.location.href === "http://localhost:5173/doctor_schedule.html") {
@@ -51,6 +52,7 @@ function get_schedule() {
   }, config)
       .then(res => {
         console.log(res)
+        test_test.value = res.data
         list.value = res.data.clinic_list
       })
       .catch(err => {

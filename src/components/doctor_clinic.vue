@@ -1,222 +1,24 @@
-<script setup>
-import {ref} from 'vue'
-import axios from "axios";
-
-const clinic_ID = ref(localStorage.getItem('clinic_id'))
-const name = ref()
-const blood_type = ref('')
-const id = ref('')
-const birthday = ref('')
-const sex = ref('')
-const phone_number = ref('')
-const address = ref('')
-const ice_contact = ref('')
-const ice_relation = ref('')
-const ice_number = ref('')
-const height = ref('')
-const weight = ref('')
-const date = ref('2000/00/00')
-const time_period = ref('早')
-const try_test = ref('test')
-const hello = ref([])
-const try_id = ref([])
-
-
-const sequence_and_patient_name = ref([])
-const num = ref([])
-
-const add = () => {
-  for (let i = 0; i < num.value.length; i++) {
-    num.value[i] = num.value[i + 1]
-    try_id.value[i] = try_id.value[i + 1]
-    change_progress_in_db(i)
-  }
-}
-
-function check_now_sequence(i) {
-  const index = num.value.indexOf(try_test.value)
-  if (index != -1) {
-    num.value[0] = num.value[index]
-    try_id.value[0] = try_id.value[index]
-    show_patient_info_for_doc(0)
-  }
-
-
-
-}
-
-if (window.location.href === "http://localhost:5173/doctor_clinic.html") {
-  get_clinic_info()
-}
-
-function get_clinic_info() {
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    }
-  }
-  axios.post('http://127.0.0.1:5000/get_clinic_info', {
-    clinic_id: clinic_ID.value,
-  }, config)
-      .then(res => {
-        try_test.value = res.data.progress
-        date.value = res.data['date']
-        time_period.value = res.data['time_period']
-        get_patients_by_clinic_id()
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
-
-function change_progress_in_db2() {
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'
-    }
-  }
-  axios.post('http://127.0.0.1:5000/update_clinic_status', {
-    clinic_id: clinic_ID.value,
-    status_dict: {'progress': num.value[0]}
-  }, config)
-      .then(response => {
-        show_patient_info_for_doc(0)
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
-
-
-function change_progress_in_db(i) {
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'
-    }
-  }
-  axios.post('http://127.0.0.1:5000/update_clinic_status', {
-    clinic_id: clinic_ID.value,
-    status_dict: {'progress': num.value[i]}
-  }, config)
-      .then(response => {
-        show_patient_info_for_doc(i)
-
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
-
-function get_patients_by_clinic_id() {
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'
-    }
-  }
-  axios.post('http://127.0.0.1:5000/get_patients_by_clinic_id', {
-    clinic_id: clinic_ID.value,
-  }, config)
-      .then(response => {
-        hello.value = response.data.appointment_nums
-        sequence_and_patient_name.value = response.data.patients
-        for (let i = 0; i < response.data.patients.length; i++) {
-          num.value.push(response.data.patients[i].appointment_num)
-          try_id.value.push(response.data.patients[i].patient_id)
-        }
-
-        if (try_test.value === 0) {
-          change_progress_in_db2()
-
-        } else {
-          check_now_sequence()
-        }
-
-
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
-
-function show_patient_info_for_doc(i) {
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'
-    }
-  }
-  axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
-    id: try_id.value[i]
-  }, config)
-      .then(response => {
-        name.value = response.data.name
-        blood_type.value = response.data.blood_type
-        id.value = response.data.id
-        address.value = response.data.address
-        birthday.value = response.data.birthday
-        height.value = response.data.height
-        weight.value = response.data.weight
-        ice_contact.value = response.data.ice_contact
-        ice_number.value = response.data.ice_phone
-        ice_relation.value = response.data.ice_relation
-        phone_number.value = response.data.phone_number
-        sex.value = response.data.sex
-      })
-      .catch(err => {
-        console.log(err)
-      });
-
-
-}
-
-function getWeekDay(date) {
-  let weekDay = new Date(date).getDay();
-  let weekDayString = "";
-  switch (weekDay) {
-    case 0:
-      weekDayString = " 星期日";
-      break;
-    case 1:
-      weekDayString = " 星期一";
-      break;
-    case 2:
-      weekDayString = " 星期二";
-      break;
-    case 3:
-      weekDayString = " 星期三";
-      break;
-    case 4:
-      weekDayString = " 星期四";
-      break;
-    case 5:
-      weekDayString = " 星期五";
-      break;
-    case 6:
-      weekDayString = " 星期六";
-      break;
-  }
-  return weekDayString;
-}
-</script>
-
 <template>
+  {{try_test}}<br>
+  {{hello}}<br>
+  {{try_id}}<br>
+  {{num}}
+  {{test}}
+  {{pass_nums}}
   <div id="flex_container_clinic">
     <h2 style="margin-top: 45px">目前號碼</h2>
     <div id="input_base">
       <p class="num">{{ num[0] }}</p>
+      <button v-if="start_clinic" @click="start_clinic_button">開始看診</button>
       <div class="two_buttons">
-        <button @click="add" id="pass">過號</button>
+        <button @click="pass_and_add" id="pass">過號</button>
         <button @click="add" id="next">完成</button>
       </div>
     </div>
     <div id="input_base_list">
-      <select v-for="name in sequence_and_patient_name" :key="name.appointment_num">
+      <ol v-for="name in sequence_and_patient_name" :key="name.appointment_num">
         <li id='number_list'>{{ name.appointment_num }}.{{ name.patient_name }}</li>
-      </select>
+      </ol>
     </div>
   </div>
   <br><br><hr>
@@ -249,6 +51,299 @@ function getWeekDay(date) {
     </div>
   </div>
 </template>
+
+<script setup>
+import {ref} from 'vue'
+import axios from "axios";
+
+const clinic_ID = ref(localStorage.getItem('clinic_id'))
+const name = ref()
+const blood_type = ref('')
+const id = ref('')
+const birthday = ref('')
+const sex = ref('')
+const phone_number = ref('')
+const address = ref('')
+const ice_contact = ref('')
+const ice_relation = ref('')
+const ice_number = ref('')
+const height = ref('')
+const weight = ref('')
+const date = ref('2000/00/00')
+const time_period = ref('早')
+const try_test = ref('test')
+const hello = ref([])
+const try_id = ref([])
+const start_clinic = ref(false)
+const sequence_and_patient_name = ref([])
+const num = ref([])
+const test = ref('')
+const pass_nums = ref([])
+const progress_from_pass = ref('')
+
+
+/*接收過號，得到一個號碼*/
+// 得到現在的progress
+function get_clinic_info2() {
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/get_clinic_info', {
+    clinic_id: clinic_ID.value,
+  }, config)
+      .then(res => {
+        try_test.value = res.data.progress
+        get_pass()
+
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+// 得到progress的index
+function get_pass(){
+  const index2 = num.value.indexOf(try_test.value)
+  if(index2 !== -1){
+    if(index2 ){
+
+    }
+    else{
+      progress_from_pass.value = num.value[index2-1]
+    }
+    num.value.splice(index2+2, 0,progress_from_pass.value)
+  }
+}
+
+
+function pass_and_add() {
+  pass_nums.value.push(num.value[0])
+  for (let i = 0; i < num.value.length; i++) {
+    num.value[i] = num.value[i + 1]
+    try_id.value[i] = try_id.value[i + 1]
+    is_exist_or_not(i)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*剛到個頁面時，顯讀取clinic_id*/
+if (window.location.href === "http://localhost:5173/doctor_clinic.html") {
+  get_clinic_info()
+}
+
+/*讀取clinic_id*/
+function get_clinic_info() {
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/get_clinic_info', {
+    clinic_id: clinic_ID.value,
+  }, config)
+      .then(res => {
+        try_test.value = res.data.progress
+        date.value = res.data['date']
+        time_period.value = res.data['time_period']
+        get_patients_by_clinic_id()
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+
+/*讀取診間資料and show*/
+function get_patients_by_clinic_id() {
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'localhost:5000'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/get_patients_by_clinic_id', {
+    clinic_id: clinic_ID.value,
+  }, config)
+      .then(response => {
+        hello.value = response.data.appointment_nums
+        sequence_and_patient_name.value = response.data.patients
+        for (let i = 0; i < response.data.patients.length; i++) {
+          num.value.push(response.data.patients[i].appointment_num)
+          try_id.value.push(response.data.patients[i].patient_id)
+        }
+        if (try_test.value === 0) {
+          start_clinic.value = true
+
+        } else {
+          check_now_sequence()
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+
+function check_now_sequence() {
+  const index = num.value.indexOf(try_test.value)
+  if (index != -1) {
+    num.value[0] = num.value[index]
+    try_id.value[0] = try_id.value[index]
+    show_patient_info_for_doc(0)
+  }
+
+}
+
+/*下一個病人*/
+const add = () => {
+  for (let i = 0; i < num.value.length; i++) {
+    num.value[i] = num.value[i + 1]
+    try_id.value[i] = try_id.value[i + 1]
+    is_exist_or_not(i)
+  }
+}
+
+
+function is_exist_or_not(i){
+  if( num.value[i+3] !== 'NaN'){
+    num.value[i+3] = num.value[i+3]
+    next_appointment()
+  }else{
+    num.value[i+3] = 'NaN'
+  }
+
+}
+
+
+function start_clinic_button() {
+  start_clinic.value = false
+  show_patient_info_for_doc(0)
+}
+
+
+function try_try(){
+  test.value = 'hi'
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'localhost:5000'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/next_appointment', {
+    clinic_id: clinic_ID.value,
+    current_appointment_num : 0,
+    next_appointment_num: num.value[0],
+    notify_appointment_num: num.value[1]
+  }, config)
+      .then(response => {
+
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+
+function next_appointment(i) {
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'localhost:5000'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/next_appointment', {
+    clinic_id: clinic_ID.value,
+    current_appointment_num : num.value[i-1],
+    next_appointment_num: num.value[i],
+    notify_appointment_num: num.value[i+3]
+  }, config)
+      .then(response => {
+      show_patient_info_for_doc(i)
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+
+
+
+/*病人資料show*/
+function show_patient_info_for_doc(i) {
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'localhost:5000'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
+    id: try_id.value[i]
+  }, config)
+      .then(response => {
+        name.value = response.data.name
+        blood_type.value = response.data.blood_type
+        id.value = response.data.id
+        address.value = response.data.address
+        birthday.value = response.data.birthday
+        height.value = response.data.height
+        weight.value = response.data.weight
+        ice_contact.value = response.data.ice_contact
+        ice_number.value = response.data.ice_phone
+        ice_relation.value = response.data.ice_relation
+        phone_number.value = response.data.phone_number
+        sex.value = response.data.sex
+        if(i=== 0){
+          try_try()
+        }
+
+
+      })
+      .catch(err => {
+        console.log(err)
+      });
+
+
+}
+
+
+/*得到今天禮拜幾*/
+function getWeekDay(date) {
+  let weekDay = new Date(date).getDay();
+  let weekDayString = "";
+  switch (weekDay) {
+    case 0:
+      weekDayString = " 星期日";
+      break;
+    case 1:
+      weekDayString = " 星期一";
+      break;
+    case 2:
+      weekDayString = " 星期二";
+      break;
+    case 3:
+      weekDayString = " 星期三";
+      break;
+    case 4:
+      weekDayString = " 星期四";
+      break;
+    case 5:
+      weekDayString = " 星期五";
+      break;
+    case 6:
+      weekDayString = " 星期六";
+      break;
+  }
+  return weekDayString;
+}
+</script>
 
 <style>
 #left_patient_base {
@@ -308,6 +403,7 @@ function getWeekDay(date) {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 #next {
@@ -339,6 +435,8 @@ function getWeekDay(date) {
   margin-left: 20px;
   box-shadow: gray 2px 2px;
   margin-top: 90px;
+  max-height: 350px; /* 設置div的最大高度 */
+  overflow-y: scroll;
 }
 
 #number_list {
