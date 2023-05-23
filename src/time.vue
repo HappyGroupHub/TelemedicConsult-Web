@@ -191,9 +191,9 @@ th,td,tr{
   box-shadow: gray 2px 2px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-left: 220px;
-  margin-top: 50px;
+  margin: auto;
+  margin-top: 40px;
+  justify-content: center;
 }
 
 select{

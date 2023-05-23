@@ -150,6 +150,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 45px;
 }
 
 #choose_time_period{
@@ -190,6 +191,7 @@ th,td,tr{
   flex-direction: column;
   align-items: center;
   margin: auto;
+  justify-content: center;
 }
 
 select{

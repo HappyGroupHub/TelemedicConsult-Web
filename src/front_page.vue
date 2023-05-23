@@ -55,7 +55,7 @@ a:link, a:visited, a:hover, a:active {
 #btn {
     text-align: center;
     width: 100%;
-    height: 300px;
+    height: 280px;
     background: #001385;
     border-radius: 20px;
     margin-left: 3px;
