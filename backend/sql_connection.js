@@ -279,6 +279,27 @@ function next_appointment(clinic_id, current_appointment_num, next_appointment_n
         });
 }
 
+
+function pass_appointment(clinic_id, appointment_num) {
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/pass_appointment', {
+        clinic_id: clinic_id,
+        appointment_num: appointment_num
+    }, config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
+
 // get_patient_info_by_id('F130937605')
 // if_patient_registered_line('A123456789')
 // update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
@@ -299,3 +320,4 @@ function next_appointment(clinic_id, current_appointment_num, next_appointment_n
 // get_doctor_clinic_list('12345')
 // get_patients_by_clinic_id('2')
 // next_appointment('2', '0', '16', '28')
+pass_appointment('2', 16)
