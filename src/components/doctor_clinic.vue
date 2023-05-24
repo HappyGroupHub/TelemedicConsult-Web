@@ -1,4 +1,8 @@
 <template>
+  {{ num }}
+  {{ pass_nums }}
+  {{test_for_now}}
+  {{test_for_now2}}
   <div id="flex_container_clinic">
     <h2 style="margin-top: 45px">目前號碼</h2>
     <div id="input_base">
@@ -8,7 +12,7 @@
         <button @click="pass_and_add" id="pass">過號</button>
         <button @click="add" id="next">完成</button>
       </div>
-<!--      結束按鈕-->
+      <!--      結束按鈕-->
     </div>
     <div id="input_base_list">
       <ol v-for="name in sequence_and_patient_name" :key="name.appointment_num">
@@ -67,7 +71,6 @@ const height = ref('')
 const weight = ref('')
 const date = ref('2000/00/00')
 const time_period = ref('早')
-
 const try_test = ref('test')
 const hello = ref([])
 const try_id = ref([])
@@ -77,12 +80,12 @@ const num = ref([])
 const test = ref('')
 const pass_nums = ref([])
 const length123 = ref()
+const progress_from_pass = ref('')
+const test_for_now = ref('')
+const test_for_now2 = ref('')
 
-// const progress_from_pass = ref('')
-//
-//
-// /*接收過號，得到一個號碼*/
-// // 得到現在的progress
+// // /*接收過號，得到一個號碼*/
+// // // 得到現在的progress
 // function get_clinic_info2() {
 //   let config = {
 //     headers: {
@@ -96,35 +99,61 @@ const length123 = ref()
 //       .then(res => {
 //         try_test.value = res.data.progress
 //         get_pass()
-//
 //       })
 //       .catch(err => {
 //         console.log(err)
 //       });
 // }
+//
 // // 得到progress的index
-// function get_pass(){
-//   const index2 = num.value.indexOf(try_test.value)
-//   if(index2 !== -1){
-//     if(index2 ){
-//
-//     }
-//     else{
-//       progress_from_pass.value = num.value[index2-1]
-//     }
-//     num.value.splice(index2+2, 0,progress_from_pass.value)
+// function get_pass() {
+//   const index = pass_nums.value.indexOf(progress_from_pass.value)
+//   if(index !== -1){
+//     pass_nums.value.splice(index, 1)
+//     num.value.splice( 2, 0, progress_from_pass.value)
+//     length123.value += 1
 //   }
 // }
-//
-//
-// function pass_and_add() {
-//   pass_nums.value.push(num.value[0])
-//   for (let i = 0; i < num.value.length; i++) {
-//     num.value[i] = num.value[i + 1]
-//     try_id.value[i] = try_id.value[i + 1]
-//     is_exist_or_not(i)
-//   }
-// }
+
+function pass_appointment() {
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    }
+  }
+  axios.post('http://127.0.0.1:5000/pass_appointment', {
+    clinic_id: clinic_ID.value,
+    appointment_num: num.value[0],
+
+  }, config)
+      .then(res => {
+        next_appointment()
+        pass_nums.value.push(num.value[0])
+        for (let i = 0; i < num.value.length; i++) {
+          num.value[i] = num.value[i + 1]
+          try_id.value[i] = try_id.value[i + 1]
+        }
+        length123.value -= 1
+        try_test.value = num.value[0]
+        hello.value = num.value
+
+
+      })
+      .catch(err => {
+        console.log(err)
+      });
+}
+
+
+function pass_and_add() {
+  if (1 >= length123.value) {
+  } else {
+    pass_appointment()
+
+
+  }
+}
 
 
 /*剛到個頁面時，顯讀取clinic_id*/
@@ -198,22 +227,17 @@ function check_now_sequence() {
 
 /*下一個病人*/
 const add = () => {
-  if(1 >= length123.value){
-
-  }else{
+  if (1 >= length123.value) {
+  } else {
     next_appointment()
     for (let i = 0; i < num.value.length; i++) {
       num.value[i] = num.value[i + 1]
       try_id.value[i] = try_id.value[i + 1]
-
     }
     length123.value -= 1
     try_test.value = num.value[0]
     hello.value = num.value
   }
-
-
-
 }
 
 
@@ -256,16 +280,16 @@ function next_appointment() {
   try_test.value = num.value[0]
   if (4 >= length123.value) {
     num.value[4] = NaN
-  }  else{
+  } else {
     num.value[4] = num.value[4]
 
   }
-    let config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'localhost:5000'
-      }
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'localhost:5000'
     }
+  }
   axios.post('http://127.0.0.1:5000/next_appointment', {
     clinic_id: clinic_ID.value,
     current_appointment_num: num.value[0],

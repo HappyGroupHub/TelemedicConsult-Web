@@ -320,4 +320,4 @@ function pass_appointment(clinic_id, appointment_num) {
 // get_doctor_clinic_list('12345')
 // get_patients_by_clinic_id('2')
 // next_appointment('2', '0', '16', '28')
-pass_appointment('2', 16)
+pass_appointment('2', 29)
