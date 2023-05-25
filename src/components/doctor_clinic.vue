@@ -1,8 +1,4 @@
 <template>
-  {{ num }}
-  {{ pass_nums }}
-  {{test_for_now}}
-  {{test_for_now2}}
   <div id="flex_container_clinic">
     <h2 style="margin-top: 45px">目前號碼</h2>
     <div id="input_base">
@@ -91,7 +87,6 @@ import {inject} from "vue";
 const WebSocket = inject('WebSocket')
 onMounted(() => {
   WebSocket.$on('message', (data) => {
-    console.log(data);
     progress_from_pass.value = data;
     get_pass();
   });
