@@ -56,6 +56,9 @@
 import {ref} from 'vue'
 import axios from "axios";
 
+
+
+
 const clinic_ID = ref(localStorage.getItem('clinic_id'))
 const name = ref()
 const blood_type = ref('')
@@ -84,36 +87,25 @@ const progress_from_pass = ref('')
 const test_for_now = ref('')
 const test_for_now2 = ref('')
 
-// // /*接收過號，得到一個號碼*/
-// // // 得到現在的progress
-// function get_clinic_info2() {
-//   let config = {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Access-Control-Allow-Origin': '*'
-//     }
-//   }
-//   axios.post('http://127.0.0.1:5000/get_clinic_info', {
-//     clinic_id: clinic_ID.value,
-//   }, config)
-//       .then(res => {
-//         try_test.value = res.data.progress
-//         get_pass()
-//       })
-//       .catch(err => {
-//         console.log(err)
-//       });
-// }
-//
-// // 得到progress的index
-// function get_pass() {
-//   const index = pass_nums.value.indexOf(progress_from_pass.value)
-//   if(index !== -1){
-//     pass_nums.value.splice(index, 1)
-//     num.value.splice( 2, 0, progress_from_pass.value)
-//     length123.value += 1
-//   }
-// }
+import {inject} from "vue";
+const WebSocket = inject('WebSocket')
+WebSocket.$on('message', (data) => {
+  console.log(data)
+  progress_from_pass.value = data
+  get_pass()
+});
+
+
+
+// 得到progress的index
+function get_pass() {
+  const index = pass_nums.value.indexOf(progress_from_pass.value)
+  if(index !== -1){
+    pass_nums.value.splice(index, 1)
+    num.value.splice( 2, 0, progress_from_pass.value)
+    length123.value += 1
+  }
+}
 
 function pass_appointment() {
   let config = {

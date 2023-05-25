@@ -1,7 +1,4 @@
-<script setup>
-import bar from './components/bar.vue'
-import banner from './components/banner_patient.vue'
-</script>
+
 
 <template>
   <bar/>
@@ -34,6 +31,11 @@ import banner from './components/banner_patient.vue'
     <button id="check" @click="">完成預約</button>
   </div>
 </template>
+
+<script setup>
+import bar from './components/bar.vue'
+import banner from './components/banner_patient.vue'
+</script>
 
 <style scoped>
 

@@ -33,3 +33,18 @@ createApp(case_manage).mount('#case')
 createApp(cancel).mount('#cancel')
 
 
+
+
+import {  inject } from 'vue';
+import VueNativeSock from 'vue-native-websocket';
+const doctor_clinic_ws = createApp(doctor_clinic)
+
+doctor_clinic_ws.use(VueNativeSock, 'ws://localhost:5000/ws', {
+    reconnection: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 3000,
+});
+
+doctor_clinic_ws.provide('WebSocket', inject('$connect'));
+
+doctor_clinic_ws.mount('#doctor_clinic');
