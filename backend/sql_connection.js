@@ -332,14 +332,14 @@ function pass_appointment(clinic_id, appointment_num) {
 //     'total_appointment': '100',
 //     'progress': '88'
 // })
-// make_appointment('2', 'F130937605')
-// cancel_appointment('F130937605', '2')
+make_appointment('3', 'K223086171')
+// cancel_appointment('K223086171', '2')
 // get_clinic_info('2')
 // get_patient_appointment_with_clinic_id('N126761037', '2')
 // doctor_login('12345', 6969)
 // get_doctor_clinic_list('12345')
-get_patient_reservation_list('K223086171')
+// get_patient_reservation_list('K223086171')
 // get_doctor_clinic_list('12345')
 // get_patients_by_clinic_id('2')
 // next_appointment('2', '0', '16', '28')
-pass_appointment('2', 29)
+// pass_appointment('2', 29)
