@@ -1,4 +1,4 @@
-import {createApp} from 'vue'
+import {createApp, inject} from 'vue'
 import './style.css'
 import App from './patient_login.vue'
 import patient_base from './register_patient.vue'
@@ -35,16 +35,16 @@ createApp(cancel).mount('#cancel')
 
 
 
-import {  inject } from 'vue';
-import VueNativeSock from 'vue-native-websocket';
-const doctor_clinic_ws = createApp(doctor_clinic)
 
-doctor_clinic_ws.use(VueNativeSock, 'ws://localhost:5000/ws', {
+import VueNativeSock from 'vue-native-websocket';
+const app = createApp(doctor_clinic);
+
+app.use(VueNativeSock, 'ws://localhost:5000/ws', {
     reconnection: true,
     reconnectionAttempts: 5,
     reconnectionDelay: 3000,
 });
 
-doctor_clinic_ws.provide('WebSocket', inject('$connect'));
+app.provide('WebSocket', inject('$connect'));
 
-doctor_clinic_ws.mount('#doctor_clinic');
+app.mount('#doctor_clinic');

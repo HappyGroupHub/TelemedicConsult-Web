@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import axios from "axios";
 
 
@@ -83,21 +83,21 @@ const num = ref([])
 const test = ref('')
 const pass_nums = ref([])
 const length123 = ref()
-const progress_from_pass = ref('')
+const progress_from_pass = ref()
 const test_for_now = ref('')
 const test_for_now2 = ref('')
 
 import {inject} from "vue";
 const WebSocket = inject('WebSocket')
-WebSocket.$on('message', (data) => {
-  console.log(data)
-  progress_from_pass.value = data
-  get_pass()
+onMounted(() => {
+  WebSocket.$on('message', (data) => {
+    console.log(data);
+    progress_from_pass.value = data;
+    get_pass();
+  });
 });
 
 
-
-// 得到progress的index
 function get_pass() {
   const index = pass_nums.value.indexOf(progress_from_pass.value)
   if(index !== -1){
