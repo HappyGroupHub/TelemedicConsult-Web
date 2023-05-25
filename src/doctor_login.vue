@@ -1,17 +1,17 @@
 
 
 <template xmlns="http://www.w3.org/1999/html">
-
-  <bar></bar>
+  <bar_doctor_login/>
   <banner_doctor_login/>
   <div id="flex_container">
     <div id="input_base">
       <div id="inner_template">
-        <h2 style="text-align: left">登入系統</h2>
-        <h4 style="text-align: left">帳號</h4>
+        <h2 style="text-align: left">登入系統</h2><br>
+        <section style="text-align: left;">帳號</section>
         <input id="id" type="text" v-model="doctor_id"/>
-        <h4 style="text-align: left">密碼</h4>
-        <input id="password" type="password" v-model="doctor_password">
+        <p></p>
+        <section style="text-align: left">密碼</section>
+        <input id="password" type="password" v-model="doctor_password"><br>
         <div id="inner_btn">
           <button id="submit_login" @click="check_doctor_login">登入</button>
         </div>
@@ -27,36 +27,36 @@
 <script setup>
 
 import banner_doctor_login from "./components/banner_doctor.vue";
-import Bar from "./components/bar_doctor_login.vue";
 import {ref} from "vue";
 import axios from "axios";
+import Bar_doctor_login from "./components/bar_doctor_login.vue";
 
 const doctor_id = ref('');
 const doctor_password = ref('');
 const show_login_or_not = ref('');
+
 
 function check_doctor_login() {
   let config = { headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'}
   }
-  axios.post('http://127.0.0.1:5000/', {
-    id: doctor_id.value,
+  axios.post('http://127.0.0.1:5000/doctor_login', {
+    doc_id: doctor_id.value,
+    password: doctor_password.value
   }, config)
       .then(res => {
         if(res.data.status === "success"){
-
-          if(res.data.doctor_password === doctor_password.value){
-            window.location.href = "";
-            localStorage.setItem("doctor_id", id.value);
-            show_login_or_not.value = "成功拉";
-
+          const doctorInfo = res.data;
+          if(doctorInfo['login'] === true) {
+            show_login_or_not.value = "登入成功";
+            localStorage.setItem("doctor_id", doctor_id.value);
+            localStorage.setItem("doctor_password", doctor_password.value);
+            window.location.href = "/doctor_schedule.html";
           }else {
-            show_login_or_not.value = "錯誤"
+            show_login_or_not.value = '登入失敗';
           }
-        }else {
-          show_login_or_not.value = "醫師代碼"
-        }
+          }
       })
       .catch(err => {
         console.log(err)
@@ -83,7 +83,7 @@ function check_doctor_login() {
   border-radius: 30px;
   margin-left: 20px;
   box-shadow: gray 2px 2px;
-  margin-top: 0;
+  margin-top: 90px;
   margin-bottom: 5px;
 
 }
@@ -91,7 +91,7 @@ function check_doctor_login() {
 #submit_login {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #00317B;
   color: white;
   text-align: center;
   font-size: 16px;
@@ -102,7 +102,8 @@ function check_doctor_login() {
 }
 
 #inner_template {
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 #id {

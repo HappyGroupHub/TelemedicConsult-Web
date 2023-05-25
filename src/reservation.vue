@@ -18,7 +18,6 @@
   const show_clinic_info = ref(false);
 
 
-
   watch([clinic_date,time_period], (newValue, oldValue) => {
     if (selectionsComplete.value) {
       check_if_exist_clinic()
@@ -106,6 +105,7 @@
       </div>
       <div>
         {{if_this_can_be_selected}}
+
       </div>
       <div v-show="show_clinic_info" id="clinic_info">
         看診醫師&nbsp;:&nbsp;{{clinic_doctor}}
@@ -150,6 +150,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 45px;
 }
 
 #choose_time_period{
@@ -190,6 +191,7 @@ th,td,tr{
   flex-direction: column;
   align-items: center;
   margin: auto;
+  justify-content: center;
 }
 
 select{

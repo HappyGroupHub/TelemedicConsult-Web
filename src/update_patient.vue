@@ -33,9 +33,6 @@
 
                 </div>
                 <div id="right">
-
-                    健保卡卡號<br>
-                    <input v-model="ic_card_number" name="ic_card_number" disabled>
                     <br>
                     手機號碼<br>
                     <input v-model="phone_number" name="phone_number" type="text">
@@ -97,7 +94,6 @@ const sex = ref('')
 const ice_contact = ref('')
 const ice_phone = ref('')
 const ice_relation = ref('')
-const ic_card_number = ref('')
 const phone_number = ref('')
 const height = ref('')
 const weight = ref('')
@@ -127,7 +123,6 @@ function show_patient_info_by_id() {
                 ice_contact.value = res.data.ice_contact;
                 ice_phone.value = res.data.ice_phone;
                 ice_relation.value = res.data.ice_relation;
-                ic_card_number.value = res.data.ic_card_number;
                 phone_number.value = res.data.phone_number;
                 height.value = res.data.height;
                 weight.value = res.data.weight;

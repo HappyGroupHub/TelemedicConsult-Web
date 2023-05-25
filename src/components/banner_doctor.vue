@@ -28,13 +28,10 @@ if (window.location.href === href.doctor_clinic) {
 } else if (window.location.href === href.doctor_schedule) {
     flowBanner(0, 0, 0, 1);
 }
-
 </script>
 
 <template>
-
     <div id="wrapper">
-
         <div id="nav">
             <div v-if="doctor_banner.doctor_clinic===1">
                 <ul>
@@ -77,13 +74,14 @@ if (window.location.href === href.doctor_clinic) {
     display: flex;
     justify-content: left;
     list-style: none;
+  margin: 0;
 }
 
 #title {
-    font-size: 26px;
     font-family: "微軟正黑體";
     color: #29528F;
-    line-height: 40px;
     float: left;
+  margin: 0;
+  font-size: 20px;
 }
 </style>

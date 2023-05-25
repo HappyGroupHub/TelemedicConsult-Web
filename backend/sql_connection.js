@@ -259,6 +259,68 @@ function get_patient_reservation_list(patient_id) {
 }
 
 //get_patient_info_by_id('F130937605')
+
+function get_patients_by_clinic_id(clinic_id) {
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/get_patients_by_clinic_id', {
+        clinic_id: clinic_id
+    }, config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
+function next_appointment(clinic_id, current_appointment_num, next_appointment_num, notify_appointment_num) {
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/next_appointment', {
+        clinic_id: clinic_id,
+        current_appointment_num: current_appointment_num,
+        next_appointment_num: next_appointment_num,
+        notify_appointment_num: notify_appointment_num
+    }, config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
+
+function pass_appointment(clinic_id, appointment_num) {
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/pass_appointment', {
+        clinic_id: clinic_id,
+        appointment_num: appointment_num
+    }, config)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
+
+
+// get_patient_info_by_id('F130937605')
 // if_patient_registered_line('A123456789')
 // update_patient_info_by_id('F130937605', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
 // register_patient('王小明', 'F130937605', '男', '1990-01-01', 'A', 'A123456789', '0912345678', '台北市中山區', 170, 60, '王小明', '父親', '0912345678')
@@ -277,3 +339,7 @@ function get_patient_reservation_list(patient_id) {
 // doctor_login('12345', 6969)
 // get_doctor_clinic_list('12345')
 get_patient_reservation_list('K223086171')
+// get_doctor_clinic_list('12345')
+// get_patients_by_clinic_id('2')
+// next_appointment('2', '0', '16', '28')
+pass_appointment('2', 29)
