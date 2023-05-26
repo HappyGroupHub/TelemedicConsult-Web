@@ -44,7 +44,7 @@ const clinic_id_id = ref(localStorage.getItem("clinic_id"));
 
 
 
-if (window.location.href === "http://localhost:5173/cancel_reservation.html") {
+if (window.location.href === "http://localhost:5173/check_patient_appointment.html") {
 get_appointment()
 
 }

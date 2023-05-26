@@ -2,17 +2,17 @@
 import {ref} from "vue";
 
 const logout = ref(false)
-const cancel_appointment = ref(false)
+const check_patient_appointment = ref(false)
 if(localStorage.getItem("user_id") !== null){
   logout.value = true
-  cancel_appointment.value = true
+  check_patient_appointment.value = true
 }
 const logoutlog = () => {
     localStorage.removeItem("user_id");
     window.location.href = "http://localhost:5173/index.html";
 }
-const cancel = () => {
-  window.location.href = "http://localhost:5173/cancel_reservation.html";
+const check = () => {
+  window.location.href = "http://localhost:5173/check_patient_appointment.html";
 }
 
   const banner = {
@@ -25,7 +25,7 @@ const cancel = () => {
     join_line_bot: 0,
     check_reservation: 0,
     update_patient: 0,
-    cancel_reservation: 0,
+    check_patient_appointment: 0,
   }
   const href = {
     homepage: "http://localhost:5173/",
@@ -37,10 +37,10 @@ const cancel = () => {
     join_linebot: "http://localhost:5173/join_linebot.html",
     check_reservation: "http://localhost:5173/check_reservation.html",
     update_patient: "http://localhost:5173/update_patient.html",
-    cancel_reservation: "http://localhost:5173/cancel_reservation.html",
+    check_patient_appointment: "http://localhost:5173/check_patient_appointment.html",
   }
 
-  function flowBanner(homepage, time, patient_login, register_patient, reservation, description, join_linebot, check_reservation, update_patient, cancel_reservation) {
+  function flowBanner(homepage, time, patient_login, register_patient, reservation, description, join_linebot, check_reservation, update_patient, check_patient_appointment) {
     banner.homepage = homepage;
     banner.time = time;
     banner.patient_login = patient_login;
@@ -50,7 +50,7 @@ const cancel = () => {
     banner.join_linebot = join_linebot;
     banner.check_reservation = check_reservation;
     banner.update_patient = update_patient;
-    banner.cancel_reservation = cancel_reservation;
+    banner.check_patient_appointment = check_patient_appointment;
   }
 
   if (window.location.href === href.homepage) {
@@ -71,7 +71,7 @@ const cancel = () => {
     flowBanner(1, 0, 1, 1, 1, 0, 0, 1, 0, 0);
   } else if (window.location.href === href.update_patient) {
     flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 1, 0);
-  } else if (window.location.href === href.cancel_reservation) {
+  } else if (window.location.href === href.check_patient_appointment) {
     flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 0, 1);
   }
 
@@ -106,8 +106,8 @@ const cancel = () => {
           <li id="title_bar"><a href="time.html">門診時間</a></li>
           <li id="title_bar"><a href="index.html">關於我們</a></li>
           <li id="title_bar"><a href="description.html">使用說明</a></li>
-          <div v-if="cancel_appointment" @click="cancel">
-            <button id="title_bar">取消預約</button>
+          <div v-if="check_patient_appointment" @click="check">
+            <button id="title_bar">查看預約</button>
           </div>
           <button v-if="logout" @click="logoutlog">登出</button>
         </ul>
@@ -160,8 +160,8 @@ const cancel = () => {
                 <li> >&nbsp&nbsp&nbsp 確認資料 &nbsp&nbsp&nbsp</li>
               </a>
             </div>
-            <div v-if="banner.cancel_reservation ===1">
-              <a href="cancel_reservation.html">
+            <div v-if="banner.check_patient_appointment ===1">
+              <a href="../../check_patient_appointment.html">
                 <li> >&nbsp&nbsp&nbsp 查看預約 &nbsp&nbsp&nbsp</li>
               </a>
             </div>

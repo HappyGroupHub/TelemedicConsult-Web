@@ -14,7 +14,7 @@ import doctor_schedule from './doctor_schedule.vue'
 import doctor_clinic from './doctor_clinic.vue'
 import update from './update_patient.vue'
 import case_manage from './case_management.vue'
-import cancel from "./cancel_reservation.vue";
+import check_patient_appointment from "./check_patient_appointment.vue";
 
 createApp(App).mount('#app')
 createApp(patient_base).mount('#patient_base')
@@ -30,7 +30,7 @@ createApp(doctor_schedule).mount('#doctor_schedule')
 createApp(doctor_clinic).mount('#doctor_clinic')
 createApp(update).mount('#update')
 createApp(case_manage).mount('#case')
-createApp(cancel).mount('#cancel')
+createApp(check_patient_appointment).mount('#check_patient_appointment')
 
 
 
