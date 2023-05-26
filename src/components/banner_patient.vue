@@ -40,17 +40,17 @@ const cancel = () => {
     cancel_reservation: "http://localhost:5173/cancel_reservation.html",
   }
 
-  function flowBanner(a, b, c, d, e, f, g, h, i, j) {
-    banner.homepage = a;
-    banner.time = b;
-    banner.patient_login = c;
-    banner.register_patient = d;
-    banner.reservation = e;
-    banner.description = f;
-    banner.join_linebot = g;
-    banner.check_reservation = h;
-    banner.update_patient = i;
-    banner.cancel_reservation = j;
+  function flowBanner(homepage, time, patient_login, register_patient, reservation, description, join_linebot, check_reservation, update_patient, cancel_reservation) {
+    banner.homepage = homepage;
+    banner.time = time;
+    banner.patient_login = patient_login;
+    banner.register_patient = register_patient;
+    banner.reservation = reservation;
+    banner.description = description;
+    banner.join_linebot = join_linebot;
+    banner.check_reservation = check_reservation;
+    banner.update_patient = update_patient;
+    banner.cancel_reservation = cancel_reservation;
   }
 
   if (window.location.href === href.homepage) {
