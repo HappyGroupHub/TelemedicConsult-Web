@@ -56,23 +56,23 @@ const cancel = () => {
   if (window.location.href === href.homepage) {
     flowBanner(1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
   } else if (window.location.href === href.time) {
-    flowBanner(1, 1, 0, 0, 0, 0, 0, 0, 0, 1);
+    flowBanner(1, 1, 0, 0, 0, 0, 0, 0, 0, 0);
   } else if (window.location.href === href.patient_login) {
     flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 0, 0);
   } else if (window.location.href === href.register_patient) {
     flowBanner(1, 0, 1, 1, 0, 0, 0, 0, 0, 0);
   } else if (window.location.href === href.reservation) {
-    flowBanner(1, 0, 1, 1, 1, 0, 0, 0, 0, 1);
+    flowBanner(1, 0, 1, 1, 1, 0, 0, 0, 0, 0);
   } else if (window.location.href === href.description) {
     flowBanner(1, 0, 0, 0, 0, 1, 0, 0, 0, 0);
   } else if (window.location.href === href.join_linebot) {
     flowBanner(1, 0, 1, 1, 0, 0, 1, 0, 0, 0);
   } else if (window.location.href === href.check_reservation) {
-    flowBanner(1, 0, 1, 1, 1, 0, 0, 1, 0, 1);
+    flowBanner(1, 0, 1, 1, 1, 0, 0, 1, 0, 0);
   } else if (window.location.href === href.update_patient) {
-    flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 1, 1);
+    flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 1, 0);
   } else if (window.location.href === href.cancel_reservation) {
-    flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+    flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 0, 1);
   }
 
   window.addEventListener('load', function () {
@@ -158,6 +158,11 @@ const cancel = () => {
             <div v-if="banner.update_patient ===1">
               <a href="update_patient.html">
                 <li> >&nbsp&nbsp&nbsp 確認資料 &nbsp&nbsp&nbsp</li>
+              </a>
+            </div>
+            <div v-if="banner.cancel_reservation ===1">
+              <a href="cancel_reservation.html">
+                <li> >&nbsp&nbsp&nbsp 查看預約 &nbsp&nbsp&nbsp</li>
               </a>
             </div>
           </ul>
