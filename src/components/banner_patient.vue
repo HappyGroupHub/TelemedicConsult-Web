@@ -1,81 +1,99 @@
 <script setup>
+import {ref} from "vue";
 
-const banner = {
-  homepage: 0,
-  time: 0,
-  patient_login: 0,
-  register_patient_base: 0,
-  reservation: 0,
-  description: 0,
-  join_line_bot: 0,
-  check_reservation: 0,
-  update_patient: 0,
-  cancel_reservation: 0,
+const logout = ref(false)
+const cancel_appointment = ref(false)
+if(localStorage.getItem("user_id") !== null){
+  logout.value = true
+  cancel_appointment.value = true
 }
-const href = {
-  homepage: "http://localhost:5173/",
-  time: "http://localhost:5173/time.html",
-  patient_login: "http://localhost:5173/patient_login.html",
-  register_patient: "http://localhost:5173/register_patient.html",
-  reservation: "http://localhost:5173/reservation.html",
-  description: "http://localhost:5173/description.html",
-  join_linebot: "http://localhost:5173/join_linebot.html",
-  check_reservation: "http://localhost:5173/check_reservation.html",
-  update_patient: "http://localhost:5173/update_patient.html",
-  cancel_reservation: "http://localhost:5173/cancel_reservation.html",
+const logoutlog = () => {
+    localStorage.removeItem("user_id");
+    window.location.href = "http://localhost:5173/index.html";
+}
+const cancel = () => {
+  window.location.href = "http://localhost:5173/cancel_reservation.html";
 }
 
-function flowBanner(a, b, c, d, e, f, g, h, i,j) {
-  banner.homepage = a;
-  banner.time = b;
-  banner.patient_login = c;
-  banner.register_patient = d;
-  banner.reservation = e;
-  banner.description = f;
-  banner.join_linebot = g;
-  banner.check_reservation = h;
-  banner.update_patient = i;
-  banner.cancel_reservation = j;
-}
-
-if (window.location.href === href.homepage) {
-  flowBanner(1, 0, 0, 0, 0, 0, 0, 0 ,0,0);
-} else if (window.location.href === href.time) {
-  flowBanner(1, 1, 0, 0, 0, 0, 0, 0,0,1);
-} else if (window.location.href === href.patient_login) {
-  flowBanner(1, 0, 1, 0, 0, 0, 0, 0,0,0);
-} else if (window.location.href === href.register_patient) {
-  flowBanner(1, 0, 1, 1, 0, 0, 0, 0,0,0);
-} else if (window.location.href === href.reservation) {
-  flowBanner(1, 0, 1, 1, 1, 0, 0, 0,0,1);
-} else if (window.location.href === href.description) {
-  flowBanner(1, 0, 0, 0, 0, 1, 0, 0,0,0);
-} else if (window.location.href === href.join_linebot) {
-  flowBanner(1, 0, 1, 1, 0, 0, 1, 0 ,0,0);
-} else if (window.location.href === href.check_reservation) {
-  flowBanner(1, 0, 1, 1, 1, 0, 0, 1 ,0,1);
-} else if (window.location.href === href.update_patient) {
-  flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 1, 1);
-} else if (window.location.href === href.cancel_reservation) {
-  flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 0, 0);
-}
-
-window.addEventListener('load', function() {
-  document.body.style.paddingTop = document.getElementById('header').offsetHeight + 'px';
-});
-
-window.onscroll = function (){
-  scrollFunction()};
-
-function scrollFunction(){
-  if (window.scrollY < 20){
-    document.getElementById("header").style.fontSize = "16px";
-    document.body.style.paddingTop = document.getElementById("header").offsetHeight + 'px';
-  }else {
-    document.getElementById("header").style.fontSize = "8px";
-    document.body.style.paddingTop = document.getElementById("header").offsetHeight + 'px';
+  const banner = {
+    homepage: 0,
+    time: 0,
+    patient_login: 0,
+    register_patient_base: 0,
+    reservation: 0,
+    description: 0,
+    join_line_bot: 0,
+    check_reservation: 0,
+    update_patient: 0,
+    cancel_reservation: 0,
   }
+  const href = {
+    homepage: "http://localhost:5173/",
+    time: "http://localhost:5173/time.html",
+    patient_login: "http://localhost:5173/patient_login.html",
+    register_patient: "http://localhost:5173/register_patient.html",
+    reservation: "http://localhost:5173/reservation.html",
+    description: "http://localhost:5173/description.html",
+    join_linebot: "http://localhost:5173/join_linebot.html",
+    check_reservation: "http://localhost:5173/check_reservation.html",
+    update_patient: "http://localhost:5173/update_patient.html",
+    cancel_reservation: "http://localhost:5173/cancel_reservation.html",
+  }
+
+  function flowBanner(a, b, c, d, e, f, g, h, i, j) {
+    banner.homepage = a;
+    banner.time = b;
+    banner.patient_login = c;
+    banner.register_patient = d;
+    banner.reservation = e;
+    banner.description = f;
+    banner.join_linebot = g;
+    banner.check_reservation = h;
+    banner.update_patient = i;
+    banner.cancel_reservation = j;
+  }
+
+  if (window.location.href === href.homepage) {
+    flowBanner(1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  } else if (window.location.href === href.time) {
+    flowBanner(1, 1, 0, 0, 0, 0, 0, 0, 0, 1);
+  } else if (window.location.href === href.patient_login) {
+    flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+  } else if (window.location.href === href.register_patient) {
+    flowBanner(1, 0, 1, 1, 0, 0, 0, 0, 0, 0);
+  } else if (window.location.href === href.reservation) {
+    flowBanner(1, 0, 1, 1, 1, 0, 0, 0, 0, 1);
+  } else if (window.location.href === href.description) {
+    flowBanner(1, 0, 0, 0, 0, 1, 0, 0, 0, 0);
+  } else if (window.location.href === href.join_linebot) {
+    flowBanner(1, 0, 1, 1, 0, 0, 1, 0, 0, 0);
+  } else if (window.location.href === href.check_reservation) {
+    flowBanner(1, 0, 1, 1, 1, 0, 0, 1, 0, 1);
+  } else if (window.location.href === href.update_patient) {
+    flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 1, 1);
+  } else if (window.location.href === href.cancel_reservation) {
+    flowBanner(1, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+  }
+
+  window.addEventListener('load', function () {
+    document.body.style.paddingTop = document.getElementById('header').offsetHeight + 'px';
+  });
+
+  window.onscroll = function () {
+    scrollFunction()
+  };
+
+  function scrollFunction() {
+    if (window.scrollY < 20) {
+      document.getElementById("header").style.fontSize = "16px";
+      document.body.style.paddingTop = document.getElementById("header").offsetHeight + 'px';
+    } else {
+      document.getElementById("header").style.fontSize = "8px";
+      document.body.style.paddingTop = document.getElementById("header").offsetHeight + 'px';
+    }
+
 }
+
 
 </script>
 
@@ -88,9 +106,10 @@ function scrollFunction(){
           <li id="title_bar"><a href="time.html">門診時間</a></li>
           <li id="title_bar"><a href="index.html">關於我們</a></li>
           <li id="title_bar"><a href="description.html">使用說明</a></li>
-          <div v-if="banner.cancel_reservation===1">
-            <li id="title_bar"><a href="cancel_reservation.html">取消預約</a></li>
+          <div v-if="cancel_appointment" @click="cancel">
+            <button id="title_bar">取消預約</button>
           </div>
+          <button v-if="logout" @click="logoutlog">登出</button>
         </ul>
       </div>
       <div id="wrapper">
