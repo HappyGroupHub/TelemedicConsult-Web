@@ -35,16 +35,15 @@ createApp(check_patient_appointment).mount('#check_patient_appointment')
 
 
 
-
-import VueNativeSock from 'vue-native-websocket';
-const app = createApp(doctor_clinic);
-
-app.use(VueNativeSock, 'ws://localhost:5000/ws', {
-    reconnection: true,
-    reconnectionAttempts: 5,
-    reconnectionDelay: 3000,
-});
-
-app.provide('WebSocket', inject('$connect'));
-
-app.mount('#doctor_clinic');
+//
+// import VueNativeSock from 'vue-native-websocket';
+// const app = createApp(doctor_clinic);
+//
+// app.use(VueNativeSock, 'ws://localhost:5001/ws_connect', {
+//     reconnection: true,
+//     reconnectionAttempts: 5,
+//     reconnectionDelay: 3000,
+// });
+//
+// app.provide('$connect', inject('$connect'));
+// app.mount('#doctor_clinic');

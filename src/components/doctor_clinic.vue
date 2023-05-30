@@ -1,4 +1,12 @@
 <template>
+  {{num}}<br>
+  {{num[0]}}<br>
+  {{progress_from_pass}}<br>
+  {{pass_nums}}哈哈哈哈
+  {{length123}}<br>
+  {{try_id}}
+  {{text_from_websocket}}
+  {{websocket}}
   <div id="flex_container_clinic">
     <h2 style="margin-top: 45px">目前號碼</h2>
     <div id="input_base">
@@ -49,11 +57,8 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue'
+import {onMounted, onUnmounted, ref} from 'vue'
 import axios from "axios";
-
-
-
 
 const clinic_ID = ref(localStorage.getItem('clinic_id'))
 const name = ref()
@@ -79,28 +84,36 @@ const num = ref([])
 const test = ref('')
 const pass_nums = ref([])
 const length123 = ref()
-const progress_from_pass = ref()
-const test_for_now = ref('')
-const test_for_now2 = ref('')
 
-import {inject} from "vue";
-const WebSocket = inject('WebSocket')
-onMounted(() => {
-  WebSocket.$on('message', (data) => {
-    progress_from_pass.value = data;
-    get_pass();
-  });
-});
+const progress_from_pass = ref('')
+const id_from_pass = ref('')
+const clinic_id = ref('')
+const text_from_websocket = ref()
+const websocket =ref('')
+
+
+// import { inject } from "vue";
+// const WebSocket = inject('WebSocket')
+
 
 
 function get_pass() {
   const index = pass_nums.value.indexOf(progress_from_pass.value)
   if(index !== -1){
     pass_nums.value.splice(index, 1)
-    num.value.splice( 2, 0, progress_from_pass.value)
+    if(length123.value >= 2){
+      try_id.value.splice(2,0,id_from_pass.value)
+      num.value.splice( 2, 0, progress_from_pass.value)
+    }else {
+      try_id.value.splice(1,0,id_from_pass.value)
+      num.value.splice( 1, 0, progress_from_pass.value)
+    }
     length123.value += 1
   }
 }
+
+
+
 
 function pass_appointment() {
   let config = {
@@ -137,8 +150,6 @@ function pass_and_add() {
   if (1 >= length123.value) {
   } else {
     pass_appointment()
-
-
   }
 }
 
@@ -146,6 +157,40 @@ function pass_and_add() {
 /*剛到個頁面時，顯讀取clinic_id*/
 if (window.location.href === "http://localhost:5173/doctor_clinic.html") {
   get_clinic_info()
+  // onMounted(() => {
+  //   WebSocket.$socket.addEventListener('message', (event) => {
+  //     websocket.value = 'hello'
+  //
+  //     let data = event.data;
+  //     try{
+  //       const message = JSON.parse(data);
+  //       text_from_websocket.value = message;
+  //       id_from_pass.value = JSON.parse(data).id
+  //       progress_from_pass.value = JSON.parse(data).progress;
+  //       clinic_id.value = JSON.parse(data).clinic_id;
+  //       if(clinic_id.value === clinic_ID.value){
+  //         get_pass();
+  //       }
+  //     }catch (e) {
+  //       console.log(e)
+  //     }
+  //   });
+  // });
+  const message = ref('')
+  let eventSource;
+  onMounted(() => {
+    eventSource = new EventSource('http://localhost:5001/stream')
+    eventSource.onmessage = function (event) {
+      websocket.value = 'hello'
+      message.value = event.data
+    }
+  })
+  onUnmounted(() =>
+      {
+        eventSource.close()
+      }
+  )
+
 }
 
 /*讀取clinic_id*/
