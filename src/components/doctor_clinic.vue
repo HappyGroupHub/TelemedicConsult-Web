@@ -1,12 +1,14 @@
 <template>
+  {{pass_nums}}
+  {{pass_nums[0]}}<br>
   {{num}}<br>
   {{num[0]}}<br>
   {{progress_from_pass}}<br>
-  {{pass_nums}}哈哈哈哈
   {{length123}}<br>
   {{try_id}}
-  {{text_from_websocket}}
-  {{websocket}}
+  {{message}}<br>
+  {{id_from_pass}}
+{{happyk}}
   <div id="flex_container_clinic">
     <h2 style="margin-top: 45px">目前號碼</h2>
     <div id="input_base">
@@ -88,12 +90,10 @@ const length123 = ref()
 const progress_from_pass = ref('')
 const id_from_pass = ref('')
 const clinic_id = ref('')
-const text_from_websocket = ref()
-const websocket =ref('')
+const message = ref()
 
-
-// import { inject } from "vue";
-// const WebSocket = inject('WebSocket')
+const currentTime = ref('')
+const happyk = ref('')
 
 
 
@@ -102,6 +102,7 @@ function get_pass() {
   if(index !== -1){
     pass_nums.value.splice(index, 1)
     if(length123.value >= 2){
+        happyk.value = 'happyk'
       try_id.value.splice(2,0,id_from_pass.value)
       num.value.splice( 2, 0, progress_from_pass.value)
     }else {
@@ -129,7 +130,8 @@ function pass_appointment() {
   }, config)
       .then(res => {
         next_appointment()
-        pass_nums.value.push(num.value[0])
+        pass_nums.value.unshift(num.value[0])
+
         for (let i = 0; i < num.value.length; i++) {
           num.value[i] = num.value[i + 1]
           try_id.value[i] = try_id.value[i + 1]
@@ -137,6 +139,8 @@ function pass_appointment() {
         length123.value -= 1
         try_test.value = num.value[0]
         hello.value = num.value
+          clear_pass_appointment_time()
+
 
 
       })
@@ -146,6 +150,27 @@ function pass_appointment() {
 }
 
 
+function clear_pass_appointment_time() {
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/clear_pass_appointment_time', {
+        clinic_id: clinic_ID.value,
+        appointment_num: pass_nums.value[0]
+
+    }, config)
+        .then(res => {
+
+
+
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
 function pass_and_add() {
   if (1 >= length123.value) {
   } else {
@@ -154,35 +179,24 @@ function pass_and_add() {
 }
 
 
-/*剛到個頁面時，顯讀取clinic_id*/
+
 if (window.location.href === "http://localhost:5173/doctor_clinic.html") {
   get_clinic_info()
-  // onMounted(() => {
-  //   WebSocket.$socket.addEventListener('message', (event) => {
-  //     websocket.value = 'hello'
-  //
-  //     let data = event.data;
-  //     try{
-  //       const message = JSON.parse(data);
-  //       text_from_websocket.value = message;
-  //       id_from_pass.value = JSON.parse(data).id
-  //       progress_from_pass.value = JSON.parse(data).progress;
-  //       clinic_id.value = JSON.parse(data).clinic_id;
-  //       if(clinic_id.value === clinic_ID.value){
-  //         get_pass();
-  //       }
-  //     }catch (e) {
-  //       console.log(e)
-  //     }
-  //   });
-  // });
-  const message = ref('')
   let eventSource;
   onMounted(() => {
     eventSource = new EventSource('http://localhost:5001/stream')
-    eventSource.onmessage = function (event) {
-      websocket.value = 'hello'
-      message.value = event.data
+    eventSource.onmessage = (event)=> {
+        const eventData = JSON.parse(event.data);
+        const { action, patient_id, appointment_num, clinic_id } = eventData;
+        if (action === 'pass_appointment_check_in') {
+            message.value = eventData;
+            id_from_pass.value = patient_id;
+            progress_from_pass.value = appointment_num;
+            clinic_id.value = clinic_id;
+            if (clinic_id.value === clinic_ID.value) {
+                get_pass();
+            }
+        }
     }
   })
   onUnmounted(() =>
@@ -275,8 +289,37 @@ const add = () => {
 
 function start_clinic_button() {
   start_clinic.value = false
+    const now = new Date()
+
+    const year = now.getFullYear().toString().padStart(4,'0')
+    const month = (now.getMonth() + 1).toString().padStart(2,'0')
+    const day = now.getDate().toString().padStart(2,'0')
+    const hour = now.getHours().toString().padStart(2,'0')
+    const minutes = now.getMinutes().toString().padStart(2,'0')
+    const seconds  = now.getSeconds().toString().padStart(2,'0')
+    currentTime.value = `${year}/${month}/${day} ${hour}:${minutes}:${seconds}`
+    update_clinic_status()
   length123.value = num.value.length
   try_try()
+}
+function update_clinic_status(){
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost:5000'
+        }
+    }
+    axios.post('http://127.0.0.1:5000/update_clinic_status', {
+        clinic_id: clinic_ID.value,
+        status_dict:{ 'start_time': currentTime.value,}
+    }, config)
+        .then(response => {
+
+
+        })
+        .catch(err => {
+            console.log(err)
+        });
 }
 
 

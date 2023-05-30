@@ -53,7 +53,7 @@
         <div id="circle">1</div>
         <div id="whitebox">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h5>加入LINE好友</h5>&nbsp;&nbsp;&nbsp;
-          <div id="bluebox"><button id="button"><a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=027rvwqj" style="color: white">點我加入好友</a></button></div>
+          <div id="bluebox"><button id="button"><a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=027rvwqj" target="_blank" style="color: white">點我加入好友</a></button></div>
         </div>
       </div>
       <hr>
