@@ -10,10 +10,10 @@
       <form>
         <div id="left">
           姓名
-          <input v-model="name" type="text" id="name" name="name" required="required"/>
+          <input v-model="name" required="required"/>
           <br><br>
           身分證字號
-          <input v-model="id" type="text" id="identity" name="id" required="required"/>
+          <input v-model="id" id="identity" name="id" required="required"/>
           {{ check_id_msg }}
           <br><br>
           生日
@@ -30,7 +30,7 @@
           <input v-model="ice_contact" id="ice_contact" name="ice_contact" required="required">
           <br><br>
           緊急聯絡人電話
-          <input v-model="ice_phone" name="ice_phone" required="required" type="text" maxLength="10"
+          <input v-model="ice_phone" name="ice_phone" required="required" maxLength="10"
                  pattern="09\d{8}" placeholder="09xxxxxxxx">
           {{ check_ice_number_msg }}
           <br><br>
@@ -41,27 +41,27 @@
         </div>
         <div id="right">
           手機號碼
-          <input v-model="phone_number" name="phone_number" required="required" type="text" maxLength="10"
+          <input v-model="phone_number" name="phone_number" required="required" maxLength="10"
                  pattern="09\d{8}" placeholder="09xxxxxxxx">
           {{ check_number_msg }}
           <br><br>
           <session className="form_session">
             身高<br>
-            <input v-model="height" type="text" id="height" name="height"/>公分
+            <input v-model="height" id="height" name="height"/>公分
           </session>
           <br><br>
           <session className="form_session">
             體重<br>
-            <input v-model="weight" type="text" id="weight" name="weight"/>公斤
+            <input v-model="weight" id="weight" name="weight"/>公斤
           </session>
           <br><br>
           <session className="form_session">
             血型<br>
-            <input v-model="blood_type" type="text" id="blood_type" name="blood_type" required="required"/>型
+            <input v-model="blood_type" id="blood_type" name="blood_type" required="required"/>型
           </session>
           <br><br>
           地址
-          <input v-model="address" type="text" id="address" name="address" required="required"/>
+          <input v-model="address" id="address" name="address" required="required"/>
 
         </div>
       </form>
@@ -91,22 +91,22 @@
       <form>
         <div id="left">
           姓名
-          <input v-model="name" type="text" disabled/>
+          <input v-model="name" disabled/>
           <br><br>
           身分證字號
-          <input v-model="id" type="text" disabled/>
+          <input v-model="id" disabled/>
           <br><br>
           生日
           <input v-model="birthday" id="birthday" name="birthday" disabled/>
           <br><br>
           生理性別
-          <input v-model="sex" name="sex" type="text" disabled>
+          <input v-model="sex" name="sex" disabled>
           <br><br>
           緊急聯絡人姓名
           <input v-model="ice_contact" id="ice_contact" name="ice_contact" disabled>
           <br><br>
           緊急聯絡人電話
-          <input v-model="ice_phone" name="ice_phone" type="text" disabled>
+          <input v-model="ice_phone" name="ice_phone" disabled>
           <br><br>
           緊急聯絡人關係
           <input v-model="ice_relation " id="ice_relation" name="ice_relation" disabled>
@@ -114,25 +114,25 @@
         </div>
         <div id="right">
           手機號碼
-          <input v-model="phone_number" name="phone_number" id="phone_number" type="text" disabled>
+          <input v-model="phone_number" name="phone_number" id="phone_number" disabled>
           <br><br>
           <div>
             身高<br>
-            <input v-model="height" type="text" id="height" name="height" disabled/>公分
+            <input v-model="height" id="height" name="height" disabled/>公分
           </div>
           <br><br>
           <div>
             體重<br>
-            <input v-model="weight" type="text" id="weight" name="weight" disabled/>公斤
+            <input v-model="weight" id="weight" name="weight" disabled/>公斤
           </div>
           <br><br>
           <div>
             血型<br>
-            <input v-model="blood_type" type="text" id="blood_type" name="blood_type" disabled>型
+            <input v-model="blood_type" id="blood_type" name="blood_type" disabled>型
           </div>
           <br><br>
           地址
-          <input v-model="address" type="text" id="address" name="address" disabled/>
+          <input v-model="address" id="address" name="address" disabled/>
           <br>
         </div>
       </form>
@@ -160,6 +160,7 @@
 import {ref, watch} from "vue";
 import axios from "axios";
 import Banner_check_patient from "./components/banner_patient.vue";
+import dompurify from "dompurify";
 
 const view = ref(1)
 const check_number_msg = ref('')
@@ -182,6 +183,19 @@ const weight = ref('')
 const blood_type = ref('')
 const address = ref('')
 
+const purName = ref(dompurify.sanitize(name.value))
+const purId = ref(dompurify.sanitize(id.value))
+const purBirthday = ref(dompurify.sanitize(birthday.value))
+const purSex = ref(dompurify.sanitize(sex.value))
+const purIce_contact = ref(dompurify.sanitize(ice_contact.value))
+const purIce_phone = ref(dompurify.sanitize(ice_phone.value))
+const purIce_relation = ref(dompurify.sanitize(ice_relation.value))
+const purPhone_number = ref(dompurify.sanitize(phone_number.value))
+const purHeight = ref(dompurify.sanitize(height.value))
+const purWeight = ref(dompurify.sanitize(weight.value))
+const purBlood_type = ref(dompurify.sanitize(blood_type.value))
+const purAddress = ref(dompurify.sanitize(address.value))
+
 
 function register_patient() {
   let config = {
@@ -191,25 +205,25 @@ function register_patient() {
     }
   }
   axios.post('http://127.0.0.1:5000/register_patient', {
-    name: name.value,
-    id: id.value,
-    sex: sex.value,
-    birthday: birthday.value,
-    blood_type: blood_type.value,
-    phone_number: phone_number.value,
-    address: address.value,
-    height: height.value,
-    weight: weight.value,
-    ice_contact: ice_contact.value,
-    ice_relation: ice_relation.value,
-    ice_phone: ice_phone.value
+    name: purName.value,
+    id: purId.value,
+    sex: purSex.value,
+    birthday: purBirthday.value,
+    blood_type: purBlood_type.value,
+    phone_number: purPhone_number.value,
+    address: purAddress.value,
+    height: purHeight.value,
+    weight: purWeight.value,
+    ice_contact: purIce_contact.value,
+    ice_relation: purIce_relation.value,
+    ice_phone: purIce_phone.value,
+
   }, config)
       .then(res => {
-        console.log(res)
         localStorage.clear()
         localStorage.setItem("user_id", id.value);
         localStorage.setItem('name', name.value);
-        localStorage.setItem('patient_sex',sex.value)
+        localStorage.setItem('patient_sex', sex.value)
         window.location.href = "/join_linebot.html"
       })
       .catch(err => {
@@ -217,13 +231,13 @@ function register_patient() {
       });
 }
 
-watch(phone_number, (newVal, oldVal) => {
+watch(purPhone_number, (newVal, oldVal) => {
   check_phone_number()
 })
-watch(ice_phone, (newVal, oldVal) => {
+watch(purIce_phone, (newVal, oldVal) => {
   check_ice_phone_number()
 })
-watch(id, (newVal, oldVal) => {
+watch(purId, (newVal, oldVal) => {
   check_id()
 })
 

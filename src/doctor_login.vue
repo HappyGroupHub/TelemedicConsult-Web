@@ -30,10 +30,14 @@ import banner_doctor_login from "./components/banner_doctor.vue";
 import {ref} from "vue";
 import axios from "axios";
 import Bar_doctor_login from "./components/bar_doctor_login.vue";
+import dompurify from "dompurify";
 
 const doctor_id = ref('');
 const doctor_password = ref('');
 const show_login_or_not = ref('');
+
+const purId = ref(dompurify.sanitize(doctor_id.value));
+const purPassword = ref(dompurify.sanitize(doctor_password.value));
 
 
 function check_doctor_login() {
@@ -42,8 +46,8 @@ function check_doctor_login() {
       'Access-Control-Allow-Origin': '*'}
   }
   axios.post('http://127.0.0.1:5000/doctor_login', {
-    doc_id: doctor_id.value,
-    password: doctor_password.value
+    doc_id: purId.value,
+    password: purPassword.value
   }, config)
       .then(res => {
         if(res.data.status === "success"){

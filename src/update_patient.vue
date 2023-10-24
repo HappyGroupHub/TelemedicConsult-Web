@@ -128,9 +128,6 @@ function show_patient_info_by_id() {
                 weight.value = res.data.weight;
                 blood_type.value = res.data.blood_type;
                 address.value = res.data.address;
-
-
-
             } else {
                 mess.value = "fail";
 

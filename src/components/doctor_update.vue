@@ -2,24 +2,27 @@
 
 import {ref} from "vue";
 import axios from "axios";
+import dompurify from "dompurify";
 
 
 const clinic_id = ref(localStorage.getItem('clinic_id'))
 const line_link = ref('')
-const status_dict = ref({
+const status_dict = ref({})
+const purLink = ref(dompurify.sanitize(line_link.value))
 
-})
-function start_clinic(){
+
+
+function start_clinic() {
   window.location.href = "/doctor_clinic.html"
 }
 
-function btn_update_link(){
-  line_link.value = prompt("請輸入會議室連結");
-  if(line_link.value!=null){
+function btn_update_link() {
+  purLink.value = prompt("請輸入會議室連結");
+  if (purLink.value != null) {
     submit_line_link_to_db();
   }
   status_dict.value = ref({
-    'link': line_link.value,
+    'link': purLink.value,
   })
 }
 
@@ -32,7 +35,7 @@ function submit_line_link_to_db() {
   }
   axios.post('http://127.0.0.1:5000/update_clinic_status', {
     clinic_id: clinic_id.value,
-    status_dict:{ 'link': line_link.value,}
+    status_dict: {'link': purLink.value,}
   }, config)
       .then(response => {
         console.log(response)
@@ -44,23 +47,23 @@ function submit_line_link_to_db() {
 </script>
 
 <template>
-    <section id="doctor_btn">
-        <div id="dr_btn">
-            <button id="drbtn" @click="start_clinic">開始看診</button>
-        </div>
-        <div id="dr_btn">
-            <button id="drbtn" @click="btn_update_link">上傳會議連結</button>
-        </div>
-    </section>
+  <section id="doctor_btn">
+    <div id="dr_btn">
+      <button id="drbtn" @click="start_clinic">開始看診</button>
+    </div>
+    <div id="dr_btn">
+      <button id="drbtn" @click="btn_update_link">上傳會議連結</button>
+    </div>
+  </section>
 
 </template>
 
 <style scoped>
 
 section {
-    display: flex;
-    justify-content: space-around;
-    font-size: x-large;
+  display: flex;
+  justify-content: space-around;
+  font-size: x-large;
 }
 
 #dr_btn {
@@ -77,7 +80,7 @@ section {
   justify-content: center;
 }
 
-#drbtn{
+#drbtn {
   background-color: #8b9acb;
   height: 95px;
   display: flex;

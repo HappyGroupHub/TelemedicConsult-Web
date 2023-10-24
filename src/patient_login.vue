@@ -3,11 +3,15 @@
   import banner_login from './components/banner_patient.vue'
   import axios from "axios";
   import { ref} from "vue";
+  import dompurify from "dompurify";
 
 
   const id = ref("")
   const birthday = ref("")
   const message = ref("");
+
+  const purId = ref(dompurify.sanitize(id.value))
+  const purBirthday = ref(dompurify.sanitize(birthday.value))
 
 
   function get_patient_info_by_id() {
@@ -16,12 +20,12 @@
         'Access-Control-Allow-Origin': '*'}
     }
     axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
-      id: id.value,
+      id: purId.value,
     }, config)
         .then(res => {
           if(res.data.status === "success"){
             const patientInfo = res.data;
-            if(patientInfo.birthday === birthday.value){
+            if(patientInfo.birthday === purBirthday.value){
               window.location.href = "/update_patient.html";
               localStorage.setItem("user_id", id.value);
               localStorage.setItem('name', patientInfo.name);

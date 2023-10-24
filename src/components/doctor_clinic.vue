@@ -6,7 +6,8 @@
   {{length123}}<br>
   {{try_id}}
   {{text_from_websocket}}
-  {{websocket}}
+  {{stream}}
+{{message}}
   <div id="flex_container_clinic">
     <h2 style="margin-top: 45px">目前號碼</h2>
     <div id="input_base">
@@ -89,11 +90,8 @@ const progress_from_pass = ref('')
 const id_from_pass = ref('')
 const clinic_id = ref('')
 const text_from_websocket = ref()
-const websocket =ref('')
-
-
-// import { inject } from "vue";
-// const WebSocket = inject('WebSocket')
+const stream = ref()
+const message = ref()
 
 
 
@@ -111,8 +109,6 @@ function get_pass() {
     length123.value += 1
   }
 }
-
-
 
 
 function pass_appointment() {
@@ -137,8 +133,6 @@ function pass_appointment() {
         length123.value -= 1
         try_test.value = num.value[0]
         hello.value = num.value
-
-
       })
       .catch(err => {
         console.log(err)
@@ -157,246 +151,229 @@ function pass_and_add() {
 /*剛到個頁面時，顯讀取clinic_id*/
 if (window.location.href === "http://localhost:5173/doctor_clinic.html") {
   get_clinic_info()
-  // onMounted(() => {
-  //   WebSocket.$socket.addEventListener('message', (event) => {
-  //     websocket.value = 'hello'
-  //
-  //     let data = event.data;
-  //     try{
-  //       const message = JSON.parse(data);
-  //       text_from_websocket.value = message;
-  //       id_from_pass.value = JSON.parse(data).id
-  //       progress_from_pass.value = JSON.parse(data).progress;
-  //       clinic_id.value = JSON.parse(data).clinic_id;
-  //       if(clinic_id.value === clinic_ID.value){
-  //         get_pass();
-  //       }
-  //     }catch (e) {
-  //       console.log(e)
-  //     }
-  //   });
-  // });
-  const message = ref('')
+
   let eventSource;
   onMounted(() => {
-    eventSource = new EventSource('http://localhost:5001/stream')
     eventSource.onmessage = function (event) {
-      websocket.value = 'hello'
-      message.value = event.data
-    }
-  })
-  onUnmounted(() =>
-      {
-        eventSource.close()
+      const eventData = JSON.parse(event.data);
+      const {action, patient_id, appointment_num, clinic_id} = eventData;
+      if (action === 'pass_appointment_check_in') {
+        message.value = eventData;
+        id_from_pass.value = patient_id;
+        progress_from_pass.value = appointment_num;
+        clinic_id.value = clinic_id;
+        if (clinic_id.value === clinic_ID.value) {
+          get_pass();
+        }
       }
-  )
+    };
+  });
 
-}
-
-/*讀取clinic_id*/
-function get_clinic_info() {
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+  /*讀取clinic_id*/
+  function get_clinic_info() {
+    let config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
     }
+    axios.post('http://127.0.0.1:5000/get_clinic_info', {
+      clinic_id: clinic_ID.value,
+    }, config)
+        .then(res => {
+          try_test.value = res.data.progress
+          date.value = res.data['date']
+          time_period.value = res.data['time_period']
+          get_patients_by_clinic_id()
+        })
+        .catch(err => {
+          console.log(err)
+        });
   }
-  axios.post('http://127.0.0.1:5000/get_clinic_info', {
-    clinic_id: clinic_ID.value,
-  }, config)
-      .then(res => {
-        try_test.value = res.data.progress
-        date.value = res.data['date']
-        time_period.value = res.data['time_period']
-        get_patients_by_clinic_id()
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
 
-/*讀取診間資料and show*/
-function get_patients_by_clinic_id() {
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'
+  /*讀取診間資料and show*/
+  function get_patients_by_clinic_id() {
+    let config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'localhost:5000'
+      }
     }
-  }
-  axios.post('http://127.0.0.1:5000/get_patients_by_clinic_id', {
-    clinic_id: clinic_ID.value,
-  }, config)
-      .then(response => {
-        hello.value = response.data.appointment_nums
-        sequence_and_patient_name.value = response.data.patients
-        for (let i = 0; i < response.data.patients.length; i++) {
-          num.value.push(response.data.patients[i].appointment_num)
-          try_id.value.push(response.data.patients[i].patient_id)
-          length123.value = num.value.length
-        }
-        if (try_test.value === 0) {
-          start_clinic.value = true
-
-        } else {
-          check_now_sequence()
-        }
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
-
-function check_now_sequence() {
-  const index = num.value.indexOf(try_test.value)
-  if (index != -1) {
-    num.value[0] = num.value[index]
-    try_id.value[0] = try_id.value[index]
-    try_try()
-
-  }
-
-}
-
-/*下一個病人*/
-const add = () => {
-  if (1 >= length123.value) {
-  } else {
-    next_appointment()
-    for (let i = 0; i < num.value.length; i++) {
-      num.value[i] = num.value[i + 1]
-      try_id.value[i] = try_id.value[i + 1]
-    }
-    length123.value -= 1
-    try_test.value = num.value[0]
-    hello.value = num.value
-  }
-}
-
-
-function start_clinic_button() {
-  start_clinic.value = false
-  length123.value = num.value.length
-  try_try()
-}
-
-
-function try_try() {
-  if (3 < length123.value) {
-    num.value[3] = num.value[3]
-  } else {
-    num.value[3] = NaN
-  }
-
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'
-    }
-  }
-  axios.post('http://127.0.0.1:5000/next_appointment', {
-    clinic_id: clinic_ID.value,
-    current_appointment_num: 0,
-    next_appointment_num: num.value[0],
-    notify_appointment_num: num.value[3],
-  }, config)
-      .then(response => {
-        show_patient_info_for_doc()
-
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
-
-function next_appointment() {
-  try_test.value = num.value[0]
-  if (4 >= length123.value) {
-    num.value[4] = NaN
-  } else {
-    num.value[4] = num.value[4]
-
-  }
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'
-    }
-  }
-  axios.post('http://127.0.0.1:5000/next_appointment', {
-    clinic_id: clinic_ID.value,
-    current_appointment_num: num.value[0],
-    next_appointment_num: num.value[1],
-    notify_appointment_num: num.value[4]
-  }, config)
-      .then(response => {
-        show_patient_info_for_doc()
-      })
-      .catch(err => {
-        console.log(err)
-      });
-}
-
-
-/*病人資料show*/
-function show_patient_info_for_doc() {
-  let config = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'localhost:5000'
-    }
-  }
-  axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
-    id: try_id.value[0]
-  }, config)
-      .then(response => {
-            name.value = response.data.name
-            blood_type.value = response.data.blood_type
-            id.value = response.data.id
-            address.value = response.data.address
-            birthday.value = response.data.birthday
-            height.value = response.data.height
-            weight.value = response.data.weight
-            ice_contact.value = response.data.ice_contact
-            ice_number.value = response.data.ice_phone
-            ice_relation.value = response.data.ice_relation
-            phone_number.value = response.data.phone_number
-            sex.value = response.data.sex
+    axios.post('http://127.0.0.1:5000/get_patients_by_clinic_id', {
+      clinic_id: clinic_ID.value,
+    }, config)
+        .then(response => {
+          hello.value = response.data.appointment_nums
+          sequence_and_patient_name.value = response.data.patients
+          for (let i = 0; i < response.data.patients.length; i++) {
+            num.value.push(response.data.patients[i].appointment_num)
+            try_id.value.push(response.data.patients[i].patient_id)
+            length123.value = num.value.length
           }
-      )
-      .catch(err => {
-        console.log(err)
-      });
+          if (try_test.value === 0) {
+            start_clinic.value = true
 
-
-}
-
-function getWeekDay(date) {
-  let weekDay = new Date(date).getDay();
-  let weekDayString = "";
-  switch (weekDay) {
-    case 0:
-      weekDayString = " 星期日";
-      break;
-    case 1:
-      weekDayString = " 星期一";
-      break;
-    case 2:
-      weekDayString = " 星期二";
-      break;
-    case 3:
-      weekDayString = " 星期三";
-      break;
-    case 4:
-      weekDayString = " 星期四";
-      break;
-    case 5:
-      weekDayString = " 星期五";
-      break;
-    case 6:
-      weekDayString = " 星期六";
-      break;
+          } else {
+            check_now_sequence()
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        });
   }
-  return weekDayString;
+
+  function check_now_sequence() {
+    const index = num.value.indexOf(try_test.value)
+    if (index != -1) {
+      num.value[0] = num.value[index]
+      try_id.value[0] = try_id.value[index]
+      try_try()
+
+    }
+
+  }
+
+  /*下一個病人*/
+  const add = () => {
+    if (1 >= length123.value) {
+    } else {
+      next_appointment()
+      for (let i = 0; i < num.value.length; i++) {
+        num.value[i] = num.value[i + 1]
+        try_id.value[i] = try_id.value[i + 1]
+      }
+      length123.value -= 1
+      try_test.value = num.value[0]
+      hello.value = num.value
+    }
+  }
+
+
+  function start_clinic_button() {
+    start_clinic.value = false
+    length123.value = num.value.length
+    try_try()
+  }
+
+
+  function try_try() {
+    if (3 < length123.value) {
+      num.value[3] = num.value[3]
+    } else {
+      num.value[3] = NaN
+    }
+
+    let config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'localhost:5000'
+      }
+    }
+    axios.post('http://127.0.0.1:5000/next_appointment', {
+      clinic_id: clinic_ID.value,
+      current_appointment_num: 0,
+      next_appointment_num: num.value[0],
+      notify_appointment_num: num.value[3],
+    }, config)
+        .then(response => {
+          show_patient_info_for_doc()
+
+        })
+        .catch(err => {
+          console.log(err)
+        });
+  }
+
+  function next_appointment() {
+    try_test.value = num.value[0]
+    if (4 >= length123.value) {
+      num.value[4] = NaN
+    } else {
+      num.value[4] = num.value[4]
+
+    }
+    let config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'localhost:5000'
+      }
+    }
+    axios.post('http://127.0.0.1:5000/next_appointment', {
+      clinic_id: clinic_ID.value,
+      current_appointment_num: num.value[0],
+      next_appointment_num: num.value[1],
+      notify_appointment_num: num.value[4]
+    }, config)
+        .then(response => {
+          show_patient_info_for_doc()
+        })
+        .catch(err => {
+          console.log(err)
+        });
+  }
+
+
+  /*病人資料show*/
+  function show_patient_info_for_doc() {
+    let config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'localhost:5000'
+      }
+    }
+    axios.post('http://127.0.0.1:5000/get_patient_info_by_id', {
+      id: try_id.value[0]
+    }, config)
+        .then(response => {
+              name.value = response.data.name
+              blood_type.value = response.data.blood_type
+              id.value = response.data.id
+              address.value = response.data.address
+              birthday.value = response.data.birthday
+              height.value = response.data.height
+              weight.value = response.data.weight
+              ice_contact.value = response.data.ice_contact
+              ice_number.value = response.data.ice_phone
+              ice_relation.value = response.data.ice_relation
+              phone_number.value = response.data.phone_number
+              sex.value = response.data.sex
+            }
+        )
+        .catch(err => {
+          console.log(err)
+        });
+
+
+  }
+
+  function getWeekDay(date) {
+    let weekDay = new Date(date).getDay();
+    let weekDayString = "";
+    switch (weekDay) {
+      case 0:
+        weekDayString = " 星期日";
+        break;
+      case 1:
+        weekDayString = " 星期一";
+        break;
+      case 2:
+        weekDayString = " 星期二";
+        break;
+      case 3:
+        weekDayString = " 星期三";
+        break;
+      case 4:
+        weekDayString = " 星期四";
+        break;
+      case 5:
+        weekDayString = " 星期五";
+        break;
+      case 6:
+        weekDayString = " 星期六";
+        break;
+    }
+    return weekDayString;
+  }
 }
 </script>
 
