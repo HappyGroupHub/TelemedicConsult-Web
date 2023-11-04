@@ -1,7 +1,8 @@
 <template>
-    <bar/>
-    <banner/>
+
     <main>
+      <banner_patient/>
+
         <div class="pic">
             <img src="image/LOGO.png" id="image">
         </div>
@@ -23,8 +24,12 @@
 </template>
 
 <script>
-import bar from "./components/bar.vue";
-import banner from './components/banner_patient.vue';
+
+ import Banner_patient from "./components/banner_patient.vue";
+ export default {
+   components: {Banner_patient}
+ }
+
 </script>
 
 <style scoped>
@@ -57,7 +62,6 @@ a:link, a:visited, a:hover, a:active {
     margin-top: 2px;
     box-shadow: silver 3px 3px;
     opacity: .83;
-  margin-top: 10px;
 }
 
 #btn_text {

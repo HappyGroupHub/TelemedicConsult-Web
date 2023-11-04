@@ -19,7 +19,12 @@ function start_clinic() {
 function btn_update_link() {
   purLink.value = prompt("請輸入會議室連結");
   if (purLink.value != null) {
-    submit_line_link_to_db();
+    const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+    if (urlPattern.test(purLink.value)) {
+      submit_line_link_to_db();
+    } else {
+      alert("請輸入正確的連結");
+    }
   }
   status_dict.value = ref({
     'link': purLink.value,
