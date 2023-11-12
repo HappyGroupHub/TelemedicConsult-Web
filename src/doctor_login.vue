@@ -17,20 +17,20 @@
         </div>
         <p v-if="show_login_or_not">{{ show_login_or_not }}</p>
       </div>
-
       <p></p>
-
     </div>
   </div>
 </template>
 
 <script setup>
-
 import banner_doctor_login from "./components/banner_doctor.vue";
 import {ref} from "vue";
 import axios from "axios";
 import Bar_doctor_login from "./components/bar_doctor_login.vue";
 import dompurify from "dompurify";
+import  CryptoJS from 'crypto-js';
+import config from '../config.json'
+
 
 const doctor_id = ref('');
 const doctor_password = ref('');
@@ -38,7 +38,8 @@ const show_login_or_not = ref('');
 
 const purId = ref(dompurify.sanitize(doctor_id.value));
 const purPassword = ref(dompurify.sanitize(doctor_password.value));
-
+const key = config.secret_key;
+const cryptoPass = ref(CryptoJS.AES.encrypt(purPassword.value,key).toString());
 
 function check_doctor_login() {
   let config = { headers: {
@@ -47,7 +48,7 @@ function check_doctor_login() {
   }
   axios.post('http://127.0.0.1:5000/doctor_login', {
     doc_id: purId.value,
-    password: purPassword.value
+    password: cryptoPass.value
   }, config)
       .then(res => {
         if(res.data.status === "success"){
@@ -60,7 +61,7 @@ function check_doctor_login() {
           }else {
             show_login_or_not.value = '登入失敗';
           }
-          }
+        }
       })
       .catch(err => {
         console.log(err)
