@@ -49,10 +49,10 @@ function sign_out() {
 <template>
 
     <div class="dheader">
-      <h1>輔大醫資 醫師系統</h1>
+      <h1>Physician Consultation Website</h1>
       <ul class="menu">
         <section v-if="see">{{ doctor_name }}</section>
-        <button id="btnn" @click="sign_out" >登出</button>
+        <button id="btnn" @click="sign_out" >Log Out</button>
       </ul>
     </div>
 <!--    {{testforcheck}}-->

@@ -1,11 +1,9 @@
 <template>
-  <bar/>
   <banner/>
-  <div class="all" v-if="view_check===2">
-    <div class="hello_to_patient">
-      <h2>{{ patient_name_from_login }}</h2>&nbsp;
+  <div class="final-reservation" v-if="view_check===2">
+    <div class="greeting">
       <h3>{{ female_or_male }}</h3>
-
+      <h2>{{ patient_name_from_login }}</h2>&nbsp;
     </div>
     <div id="already_or_not">
       {{ already_appointment }}
@@ -22,24 +20,21 @@
         <h3 id="blue">{{ your_appointment_num }}</h3>
       </div>
     </div>
-
-    <div class="buttons">
-      <button id="back" @click="back_to_index">返回首頁</button>
-    </div>
-    <p style="margin-bottom: 0">*溫馨提醒:可以在LINE上得到更多資訊ㄛ</p>
+    <button id="back" @click="back_to_index">Back to Homepage</button>
+    <p>*溫馨提醒:可以在LINE上得到更多資訊ㄛ</p>
   </div>
 
 
-  <div class="all" v-if="view_check===1">
-    <div class="hello_to_patient">
-      <h2>{{ patient_name_from_login }}</h2>&nbsp;
+  <div class="final-reservation" v-if="view_check===1">
+    <div class="greeting">
       <h3>{{ female_or_male }}</h3>
+      <h2> Tester</h2>&nbsp;
     </div>
     <div class="information">
       <div class="second">
-        <h2 id="white">您將要預約</h2>
-        <h2 id="white">開始看診時間</h2>
-        <h2 id="white">已預約人數</h2>
+        <h2 id="white">You are about to make a reservation on</h2>
+        <h2 id="white">Start of Consultation Time at</h2>
+        <h2 id="white">Number of Reservations</h2>
       </div>
       <div class="first1">
         <h3 id="blue">{{ clinic_date }}</h3>
@@ -49,10 +44,10 @@
     </div>
     <br>
     <div class="buttons">
-      <button id="back" @click="back_to_select_time">返回</button>
-      <button id="check_reservation" @click="double_check_reservation">確認預約</button>
+      <button id="back" @click="back_to_select_time">Back</button>
+      <button id="check_reservation" @click="double_check_reservation">Confirm</button>
     </div>
-    <p style="margin-bottom: 0">*溫馨提醒:可以在LINE上得到更多資訊ㄛ</p>
+    <p class="notice">*Kind Reminder: You can obtain more information on LINE.</p>
   </div>
 
 </template>
@@ -65,9 +60,9 @@ import axios from "axios";
 
 const patient_name_from_login = localStorage.getItem('name')
 const clinic_date = ref("2000-00-00");
-const clinic_time = ref("早上0點");
+const clinic_time = ref("10:00 AM");
 const appointment_num = ref("5");
-const female_or_male = ref('先生');
+const female_or_male = ref('Mr.');
 const get_clinic_id = localStorage.getItem("clinic_id");
 const view_check = ref(1);
 const your_appointment_num = ref("0號")
@@ -79,9 +74,9 @@ const changeViewCheck = (index) => {
 
 
 if (localStorage.getItem('patient_sex') === '男') {
-  female_or_male.value = '先生'
+  female_or_male.value = 'Mr.'
 } else {
-  female_or_male.value = '小姐'
+  female_or_male.value = 'Ms.'
 }
 
 if (window.location.href === 'http://localhost:5173/check_reservation.html') {
@@ -171,7 +166,6 @@ function get_patient_appointment_with_clinic_id() {
         console.log(response)
         your_appointment_num.value = response.data.appointment_num
         changeViewCheck(2)
-
       })
       .catch(err => {
         console.log(err)
@@ -180,8 +174,8 @@ function get_patient_appointment_with_clinic_id() {
 </script>
 
 <style>
-#already_or_not{
-
+.notice{
+  margin-bottom: 0;
 }
 #blue {
   height: 35px;
@@ -219,7 +213,7 @@ function get_patient_appointment_with_clinic_id() {
 }
 
 #white {
-  width: 165px;
+  width: 450px;
   height: 35px;
   background-color: white;
   color: #00317B;
@@ -230,7 +224,8 @@ function get_patient_appointment_with_clinic_id() {
   margin-right: 5px;
 }
 
-.all {
+.final-reservation {
+  padding:30px;
   width: 800px;
   height: 500px;
   background-color: #e1e1e1;
@@ -239,7 +234,7 @@ function get_patient_appointment_with_clinic_id() {
   align-items: center;
   justify-content: center;
   border-radius: 30px;
-  margin: 0 auto;
+  margin: 30px auto 0 auto;
 }
 
 #back {
@@ -265,15 +260,12 @@ function get_patient_appointment_with_clinic_id() {
   margin-left: 50px;
 }
 
-.hello_to_patient {
+.greeting {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 0px;
   background-color: #00317B;
   color: white;
   border-radius: 10px;
-  width: 800px;
+  width: 100%;
 }
 </style>

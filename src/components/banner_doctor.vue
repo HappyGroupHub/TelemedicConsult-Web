@@ -35,7 +35,7 @@ if (window.location.href === href.doctor_clinic) {
         <div id="nav">
             <div v-if="doctor_banner.doctor_clinic===1">
                 <ul>
-                    <p id="title">醫師診間</p>
+                    <p id="title">Physician's Office</p>
                 </ul>
             </div>
             <div v-if="doctor_banner.doctor_login===1">

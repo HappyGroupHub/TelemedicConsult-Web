@@ -15,6 +15,7 @@ import doctor_clinic from './doctor_clinic.vue'
 import update from './update_patient.vue'
 import case_manage from './case_management.vue'
 import check_patient_appointment from "./check_patient_appointment.vue";
+import 'C:/xampp/htdocs/src/style.css'
 
 createApp(App).mount('#app')
 createApp(patient_base).mount('#patient_base')
@@ -35,15 +36,4 @@ createApp(check_patient_appointment).mount('#check_patient_appointment')
 
 
 
-//
-// import VueNativeSock from 'vue-native-websocket';
-// const app = createApp(doctor_clinic);
-//
-// app.use(VueNativeSock, 'ws://localhost:5001/ws_connect', {
-//     reconnection: true,
-//     reconnectionAttempts: 5,
-//     reconnectionDelay: 3000,
-// });
-//
-// app.provide('$connect', inject('$connect'));
-// app.mount('#doctor_clinic');
+

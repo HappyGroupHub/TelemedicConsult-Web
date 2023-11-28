@@ -3,9 +3,9 @@
     <main>
       <banner_patient/>
 
-        <div class="pic">
-            <img src="image/LOGO.png" id="image">
-        </div>
+      <div class="pic">
+          <img src="image/LOGO.png" id="image">
+      </div>
       <div id="btn_space">
         <div id="btn">
                 <br><br><br><br><br><br>

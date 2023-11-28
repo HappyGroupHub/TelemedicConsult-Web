@@ -1,82 +1,86 @@
 <template>
-  <div id="container4">
+  <div id="case-management">
     <br>
-    <h2>個案管理</h2>
+    <h2>Case Management</h2>
     <div class="basic">
-      <form id="case_management2">
-        <div id="box">
-          今天日期
+      <form class="form-for-case-management">
+        <div class="box">
+          Today's Date:
           <input v-model="name" type="date" required/>
         </div>
-        <div id="box">
-          確診後第
+        <div class="box">
+          After the
           <select v-model="how_many_days">
-            <option >1</option>
-            <option >2</option>
-            <option >3</option>
-            <option >4</option>
-            <option >5</option>
-            <option >6</option>
-            <option >7</option>
-          </select>幾天
+            <option>1st</option>
+            <option>2nd</option>
+            <option>3rd</option>
+            <option>4th</option>
+            <option>5th</option>
+            <option>6th</option>
+            <option>7th</option>
+          </select>day of diagnosis
         </div>
-        <div id="box">
-          <b>是否有以下症狀，若包含請立刻就醫</b><p>
-          <input v-model="bad_symptom" type="checkbox" value="否">否
-          <input v-model="bad_symptom" type="checkbox" value="發燒">發燒>38度C
-          <input v-model="bad_symptom" type="checkbox" value="自覺呼吸喘">自覺呼吸喘
-          <input v-model="bad_symptom" type="checkbox" value="胸悶、胸痛" >胸悶、胸痛
-          <input v-model="bad_symptom" type="checkbox" value="曾意識不清" >曾意識不清
-          <input v-model="bad_symptom" type="checkbox" value="皮膚、嘴唇或指甲床發紫">皮膚、嘴唇或指甲床發紫
-          <input v-model="bad_symptom" type="checkbox" value="無法進食或喝水" >無法進食或喝水</p>
-          <div>
-            <u>如有測量儀器，請回報是否有以下狀況</u>
-            <input v-model="bad_symptom" type="checkbox" value="血氧濃度低於95%" >血氧濃度低於95%
-            <input v-model="bad_symptom" type="checkbox" value="心跳過快或過慢" >心跳過快或過慢
-            <input v-model="bad_symptom" type="checkbox" value="收縮壓">收縮壓90mmHg以下
-          </div>
+
+        <b>Whether you have the following symptoms; if so, please seek medical attention immediately.</b>
+        <div class="box"><input v-model="bad_symptom" type="checkbox" value="否">No<br>
+          <input v-model="bad_symptom" type="checkbox" value="發燒">Fever exceeding 100 degrees Fahrenheit<br>
+          <input v-model="bad_symptom" type="checkbox" value="自覺呼吸喘">Subjective sensation of wheezing<br>
+          <input v-model="bad_symptom" type="checkbox" value="胸悶、胸痛">Chest tightness/chest pain<br>
+          <input v-model="bad_symptom" type="checkbox" value="曾意識不清">Loss of consciousness<br>
+          <input v-model="bad_symptom" type="checkbox" value="皮膚、嘴唇或指甲床發紫">Skin, lips, or nail beds turning
+          purple<br>
+          <input v-model="bad_symptom" type="checkbox" value="無法進食或喝水">Inability to eat or drink
         </div>
-        <div id="box">
-          <b>是否有以下症狀</b><p>
-          <input v-model="symptom" type="checkbox" value="否">無症狀
-          <input v-model="symptom" type="checkbox" value="乾咳">乾咳
-          <input v-model="symptom" type="checkbox" value="喉嚨痛">喉嚨痛
-          <input v-model="symptom" type="checkbox" value="流鼻水、鼻塞">流鼻水、鼻塞
-          <input v-model="symptom" type="checkbox" value="肌肉痠痛">肌肉痠痛
-          <input v-model="symptom" type="checkbox" value="疲倦、全身無力">疲倦、全身無力
-          <input v-model="symptom" type="checkbox" value="嗅覺異常">嗅覺異常
-          <input v-model="symptom" type="checkbox" value="味覺異常">味覺異常
-          <input v-model="symptom" type="checkbox" value="頭痛">頭痛
-          <input v-model="symptom" type="checkbox" value="肌肉痠痛">肌肉痠痛</p>
+
+
+
+          <b>If you have measuring instruments, please report if the following conditions are present:</b>
+        <div class="box">
+          <input v-model="bad_symptom" type="checkbox" value="血氧濃度低於95%">Blood oxygen level below 95%<br>
+          <input v-model="bad_symptom" type="checkbox" value="心跳過快或過慢">Rapid or slow heartbeat<br>
+          <input v-model="bad_symptom" type="checkbox" value="收縮壓">Systolic blood pressure below 90mmHg<br>
         </div>
-        <div id="box">
-          <b>是否用藥</b><p>
-          <input v-model="medication" type="checkbox" value="否">否
-          <input v-model="medication" type="checkbox" value="中藥">中藥
-          <input v-model="medication" type="checkbox" value="西藥">西藥
-          <input v-model="medication" type="checkbox" value="輝瑞Paxlovid">輝瑞Paxlovid
-          <input v-model="medication" type="checkbox" value="莫納皮拉韋Molnupiravir">莫納皮拉韋Molnupiravir</p>
+
+
+        <b>Do you have the following symptoms:</b>
+        <div class="box"><input v-model="symptom" type="checkbox" value="否">No symptoms<br>
+          <input v-model="symptom" type="checkbox" value="乾咳">Dry cough<br>
+          <input v-model="symptom" type="checkbox" value="喉嚨痛">Sore throat<br>
+          <input v-model="symptom" type="checkbox" value="流鼻水、鼻塞">Runny nose/ nasal congestion<br>
+          <input v-model="symptom" type="checkbox" value="肌肉痠痛">Muscle soreness<br>
+          <input v-model="symptom" type="checkbox" value="疲倦、全身無力">Fatigue/weakness<br>
+          <input v-model="symptom" type="checkbox" value="嗅覺異常">Abnormal sense of smell<br>
+          <input v-model="symptom" type="checkbox" value="味覺異常">Abnormal sense of taste<br>
+          <input v-model="symptom" type="checkbox" value="頭痛">Headache
         </div>
-        <div id="box">
-          <b>是否有副作用</b><p>
-          <input v-model="side_effect" type="checkbox" value="否">否
-          <input v-model="side_effect" type="checkbox" value="腹瀉">腹瀉
-          <input v-model="side_effect" type="checkbox" value="噁心">噁心
-          <input v-model="side_effect" type="checkbox" value="食慾不振">食慾不振
-          <input v-model="side_effect" type="checkbox" value="暈眩">暈眩
-          <input v-model="side_effect" type="checkbox" value="味覺改變">味覺改變
-          <input v-model="side_effect" type="checkbox" value="尿液顏色變化">尿液顏色變化
-          <input v-model="side_effect" type="checkbox" value="皮膚或眼白發黃">皮膚或眼白發黃</p>
+
+
+        <b>Are you taking any medication?</b>
+        <div class="box">
+          <input v-model="medication" type="checkbox" value="否">No<br>
+          <input v-model="medication" type="checkbox" value="中藥">Chinese medicine<br>
+          <input v-model="medication" type="checkbox" value="西藥">Western medicine<br>
+          <input v-model="medication" type="checkbox" value="輝瑞Paxlovid">Paxlovid<br>
+          <input v-model="medication" type="checkbox" value="莫納皮拉韋Molnupiravir">Molnupiravir
         </div>
+
+        <b>Are there any side effects?</b>
+        <div class="box">
+          <input v-model="side_effect" type="checkbox" value="否">No
+          <input v-model="side_effect" type="checkbox" value="腹瀉">Diarrhea
+          <input v-model="side_effect" type="checkbox" value="噁心">Nausea
+          <input v-model="side_effect" type="checkbox" value="食慾不振">Loss of appetite
+          <input v-model="side_effect" type="checkbox" value="暈眩">Dizziness
+          <input v-model="side_effect" type="checkbox" value="味覺改變">Change in taste
+          <input v-model="side_effect" type="checkbox" value="尿液顏色變化">Change in urine color
+          <input v-model="side_effect" type="checkbox" value="皮膚或眼白發黃">Yellowing of the eyes or skin
+        </div>
+
+
       </form>
-      <br>
-      <div id="down_btn">
-        <button @click="case_management" id="check_writing" type="submit"
-                style="width:150px;height:50px;background-color: #007b06;color:white;text-align: center;border:0">
-          確認送出
+        <button @click="case_management" class="case-btn" type="submit">
+          Submit
         </button>
-        <br>
-      </div>
     </div>
     <br><br>
   </div>
@@ -86,6 +90,7 @@
 
 import axios from "axios";
 import {ref} from "vue";
+
 const name = ref('');
 const how_many_days = ref('');
 const bad_symptom = ref("");
@@ -113,30 +118,39 @@ function case_management() {
 </script>
 
 <style>
-
-#box{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 20px;
+.case-btn {
+  background-color: #00317B;
+  border: none;
+  color: white;
+  padding: 20px 50px;
+  border-radius: 15px;
+  margin-left: calc(50% - 75px);
 }
 
-#container4 {
+.box {
+  flex-wrap: wrap;
+  margin:10px auto 20px 0;
+
+}
+
+#case-management {
   justify-content: center;
   align-items: center;
   width: 990px;
-  background-color: #C5D8C6;
+  background-color: #e1e1e1;
   border-radius: 30px;
   box-shadow: gray 2px 2px;
-  margin-top: 60px;
+  margin: auto;
+  font-size: 20px;
 }
 
-#case_management2{
+.form-for-case-management {
   display: flex;
   flex-direction: column;
+  padding: 10px 80px 0 80px;
 }
 
-#container4 h2 {
+#case-management h2 {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 20px;
@@ -156,15 +170,10 @@ form {
 }
 
 
+/*#down_btn {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
 
-#down_btn {
-  display: flex;
-  justify-content: center;
-}
-
-
-#check_writing {
-  box-shadow: gray 2px 2px
-}
 </style>
 

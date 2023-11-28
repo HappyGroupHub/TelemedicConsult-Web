@@ -66,7 +66,6 @@ function check_doctor_login() {
       .catch(err => {
         console.log(err)
       });
-
 }
 
 </script>

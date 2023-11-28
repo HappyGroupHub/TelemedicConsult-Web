@@ -4,63 +4,62 @@
   <br>
   <div id="container1" v-if="view===1">
     <br>
-    <h2>初診基本資料</h2>
+    <h2>Complete Basic Details</h2>
     <br>
-    <div className="basic">
+    <div class="basic">
       <form>
         <div id="left">
-          姓名
+          Full Name:
           <input v-model="name" required="required"/>
           <br><br>
-          身分證字號
+          ID Number:
           <input v-model="id" id="identity" name="id" required="required"/>
           {{ check_id_msg }}
           <br><br>
-          生日
+          Birth Date:
           <input v-model="birthday" type="date" id="birthday" name="birthday" required="required"/>
           <br><br>
-          <session className="form_session">
-            生理性別
-            <input v-model="sex" name="sex" type="radio" value="男" required="required">男
-            <input v-model="sex" name="sex" type="radio" value="女" required="required">女
+          <session class="form_session">
+            Biological Gender:
+            <input v-model="sex" name="sex" type="radio" value="Male" required="required">Male
+            <input v-model="sex" name="sex" type="radio" value="Female" required="required">Female
           </session>
-
           <br><br>
-          緊急聯絡人姓名
+          Emergency Contact:
           <input v-model="ice_contact" id="ice_contact" name="ice_contact" required="required">
           <br><br>
-          緊急聯絡人電話
+          Emergency Contact Phone Number:
           <input v-model="ice_phone" name="ice_phone" required="required" maxLength="10"
                  pattern="09\d{8}" placeholder="09xxxxxxxx">
           {{ check_ice_number_msg }}
           <br><br>
-          緊急聯絡人關係
+          Emergency Contact Relationship:
           <input v-model="ice_relation" name="ice_relation" required="required">
           <br><br>
 
         </div>
-        <div id="right">
-          手機號碼
+        <div class="right">
+          Phone Number:
           <input v-model="phone_number" name="phone_number" required="required" maxLength="10"
                  pattern="09\d{8}" placeholder="09xxxxxxxx">
           {{ check_number_msg }}
           <br><br>
           <session className="form_session">
-            身高<br>
-            <input v-model="height" id="height" name="height"/>公分
+            Height:<br>
+            <input v-model="height" id="height" name="height"/>cm
           </session>
           <br><br>
           <session className="form_session">
-            體重<br>
-            <input v-model="weight" id="weight" name="weight"/>公斤
+            Weight:<br>
+            <input v-model="weight" id="weight" name="weight"/>kg
           </session>
           <br><br>
           <session className="form_session">
-            血型<br>
-            <input v-model="blood_type" id="blood_type" name="blood_type" required="required"/>型
+            Blood Type<br>
+            <input v-model="blood_type" id="blood_type" name="blood_type" required="required"/>
           </session>
           <br><br>
-          地址
+          Address:
           <input v-model="address" id="address" name="address" required="required"/>
 
         </div>
@@ -70,13 +69,13 @@
         <a href="index.html">
           <button id="back"
                   style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0">
-            回首頁
+            Back
           </button>
         </a>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <button v-on:click="changeView(2)" id="check_writing" type="submit"
                 style="width:150px;height:50px;background-color: #00317B;color:white;text-align: center;border:0">
-          確認填寫
+          Next
         </button>
         <br>
       </div>
@@ -86,52 +85,52 @@
   <banner_check_patient v-if="view===2"/>
   <div id="container2" v-if="view===2">
     <br>
-    <h2>初診基本資料確認</h2>
-    <div className="basic">
+    <h2>Confirm Basic Information</h2>
+    <div class="basic">
       <form>
         <div id="left">
-          姓名
+          Full Name:
           <input v-model="name" disabled/>
           <br><br>
-          身分證字號
+          ID Number:
           <input v-model="id" disabled/>
           <br><br>
-          生日
+          Birth Date:
           <input v-model="birthday" id="birthday" name="birthday" disabled/>
           <br><br>
-          生理性別
+          Biological Gender:
           <input v-model="sex" name="sex" disabled>
           <br><br>
-          緊急聯絡人姓名
+          Emergency Contact:
           <input v-model="ice_contact" id="ice_contact" name="ice_contact" disabled>
           <br><br>
-          緊急聯絡人電話
+          Emergency Contact Phone Number:
           <input v-model="ice_phone" name="ice_phone" disabled>
           <br><br>
-          緊急聯絡人關係
+          Emergency Contact Relationship:
           <input v-model="ice_relation " id="ice_relation" name="ice_relation" disabled>
           <br><br>
         </div>
-        <div id="right">
-          手機號碼
+        <div class="right">
+          Phone Number:
           <input v-model="phone_number" name="phone_number" id="phone_number" disabled>
           <br><br>
           <div>
-            身高<br>
-            <input v-model="height" id="height" name="height" disabled/>公分
+            Height<br>
+            <input v-model="height" id="height" name="height" disabled/>cm
           </div>
           <br><br>
           <div>
-            體重<br>
-            <input v-model="weight" id="weight" name="weight" disabled/>公斤
+            Weight<br>
+            <input v-model="weight" id="weight" name="weight" disabled/>kg
           </div>
           <br><br>
           <div>
-            血型<br>
-            <input v-model="blood_type" id="blood_type" name="blood_type" disabled>型
+            Blood Type:<br>
+            <input v-model="blood_type" id="blood_type" name="blood_type" disabled>
           </div>
           <br><br>
-          地址
+          Address:
           <input v-model="address" id="address" name="address" disabled/>
           <br>
         </div>
@@ -326,7 +325,7 @@ form {
   margin-right: 50px;
 }
 
-#right {
+.right {
   display: flex;
   flex-direction: column;
   justify-content: space-around;

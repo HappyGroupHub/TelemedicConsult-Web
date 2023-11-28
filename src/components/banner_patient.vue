@@ -91,25 +91,22 @@ const check = () => {
       document.getElementById("header").style.fontSize = "8px";
       document.body.style.paddingTop = document.getElementById("header").offsetHeight + 'px';
     }
-
 }
-
-
 </script>
 
 <template>
   <header>
     <div id="header">
       <div id="head">
-        <h1>輔大醫資 線上掛號</h1>
+        <h1>Appointment Registration</h1>
         <ul class="menu">
-          <li id="title_bar"><a href="time.html">門診時間</a></li>
-          <li id="title_bar"><a href="index.html">關於我們</a></li>
-          <li id="title_bar"><a href="description.html">使用說明</a></li>
+          <li id="title_bar"><a href="time.html">Clinic Hours</a></li>
+          <li id="title_bar"><a href="index.html">About us</a></li>
+          <li id="title_bar"><a href="description.html">Instructions</a></li>
           <div v-if="check_patient_appointment" @click="check">
-            <button id="title_bar">查看預約</button>
+            <button id="title_bar">Check Reservations</button>
           </div>
-          <button v-if="logout" @click="logoutlog">登出</button>
+          <button v-if="logout" @click="logoutlog">Log Out</button>
         </ul>
       </div>
       <div id="wrapper">
@@ -117,42 +114,42 @@ const check = () => {
           <ul>
             <div v-if="banner.homepage===1">
               <a href="index.html">
-                <li>首頁&nbsp&nbsp&nbsp</li>
+                <li>Homepage&nbsp&nbsp&nbsp</li>
               </a>
             </div>
             <div v-if="banner.time===1">
               <a href="time.html">
-                <li> >&nbsp&nbsp&nbsp 門診時間 &nbsp&nbsp&nbsp</li>
+                <li> >&nbsp&nbsp&nbsp Clinic Hours &nbsp&nbsp&nbsp</li>
               </a>
             </div>
             <div v-if="banner.patient_login===1">
               <a href="patient_login.html">
-                <li> >&nbsp&nbsp&nbsp 線上掛號登入 &nbsp&nbsp&nbsp</li>
+                <li> >&nbsp&nbsp&nbsp Login for Online Registration &nbsp&nbsp&nbsp</li>
               </a>
             </div>
             <div v-if="banner.register_patient===1">
               <a href="register_patient.html">
-                <li> >&nbsp&nbsp&nbsp 填寫基本資料 &nbsp&nbsp&nbsp</li>
+                <li> >&nbsp&nbsp&nbsp Complete Basic Details &nbsp&nbsp&nbsp</li>
               </a>
             </div>
             <div v-if="banner.reservation ===1">
               <a href="reservation.html">
-                <li> >&nbsp&nbsp&nbsp 選擇日期時段 &nbsp&nbsp&nbsp</li>
+                <li> >&nbsp&nbsp&nbsp Choose Date and Time Interval &nbsp&nbsp&nbsp</li>
               </a>
             </div>
             <div v-if="banner.description ===1">
               <a href="description.html">
-                <li> >&nbsp&nbsp&nbsp 使用說明 &nbsp&nbsp&nbsp</li>
+                <li> >&nbsp&nbsp&nbsp Instructions &nbsp&nbsp&nbsp</li>
               </a>
             </div>
             <div v-if="banner.join_line_bot ===1">
               <a href="join_linebot.html">
-                <li> >&nbsp&nbsp&nbsp 加入Line &nbsp&nbsp&nbsp</li>
+                <li> >&nbsp&nbsp&nbsp Join LINE &nbsp&nbsp&nbsp</li>
               </a>
             </div>
             <div v-if="banner.check_reservation ===1">
               <a href="check_reservation.html">
-                <li> >&nbsp&nbsp&nbsp 確認掛號 &nbsp&nbsp&nbsp</li>
+                <li> >&nbsp&nbsp&nbsp Confirm Registration &nbsp&nbsp&nbsp</li>
               </a>
             </div>
             <div v-if="banner.update_patient ===1">
